@@ -51,8 +51,14 @@
   h2{margin:0 0 16px;font-size:clamp(22px,3.2vw,28px)}
   h3{margin:0 0 8px;font-size:clamp(16px,2.5vw,18px)}
 
-  /* ===== ШАПКА + моб.меню ===== */
-  header{position:sticky;top:0;z-index:40;background:rgba(15,18,32,.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  /* ===== ШАПКА ===== */
+  header{
+    position:sticky; top:0; z-index:3000; /* выше скрима */
+    background:rgba(15,18,32,.55);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    will-change:transform; transform:translateZ(0); backface-visibility:hidden; contain:paint;
+  }
   .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
   .brand{display:flex;align-items:center;gap:10px}
   .logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 180deg,var(--acc),var(--acc2),var(--acc3),var(--acc));box-shadow:0 0 30px rgba(110,231,183,.25);animation:spin 8s linear infinite}
@@ -68,13 +74,29 @@
   .toggle svg,.menu svg{width:18px;height:18px}
   .menu{display:none}
 
-  /* Оверлей без blur (не мутнит всё), кликабельно меню поверх */
+  /* ===== СКРИМ (только blur фона, без затемнения) ===== */
   .scrim{
-    position:fixed;inset:0;background:rgba(0,0,0,.35);
-    opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:1000
+    position:fixed; inset:0;
+    background:transparent;
+    -webkit-backdrop-filter:blur(7px); backdrop-filter:blur(7px);
+    opacity:0; pointer-events:none; transition:opacity .18s ease; z-index:2000;
   }
-  body.menu-open .scrim{opacity:1;pointer-events:auto}
-  body.menu-open{overflow:hidden}
+  body.menu-open .scrim{opacity:1; pointer-events:auto}
+  @supports not ((-webkit-backdrop-filter: blur(7px)) or (backdrop-filter: blur(7px))){
+    .scrim{background:rgba(0,0,0,.06);} /* мягкая подложка, если blur недоступен */
+  }
+
+  /* ===== МОБИЛЬНАЯ ПАНЕЛЬ МЕНЮ (отдельный слой над скримом) ===== */
+  .mobile-panel{
+    position:fixed; top:64px; left:12px; right:12px;
+    max-height:calc(100dvh - 80px); overflow:auto;
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; box-shadow:var(--shadow);
+    padding:10px; display:none; flex-direction:column; gap:6px;
+    z-index:2100;  /* выше скрима */
+  }
+  .mobile-panel a{color:var(--text); font-weight:600; padding:12px 14px; border-radius:10px}
+  .mobile-panel a:hover{background:var(--btn-bg)}
 
   /* ===== БАЗОВЫЕ БЛОКИ ===== */
   .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .6s ease}
@@ -127,7 +149,7 @@
   /* ГРАФИКИ */
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
-  .chart svg{overflow:visible} /* важное: подписи за рамками видны */
+  .chart svg{overflow:visible}
   .chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
   .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
 
@@ -145,19 +167,10 @@
     .about{grid-template-columns:1fr;gap:16px}
     .avatar{width:132px;height:132px}
     .grid-2{grid-template-columns:1fr}
-
-    /* меню поверх скрима, кликабельно */
     .menu{display:inline-flex}
-    nav.primary{
-      position:fixed; top:64px; left:12px; right:12px; bottom:auto;
-      max-height:calc(100dvh - 80px); overflow:auto; z-index:1101;  /* было 1001 */
-      background:var(--card); border:1px solid var(--border);
-      border-radius:14px; box-shadow:var(--shadow); padding:10px;
-      display:none; flex-direction:column; gap:6px;
-    }
-    body.menu-open nav.primary{display:flex}
-    nav.primary a{padding:12px 14px}
-    .btn,.sbtn{width:100%}
+    nav.primary{display:none} /* десктоп-меню скрываем на телефоне */
+    /* мобильная панель показывается только при открытом меню */
+    body.menu-open .mobile-panel{display:flex}
   }
   @media (max-width:640px){
     .logos{grid-template-columns:repeat(2,1fr)}
@@ -182,11 +195,11 @@
       <strong>Шарошкин Александр Сергеевич — маркетолог</strong>
     </div>
     <nav class="primary" id="primaryNav">
-      <a href="#about" onclick="closeMenu()">Обо мне</a>
-      <a href="#cases" onclick="closeMenu()">Кейсы</a>
-      <a href="#charts" onclick="closeMenu()">Графики</a>
-      <a href="#projects" onclick="closeMenu()">Проекты</a>
-      <a href="#contacts" onclick="closeMenu()">Контакты</a>
+      <a href="#about">Обо мне</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#charts">Графики</a>
+      <a href="#projects">Проекты</a>
+      <a href="#contacts">Контакты</a>
     </nav>
     <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">
       <svg id="iconSun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4 12H2m20 0h-2M5 5 3.6 3.6M20.4 20.4 19 19M19 5l1.4-1.4M3.6 20.4 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -194,8 +207,18 @@
     </button>
   </div>
 </header>
-<!-- скрим без blur -->
+
+<!-- Скрим (blur фона) -->
 <div id="scrim" class="scrim"></div>
+
+<!-- Мобильная панель меню (поверх скрима) -->
+<nav class="mobile-panel" id="mobilePanel">
+  <a href="#about" onclick="closeMenu()">Обо мне</a>
+  <a href="#cases" onclick="closeMenu()">Кейсы</a>
+  <a href="#charts" onclick="closeMenu()">Графики</a>
+  <a href="#projects" onclick="closeMenu()">Проекты</a>
+  <a href="#contacts" onclick="closeMenu()">Контакты</a>
+</nav>
 
 <main class="wrap">
   <!-- HERO -->
@@ -365,15 +388,19 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
   renderCharts();
 });
 
-/* Мобильное меню + скрим */
+/* Мобильное меню: отдельная панель + скрим */
 const menuBtn=document.getElementById('menuToggle');
 const scrim=document.getElementById('scrim');
+function closeMenu(){
+  document.body.classList.remove('menu-open');
+  menuBtn.setAttribute('aria-expanded','false');
+}
 menuBtn.addEventListener('click',()=>{
   const open=document.body.classList.toggle('menu-open');
   menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
 scrim.addEventListener('click', closeMenu);
-function closeMenu(){ document.body.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); }
+window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
 
 /* Плавное появление карточек */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
@@ -382,15 +409,10 @@ document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 /* ===== ГРАФИКИ ===== */
 const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
 const crisp=y=>Math.round(y)+.5;
-
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
-
-/* мобильный левый отступ побольше, чтобы подписи по Y не резались */
-function getPadding(){
-  return window.matchMedia('(max-width: 640px)').matches ? 44 : 32;
-}
+function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 48 : 32; } /* + простор слева для подписей */
 
 function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   const css=getComputedStyle(document.documentElement);
@@ -404,7 +426,7 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   ticks.forEach(t=>{
     const y=crisp(scale(t,yMin,yMax,h-p,p));
     grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{x:p-10,y:y+4,fill:tickColor,'font-size':tickSize,'font-weight':'700','text-anchor':'end'});
+    const lbl=svgEl('text',{x:p-12,y:y+4,fill:tickColor,'font-size':tickSize,'font-weight':'700','text-anchor':'end'});
     lbl.textContent=formatY?formatY(Math.round(t)):fmt(t,0);
     svg.appendChild(lbl);
   });
@@ -484,18 +506,16 @@ function barChart({svgId,data,labels,color,formatY}){
 const labelsArr = ['Апр','Май','Июн','Июл','Авг','Сен'];
 const leads  = [280, 360, 450, 620, 820, 1100];
 const cpl    = [680, 610, 540, 490, 450, 420];
-const roi    = [0.6, 0.9, 1.1, 1.5, 1.9, 2.2];
+const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];
 const cr     = [8, 10, 12, 14, 16, 18];
 
 function renderCharts(){
   barChart({svgId:'leadsChart', data:leads, labels:labelsArr, color:'var(--acc)', formatY:v=>fmt(v,0)});
   lineChart({svgId:'cplChart', data:cpl, labels:labelsArr, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,0)+'×'});
+  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,1)+'×'});
   lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
 }
 renderCharts();
-
-/* перерисовать при ресайзе (меняется padding для мобильных) */
 window.addEventListener('resize', ()=>renderCharts(), {passive:true});
 </script>
 </body>
