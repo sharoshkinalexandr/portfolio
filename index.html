@@ -51,13 +51,12 @@
   h2{margin:0 0 16px;font-size:clamp(22px,3.2vw,28px)}
   h3{margin:0 0 8px;font-size:clamp(16px,2.5vw,18px)}
 
-  /* ===== ШАПКА ===== */
+  /* ===== ШАПКА (фикс: не исчезает при скролле) ===== */
   header{
-    position:sticky; top:0; z-index:3000; /* выше скрима */
+    position:sticky; top:0; z-index:4000;
     background:rgba(15,18,32,.55);
     -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
-    will-change:transform; transform:translateZ(0); backface-visibility:hidden; contain:paint;
   }
   .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
   .brand{display:flex;align-items:center;gap:10px}
@@ -74,7 +73,7 @@
   .toggle svg,.menu svg{width:18px;height:18px}
   .menu{display:none}
 
-  /* ===== СКРИМ (только blur фона, без затемнения) ===== */
+  /* ===== СКРИМ (только blur фона) ===== */
   .scrim{
     position:fixed; inset:0;
     background:transparent;
@@ -83,17 +82,17 @@
   }
   body.menu-open .scrim{opacity:1; pointer-events:auto}
   @supports not ((-webkit-backdrop-filter: blur(7px)) or (backdrop-filter: blur(7px))){
-    .scrim{background:rgba(0,0,0,.06);} /* мягкая подложка, если blur недоступен */
+    .scrim{background:rgba(0,0,0,.06);}
   }
 
-  /* ===== МОБИЛЬНАЯ ПАНЕЛЬ МЕНЮ (отдельный слой над скримом) ===== */
+  /* ===== МОБИЛЬНАЯ ПАНЕЛЬ МЕНЮ (кликабельна, над скримом) ===== */
   .mobile-panel{
     position:fixed; top:64px; left:12px; right:12px;
     max-height:calc(100dvh - 80px); overflow:auto;
     background:var(--card); border:1px solid var(--border);
     border-radius:14px; box-shadow:var(--shadow);
     padding:10px; display:none; flex-direction:column; gap:6px;
-    z-index:2100;  /* выше скрима */
+    z-index:2100;
   }
   .mobile-panel a{color:var(--text); font-weight:600; padding:12px 14px; border-radius:10px}
   .mobile-panel a:hover{background:var(--btn-bg)}
@@ -168,8 +167,7 @@
     .avatar{width:132px;height:132px}
     .grid-2{grid-template-columns:1fr}
     .menu{display:inline-flex}
-    nav.primary{display:none} /* десктоп-меню скрываем на телефоне */
-    /* мобильная панель показывается только при открытом меню */
+    nav.primary{display:none}
     body.menu-open .mobile-panel{display:flex}
   }
   @media (max-width:640px){
@@ -412,7 +410,7 @@ const crisp=y=>Math.round(y)+.5;
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
-function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 48 : 32; } /* + простор слева для подписей */
+function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 48 : 32; }
 
 function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   const css=getComputedStyle(document.documentElement);
@@ -506,13 +504,13 @@ function barChart({svgId,data,labels,color,formatY}){
 const labelsArr = ['Апр','Май','Июн','Июл','Авг','Сен'];
 const leads  = [280, 360, 450, 620, 820, 1100];
 const cpl    = [680, 610, 540, 490, 450, 420];
-const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];
+const roi    = [0.6, 0.9, 1.1, 1.5, 1.9, 2.2];  /* FIX: обновлённые значения */
 const cr     = [8, 10, 12, 14, 16, 18];
 
 function renderCharts(){
   barChart({svgId:'leadsChart', data:leads, labels:labelsArr, color:'var(--acc)', formatY:v=>fmt(v,0)});
   lineChart({svgId:'cplChart', data:cpl, labels:labelsArr, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,1)+'×'});
+  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', yMin:0.5, yMax:2.3, formatY:v=>fmt(v,1)+'×'});
   lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
 }
 renderCharts();
