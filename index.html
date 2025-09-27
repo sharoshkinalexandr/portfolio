@@ -9,20 +9,21 @@
     :root{
       /* Тёмная тема (по умолчанию) */
       --bg:#0f1220; --card:#171a2b; --muted:#9aa3b2; --text:#e8ecf1;
-      --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa; --line:#1f233a; --axis:#2a3052;
+      --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa;
+      --grid:#232741; --axis:#3a416a; --tick:#dfe7ff;        /* НОВОЕ: высококонтрастные сетка/оси/тики */
       --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
       --shadow:0 10px 30px rgba(0,0,0,.25);
     }
     [data-theme="light"]{
       --bg:#f7f9fc; --card:#ffffff; --muted:#586174; --text:#0f172a;
-      --acc:#0ea5e9; --acc2:#6366f1; --acc3:#22c55e; --line:#e6e8ef; --axis:#cbd5e1;
+      --acc:#0ea5e9; --acc2:#6366f1; --acc3:#22c55e;
+      --grid:#e8ecf4; --axis:#cdd6e3; --tick:#334155;        /* НОВОЕ: контраст для светлой темы */
       --btn-bg:#eef2ff; --chip-bg:#e0f2fe; --border:#e5e7eb;
       --shadow:0 8px 24px rgba(15,23,42,.08);
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+      margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
       color:var(--text);
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(27,30,51,.6) 0%, transparent 60%),
@@ -72,7 +73,7 @@
     /* Cases (accordion) */
     details{border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);border-radius:14px;transition:all .25s ease;margin-bottom:12px}
     summary{list-style:none;padding:16px 18px;cursor:pointer;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px}
-    summary img{height:26px;border-radius:6px;border:none;background:transparent} /* УБРАН контур логотипов */
+    summary img{height:26px;border-radius:6px;border:none;background:transparent} /* контур убран */
     summary::-webkit-details-marker{display:none}
     details[open]{box-shadow:var(--shadow)}
     .case-body{padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)}
@@ -262,7 +263,7 @@
 
 <!-- SCRIPTS -->
 <script>
-/* ---- Theme: default dark, toggle to light; remember choice ---- */
+/* ---- Theme: default dark; toggle to light & remember choice ---- */
 (function(){
   const saved=localStorage.getItem('theme');
   const root=document.documentElement;
@@ -285,31 +286,39 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ---- Charts (основы) ---- */
+/* ---- Charts helpers (улучшенная читаемость тиков) ---- */
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++){arr.push(min+(max-min)*i/steps);}return arr;}
 function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
-  const grid=svgEl('g',{stroke:getComputedStyle(document.documentElement).getPropertyValue('--line').trim(),'stroke-width':1});
-  const axisColor=getComputedStyle(document.documentElement).getPropertyValue('--axis').trim();
+  const styles=getComputedStyle(document.documentElement);
+  const grid=svgEl('g',{stroke:styles.getPropertyValue('--grid').trim(),'stroke-width':1});
+  const axisColor=styles.getPropertyValue('--axis').trim();
+  const tickColor=styles.getPropertyValue('--tick').trim();
+
   const ticks=yTicks(yMin,yMax,5);
   ticks.forEach(t=>{
     const y=scale(t,yMin,yMax,h-p,p);
     grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{x:p-8,y:y+4,fill:getComputedStyle(document.documentElement).getPropertyValue('--muted').trim(),'font-size':'10','text-anchor':'end'});
+    const lbl=svgEl('text',{
+      x:p-8,y:y+4,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'end'
+    });
     lbl.textContent=formatY?formatY(t):Math.round(t);
     grid.appendChild(lbl);
   });
-  grid.appendChild(svgEl('line',{x1:p,y1:h-p,x2:w-p,y2:h-p,stroke:axisColor}));
-  grid.appendChild(svgEl('line',{x1:p,y1:p,x2:p,y2:h-p,stroke:axisColor}));
+  grid.appendChild(svgEl('line',{x1:p,y1:h-p,x2:w-p,y2:h-p,stroke:axisColor,'stroke-width':1.25}));
+  grid.appendChild(svgEl('line',{x1:p,y1:p,x2:p,y2:h-p,stroke:axisColor,'stroke-width':1.25}));
   svg.appendChild(grid);
+
   const step=(w-2*p)/(xLabels.length-1);
   xLabels.forEach((lab,i)=>{
     const x=p+i*step, y=h-p+16;
-    const t=svgEl('text',{x:x,y:y,fill:getComputedStyle(document.documentElement).getPropertyValue('--muted').trim(),'font-size':'10','text-anchor':'middle'});
+    const t=svgEl('text',{x:x,y:y,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'middle'});
     t.textContent=lab; svg.appendChild(t);
   });
 }
+
+/* Сглаженная линия */
 function smoothPath(points){
   let d=`M ${points[0].x} ${points[0].y}`;
   for(let i=1;i<points.length;i++){
@@ -320,6 +329,8 @@ function smoothPath(points){
   }
   return d;
 }
+
+/* Линия с заливкой и тултипами */
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
   const yMin=Math.min(...data)*0.95, yMax=Math.max(...data)*1.05;
@@ -337,6 +348,8 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY}){
     svg.appendChild(c);
   });
 }
+
+/* Столбцы */
 function barChart({svgId,data,labels,color,formatY}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
   const yMin=0, yMax=Math.max(...data)*1.1;
@@ -348,7 +361,7 @@ function barChart({svgId,data,labels,color,formatY}){
     const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
     rect.style.filter='drop-shadow(0 0 6px rgba(0,0,0,.15))';
     svg.appendChild(rect);
-    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:'color-mix(in oklab,var(--text) 88%, transparent)','font-size':'10','text-anchor':'middle'});
+    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:getComputedStyle(document.documentElement).getPropertyValue('--text').trim(),'font-size':'12','font-weight':'700','text-anchor':'middle'}); /* НОВОЕ: контрастное значение */
     txt.textContent=formatY?formatY(v):v; svg.appendChild(txt);
   });
 }
@@ -364,9 +377,6 @@ barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=
 lineChart({svgId:'cplChart',   data:cpl,   labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>Math.round(v)+' ₽'});
 lineChart({svgId:'roiChart',   data:roi,   labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)',  formatY:v=>v.toFixed(1)+'×'});
 lineChart({svgId:'crChart',    data:cr,    labels, color:'var(--acc)',  fill:'color-mix(in oklab,var(--acc) 30%, transparent)',   formatY:v=>v+' %'});
-
-/* ---- Reveal on first paint for above-the-fold cards ---- */
-document.querySelectorAll('.card').forEach((el,i)=>{ if(i<2) el.classList.add('reveal'); });
 </script>
 </body>
 </html>
