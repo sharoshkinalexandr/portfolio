@@ -7,7 +7,7 @@
   <meta name="description" content="Шарошкин Александр Сергеевич — перформанс-маркетолог: лидогенерация, сквозная аналитика, CRM, автоматизация. Кейсы RICHTONE, Human&Business, БТК, М131." />
   <style>
     :root{
-      /* Тёмная тема по умолчанию */
+      /* Тёмная тема (по умолчанию) */
       --bg:#0f1220; --card:#171a2b; --muted:#9aa3b2; --text:#e8ecf1;
       --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa; --line:#1f233a; --axis:#2a3052;
       --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
@@ -27,26 +27,20 @@
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(27,30,51,.6) 0%, transparent 60%),
         var(--bg);
-      line-height:1.6;
-      overflow-x:hidden;
+      line-height:1.6; overflow-x:hidden;
     }
     a{color:var(--acc2);text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
 
     /* Header */
-    header{position:sticky;top:0;z-index:40;background:color-mix(in oklab, var(--bg) 88%, transparent 12%);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    header{position:sticky;top:0;z-index:40;background:rgba(15,18,32,.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 180deg,var(--acc),var(--acc2),var(--acc3),var(--acc));box-shadow:0 0 30px color-mix(in oklab,var(--acc) 30%, transparent);animation:spin 8s linear infinite}
+    .logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 180deg,var(--acc),var(--acc2),var(--acc3),var(--acc));box-shadow:0 0 30px rgba(110,231,183,.25);animation:spin 8s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
     header nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    header nav a{color:color-mix(in oklab,var(--text) 85%, transparent);font-weight:600;padding:8px 10px;border-radius:8px}
+    header nav a{color:var(--text);font-weight:600;padding:8px 10px;border-radius:8px}
     header nav a:hover{background:var(--btn-bg)}
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--btn-bg);font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.primary{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0a1020;border:none}
-    .btn.resume{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#0b1022;border:none}
     .toggle{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);display:inline-flex;align-items:center;gap:8px;cursor:pointer}
     .toggle svg{width:18px;height:18px}
 
@@ -60,12 +54,14 @@
     .lead{color:var(--muted);margin:0 0 18px}
     .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
     .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:color-mix(in oklab,var(--acc2) 85%, var(--text));background:var(--chip-bg)}
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 16px;border-radius:10px;border:1px solid var(--border);font-weight:700;cursor:pointer;display:inline-block}
+    .btn:hover{transform:translateY(-2px)}
 
     /* Layout */
     .section{padding:34px 0}
     h2{margin:0 0 16px;font-size:28px}
     h3{margin:0 0 8px;font-size:18px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .muted{color:var(--muted)}
 
@@ -73,13 +69,13 @@
     .about{display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:start}
     .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)}
 
-    /* Accordion (cases) */
-    details{border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);border-radius:14px;transition:all .25s ease}
-    summary{list-style:none;padding:16px 18px;cursor:pointer;font-weight:700;color:color-mix(in oklab,var(--text) 88%, transparent);display:flex;align-items:center;gap:10px}
-    summary img{height:26px;border-radius:6px;border:1px solid var(--border);background:#fff}
+    /* Cases (accordion) */
+    details{border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);border-radius:14px;transition:all .25s ease;margin-bottom:12px}
+    summary{list-style:none;padding:16px 18px;cursor:pointer;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px}
+    summary img{height:26px;border-radius:6px;border:none;background:transparent} /* УБРАН контур логотипов */
     summary::-webkit-details-marker{display:none}
     details[open]{box-shadow:var(--shadow)}
-    .case-body{padding:0 18px 18px;color:color-mix(in oklab,var(--text) 92%, transparent);border-top:1px dashed var(--border)}
+    .case-body{padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)}
     .shot{margin-top:10px}
     .shot img{width:100%;border-radius:12px;border:1px solid var(--border)}
 
@@ -92,19 +88,13 @@
     .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
     .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
 
-    /* Contacts socials */
+    /* Contacts */
     .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
     .sbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);color:var(--text);font-weight:700}
     .sbtn:hover{transform:translateY(-2px)}
-    .sbtn svg{width:20px;height:20px}
-    .sbtn.tg{background:color-mix(in oklab,var(--acc2) 14%, var(--card))}
-    .sbtn.wa{background:color-mix(in oklab,var(--acc) 14%, var(--card))}
-    .sbtn.wc{background:color-mix(in oklab,var(--acc3) 14%, var(--card))}
-
-    /* Responsive */
+    .btn.resume{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#0b1022;border:none}
     @media (max-width:960px){
       .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
       .about{grid-template-columns:1fr}
       .logos{grid-template-columns:1fr 1fr}
@@ -125,18 +115,10 @@
       <a href="#projects">Проекты</a>
       <a href="#contacts">Контакты</a>
     </nav>
-    <div class="actions">
-      <a class="btn resume" href="resume.pdf" download>
-        <!-- icon -->
-        <svg viewBox="0 0 24 24" fill="none"><path d="M6 20h12M12 3v12m0 0l-4-4m4 4 4-4" stroke="#0b1022" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Скачать резюме (PDF)
-      </a>
-      <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">
-        <svg id="iconSun" viewBox="0 0 24 24" fill="none"><path d="M12 4V2M12 22v-2M4 12H2m20 0h-2M5 5 3.6 3.6M20.4 20.4 19 19M19 5l1.4-1.4M3.6 20.4 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg>
-        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/></svg>
-        Тема
-      </button>
-    </div>
+    <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">
+      <svg id="iconSun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4 12H2m20 0h-2M5 5 3.6 3.6M20.4 20.4 19 19M19 5l1.4-1.4M3.6 20.4 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg id="iconMoon" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
   </div>
 </header>
 
@@ -145,7 +127,7 @@
   <section class="hero">
     <div class="card">
       <h1 class="h1">Запускаю рекламу, которая приводит <span style="background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent">целевых клиентов</span></h1>
-      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. Международные рынки: США, Канада, MENA, Восточная Европа. Работаю на результат: рост лидов, снижение CPL, прибыль по каналам.</p>
+      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. США, Канада, MENA, Восточная Европа. Результат: рост лидов, снижение CPL, прибыль по каналам.</p>
       <div class="chips">
         <span class="chip">Google / Meta / Яндекс</span>
         <span class="chip">Сквозная аналитика</span>
@@ -153,7 +135,7 @@
         <span class="chip">RU / EN / 中文</span>
       </div>
       <div class="btns">
-        <a class="btn primary" href="#cases">Смотреть кейсы</a>
+        <a class="btn" href="#cases">Смотреть кейсы</a>
         <a class="btn" href="#contacts">Обсудить проект</a>
       </div>
     </div>
@@ -168,15 +150,14 @@
     </div>
   </section>
 
-  <!-- ABOUT (перемещён вторым) -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <h2>Обо мне</h2>
     <div class="card about">
       <img class="avatar" src="img/photo.jpg" alt="Шарошкин Александр Сергеевич" />
       <div>
-        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Распределяю бюджет по городам и времени, регулярно тестирую объявления и страницы.</p>
-        <p>Собираю данные из рекламы, сайта и CRM в один отчёт: считаю стоимость заявки и сделки, окупаемость, ежедневно отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» обращений (удобные формы, быстрые ответы, правила квалификации). Ставлю метки и скрипты, связываю письма/мессенджеры с рекламой. Интегрирую сайт, рекламу и CRM, убираю ручные задачи. Пишу тексты на русском, английском и китайском.</p>
-        <p class="muted">Инструменты: Google Ads, Meta Ads, Яндекс, аналитика сайта и CRM, таблицы и дашборды, простые правки кода.</p>
+        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Регулярно тестирую объявления и страницы, распределяю бюджет по городам и времени.</p>
+        <p>Собираю данные из рекламы, сайта и CRM в один отчёт: считаю CPL, CAC, ROI/ROMI, ежедневно отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» обращений (формы, автоответы, квалификация). Ввожу метки/скрипты, связываю письма и мессенджеры с рекламой. Интегрирую сайт, рекламу и CRM, убираю ручные задачи.</p>
       </div>
     </div>
   </section>
@@ -188,10 +169,10 @@
     <details class="card">
       <summary><img src="img/richtone-logo.png" alt="RICHTONE"> RICHTONE — международные рынки</summary>
       <div class="case-body">
-        <p><strong>Цель:</strong> увеличить поток заявок и снизить CPL в США, Канаде, странах Персидского залива и Восточной Европы.</p>
-        <p><strong>Что сделал:</strong> кампании Google/Meta; распределение бюджетов по городам и времени; A/B-тесты объявлений и лендингов; связал рекламу, сайт и CRM; быстрые автоответы; удобные формы; правила квалификации; UTM/скрипты для точного источника.</p>
-        <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 месяца, конверсия лид→сделка до 18%, ROMI 300%+.</p>
-        <div class="shot"><img src="img/richtone.png" alt="Скриншот сайта RICHTONE"></div>
+        <p><strong>Цель:</strong> больше заявок и ниже CPL в США, Канаде, MENA, Восточной Европе.</p>
+        <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, удобные формы, квалификация лидов, UTM/скрипты.</p>
+        <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., лид→сделка до 18%, ROMI 300%+.</p>
+        <div class="shot"><img src="img/richtone.png" alt="Сайт RICHTONE"></div>
       </div>
     </details>
 
@@ -199,27 +180,27 @@
       <summary><img src="img/hb-logo.png" alt="Human&Business"> Human&Business — бонусная система</summary>
       <div class="case-body">
         <p><strong>Цель:</strong> рост удержания и повторных покупок.</p>
-        <p><strong>Что сделал:</strong> координация SMM, трейд-маркетинга, дизайна и интернет-маркетинга; постановка задач и контроль подрядчиков; креативы и медиапланы; запуск ЛК для продавцов/покупателей/заводчиков.</p>
-        <p><strong>Результат:</strong> активность ЛК +45% за 2 мес., повторные покупки +30%.</p>
-        <div class="shot"><img src="img/karmy.png" alt="Karmy — витрина бренда (Human&Business)"></div>
+        <p><strong>Действия:</strong> координация SMM/трейд/дизайна/перфоманса, постановка задач и контроль подрядчиков, медиапланы, креативы, запуск ЛК для продавцов/покупателей/заводчиков.</p>
+        <p><strong>Результат:</strong> активность +45% за 2 мес., повторы +30%.</p>
+        <div class="shot"><img src="img/karmy.png" alt="Karmy — пример витрины Human&Business"></div>
       </div>
     </details>
 
     <details class="card">
       <summary><img src="img/btk-logo.png" alt="БТК"> БТК — стратегия и исследования</summary>
       <div class="case-body">
-        <p><strong>Что сделал:</strong> конкурентный анализ, фокус-группы, позиционирование, тактика/стратегия продвижения, медиапланы и бюджеты, PR.</p>
-        <p><strong>Итог:</strong> выделены 3 прибыльных направления, рост спроса +22% за квартал, внедрены новые технологии в ритейл.</p>
-        <div class="shot"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга (B2C)"></div>
+        <p><strong>Действия:</strong> конкурентный анализ, фокус-группы, позиционирование, стратегия и медиапланы, PR.</p>
+        <p><strong>Итог:</strong> 3 прибыльных направления, рост спроса +22%/квартал.</p>
+        <div class="shot"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга"></div>
       </div>
     </details>
 
     <details class="card">
       <summary><img src="img/m131-logo.png" alt="М131"> ГК «М131» — розница и спрос</summary>
       <div class="case-body">
-        <p><strong>Что сделал:</strong> отчётность по акциям, анализ эффективности, рекомендации по росту спроса, медиапланы, фокус-группы, позиционирование, мониторинг конкурентов.</p>
+        <p><strong>Действия:</strong> отчётность по акциям, анализ эффективности, рекомендации по росту спроса, медиапланы, фокус-группы, мониторинг конкурентов.</p>
         <p><strong>Итог:</strong> устойчивый рост обращений и узнаваемости.</p>
-        <div class="shot"><img src="img/stroideya.png" alt="Строительный гипермаркет «Стройидея» — скриншот"></div>
+        <div class="shot"><img src="img/stroideya.png" alt="Строительный гипермаркет «Стройидея»"></div>
       </div>
     </details>
   </section>
@@ -266,27 +247,14 @@
   <section id="contacts" class="section">
     <h2>Контакты</h2>
     <div class="card">
-      <p>Свяжитесь со мной: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a>. Доступен онлайн-созвон по договорённости.</p>
-      <div class="btns" style="margin:12px 0 6px">
-        <a class="btn resume" href="resume.pdf" download>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6 20h12M12 3v12m0 0l-4-4m4 4 4-4" stroke="#0b1022" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Скачать резюме (PDF)
-        </a>
-      </div>
-      <h3>Мессенджеры</h3>
+      <p>Свяжитесь со мной: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a></p>
       <div class="socials">
-        <a class="sbtn tg" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9.6 15.6l-.3 4.3c.4 0 .6-.2.9-.4l2.1-2 4.3 3.1c.8.4 1.4.2 1.6-.7L22.9 4c.3-1-.4-1.5-1.2-1.2L2.2 10.1c-1 .4-1 1 0 1.3l4.4 1.3L18.9 6c.5-.3.9-.1.5.2l-9.8 9.4z" fill="currentColor"/></svg>
-          Telegram
-        </a>
-        <a class="sbtn wa" href="https://wa.me/79003006324" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 1.8A10.2 10.2 0 003.1 18.4L2 22l3.7-1A10.2 10.2 0 1012 1.8zm0 18.7a8.5 8.5 0 01-4.3-1.2l-.3-.2-2.5.6.7-2.4-.2-.3A8.5 8.5 0 1112 20.5zm4.7-6.2c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.2-.8 1-.9 1.1-.1.2-.3.2-.6 0-.3-.2-1.1-.4-2.1-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.3.2-.5 0-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5s1.2 2.9 1.4 3.1c.2.3 2.3 3.5 5.4 4.8.7.3 1.3.5 1.8.7.8.2 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-1 0-1.7-.3-1.9z" fill="currentColor"/></svg>
-          WhatsApp
-        </a>
-        <a class="sbtn wc" href="weixin://dl/chat?bombermanmarketolog">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M10.2 4.3c-3.8 0-6.9 2.5-6.9 5.7 0 1.9 1.1 3.6 2.9 4.6l-.7 2.4 2.5-1.3c.7.2 1.4.3 2.1.3 3.8 0 6.9-2.5 6.9-5.7s-3.1-6-6.8-6zm-2.8 6.1c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7zm3.9 0c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7z" fill="currentColor"/></svg>
-          WeChat
-        </a>
+        <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">Telegram</a>
+        <a class="sbtn" href="https://wa.me/79003006324" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="sbtn" href="weixin://dl/chat?bombermanmarketolog">WeChat</a>
+      </div>
+      <div style="margin-top:20px">
+        <a class="btn resume" href="resume.pdf" download>Скачать резюме (PDF)</a>
       </div>
     </div>
   </section>
@@ -294,44 +262,41 @@
 
 <!-- SCRIPTS -->
 <script>
-/* ---- Theme init (system preference + saved choice) ---- */
+/* ---- Theme: default dark, toggle to light; remember choice ---- */
 (function(){
   const saved=localStorage.getItem('theme');
-  const prefersLight=window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  document.documentElement.setAttribute('data-theme', saved ? saved : (prefersLight?'light':'dark'));
-  const btn=document.getElementById('themeToggle');
-  const isLight=document.documentElement.getAttribute('data-theme')==='light';
-  btn.setAttribute('aria-pressed', String(isLight));
+  const root=document.documentElement;
+  if(saved){ root.setAttribute('data-theme', saved); }
+  const isLight=root.getAttribute('data-theme')==='light';
   document.getElementById('iconSun').style.display=isLight?'none':'block';
   document.getElementById('iconMoon').style.display=isLight?'block':'none';
 })();
 document.getElementById('themeToggle').addEventListener('click',()=>{
-  const cur=document.documentElement.getAttribute('data-theme');
+  const root=document.documentElement;
+  const cur=root.getAttribute('data-theme');
   const next=cur==='light'?'dark':'light';
-  document.documentElement.setAttribute('data-theme', next);
+  root.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
-  const isLight=next==='light';
-  document.getElementById('themeToggle').setAttribute('aria-pressed', String(isLight));
-  document.getElementById('iconSun').style.display=isLight?'none':'block';
-  document.getElementById('iconMoon').style.display=isLight?'block':'none';
+  document.getElementById('iconSun').style.display=next==='light'?'none':'block';
+  document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
 });
 
-/* ---- reveal on scroll ---- */
+/* ---- Reveal on scroll ---- */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ---- Charts helpers (оси, сетка, подписи, тултипы) ---- */
+/* ---- Charts (основы) ---- */
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++){arr.push(min+(max-min)*i/steps);}return arr;}
 function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
-  const grid=svgEl('g',{stroke: getComputedStyle(document.documentElement).getPropertyValue('--line').trim(),'stroke-width':1});
+  const grid=svgEl('g',{stroke:getComputedStyle(document.documentElement).getPropertyValue('--line').trim(),'stroke-width':1});
   const axisColor=getComputedStyle(document.documentElement).getPropertyValue('--axis').trim();
   const ticks=yTicks(yMin,yMax,5);
   ticks.forEach(t=>{
     const y=scale(t,yMin,yMax,h-p,p);
     grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{x:p-8,y:y+4,fill: getComputedStyle(document.documentElement).getPropertyValue('--muted').trim(),'font-size':'10','text-anchor':'end'});
+    const lbl=svgEl('text',{x:p-8,y:y+4,fill:getComputedStyle(document.documentElement).getPropertyValue('--muted').trim(),'font-size':'10','text-anchor':'end'});
     lbl.textContent=formatY?formatY(t):Math.round(t);
     grid.appendChild(lbl);
   });
@@ -345,8 +310,6 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
     t.textContent=lab; svg.appendChild(t);
   });
 }
-
-/* Сглаженная линия */
 function smoothPath(points){
   let d=`M ${points[0].x} ${points[0].y}`;
   for(let i=1;i<points.length;i++){
@@ -357,8 +320,6 @@ function smoothPath(points){
   }
   return d;
 }
-
-/* Линия с заливкой и тултипами */
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
   const yMin=Math.min(...data)*0.95, yMax=Math.max(...data)*1.05;
@@ -370,14 +331,12 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY}){
   const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
   pts.forEach((pt,i)=>{
     const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.5,fill:'var(--bg)',stroke:color,'stroke-width':2});
-    c.addEventListener('mouseenter',(e)=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):pt.v}`;});
+    c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):pt.v}`;});
     c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
     c.addEventListener('mouseleave',()=>{tt.style.display='none';});
     svg.appendChild(c);
   });
 }
-
-/* Столбцы */
 function barChart({svgId,data,labels,color,formatY}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
   const yMin=0, yMax=Math.max(...data)*1.1;
@@ -405,6 +364,9 @@ barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=
 lineChart({svgId:'cplChart',   data:cpl,   labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>Math.round(v)+' ₽'});
 lineChart({svgId:'roiChart',   data:roi,   labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)',  formatY:v=>v.toFixed(1)+'×'});
 lineChart({svgId:'crChart',    data:cr,    labels, color:'var(--acc)',  fill:'color-mix(in oklab,var(--acc) 30%, transparent)',   formatY:v=>v+' %'});
+
+/* ---- Reveal on first paint for above-the-fold cards ---- */
+document.querySelectorAll('.card').forEach((el,i)=>{ if(i<2) el.classList.add('reveal'); });
 </script>
 </body>
 </html>
