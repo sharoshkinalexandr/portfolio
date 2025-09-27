@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Шарошкин Александр Сергеевич — Маркетолог-перформанс</title>
-<meta name="description" content="Перформанс-маркетинг, лиды, сквозная аналитика, CRM. Кейсы: RICHTONE, Human&Business, БТК, М131." />
+<meta name="description" content="Перформанс-маркетинг: лиды, CPL, ROI. Сквозная аналитика, CRM, автоматизация. Кейсы — RICHTONE, Human&Business, БТК, М131." />
 <style>
-/* ================== ТЕМЫ ================== */
+/* ===== ТЕМЫ ===== */
 :root{
   --header-h:64px;
 
@@ -14,52 +14,46 @@
   --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa;
   --grid:rgba(255,255,255,.08); --axis:rgba(255,255,255,.28); --tick:var(--text);
   --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
-  --shadow:0 10px 30px rgba(0,0,0,.25);
+  --shadow:0 10px 30px rgba(0,0,0,.25); --shadow-strong:0 16px 44px rgba(0,0,0,.35);
   --grad:linear-gradient(90deg,var(--acc2),var(--acc));
   --gradOverlay:linear-gradient(180deg,
-                    color-mix(in oklab,var(--acc) 24%, transparent),
-                    color-mix(in oklab,var(--acc2) 24%, transparent));
-  --tick-size:14px;
+    color-mix(in oklab,var(--acc) 24%, transparent),
+    color-mix(in oklab,var(--acc2) 24%, transparent));
+  --tick-size:14px; --tr:.22s cubic-bezier(.22,.61,.36,1);
 }
 [data-theme="light"]{
   --bg:#f7f9fc; --card:#ffffff; --muted:#586174; --text:#0f172a;
   --acc:#0ea5e9; --acc2:#6366f1; --acc3:#22c55e;
   --grid:rgba(15,23,42,.08); --axis:rgba(15,23,42,.22); --tick:var(--text);
   --btn-bg:#eef2ff; --chip-bg:#e0f2fe; --border:#e5e7eb;
-  --shadow:0 8px 24px rgba(15,23,42,.08);
+  --shadow:0 8px 24px rgba(15,23,42,.08); --shadow-strong:0 14px 40px rgba(15,23,42,.16);
   --grad:linear-gradient(90deg,var(--acc2),var(--acc));
   --gradOverlay:linear-gradient(180deg,
-                    color-mix(in oklab,var(--acc) 22%, transparent),
-                    color-mix(in oklab,var(--acc2) 22%, transparent));
-  --tick-size:14px;
+    color-mix(in oklab,var(--acc) 22%, transparent),
+    color-mix(in oklab,var(--acc2) 22%, transparent));
 }
-
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
   color:var(--text);
   background:radial-gradient(1200px 600px at 80% -10%, rgba(27,30,51,.6) 0%, transparent 60%),var(--bg);
-  line-height:1.6;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 a{color:var(--acc2);text-decoration:none}
 .wrap{max-width:1100px;margin:0 auto;padding:24px}
-main{padding-top:var(--header-h)} /* под фикс-хэдер */
+main{padding-top:var(--header-h)}
 .h1{font-size:clamp(28px,5.2vw,42px);line-height:1.12;margin:0 0 12px;font-weight:800;
-    background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc3));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
 h2{margin:0 0 16px;font-size:clamp(22px,3.2vw,28px)}
 h3{margin:0 0 8px;font-size:clamp(16px,2.5vw,18px)}
 
-/* ================== ХЭДЕР (FIXED) ================== */
+/* ===== ХЭДЕР (fixed) ===== */
 header{
-  position:fixed; left:0; right:0; top:0; height:var(--header-h);
-  z-index:9000; /* выше скрима и меню */
-  background:rgba(15,18,32,.55);
-  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:9000;
+  background:rgba(15,18,32,.55); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
 }
 [data-theme="light"] header{background:rgba(255,255,255,.75)}
@@ -67,42 +61,38 @@ header{
 .brand{display:flex;align-items:center;gap:10px}
 .logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 180deg,var(--acc),var(--acc2),var(--acc3),var(--acc));box-shadow:0 0 30px rgba(110,231,183,.25);animation:spin 8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 nav.primary{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-nav.primary a{color:var(--text);font-weight:600;padding:8px 10px;border-radius:8px}
-nav.primary a:hover{background:var(--btn-bg)}
+nav.primary a{color:var(--text);font-weight:600;padding:8px 10px;border-radius:8px;transition:background var(--tr),transform var(--tr)}
+nav.primary a:hover{background:var(--btn-bg);transform:translateY(-2px)}
 .toggle,.menu{
   padding:10px 12px;border-radius:10px;border:1px solid var(--border);
-  background:var(--card);display:inline-flex;align-items:center;gap:8px;cursor:pointer
+  background:var(--card);display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  transition:transform var(--tr),box-shadow var(--tr)
 }
+.toggle:hover,.menu:hover{transform:translateY(-2px)}
 .toggle svg,.menu svg{width:18px;height:18px}
 .menu{display:none}
 
-/* ================== СКРИМ (только blur фона) ================== */
+/* ===== SCRIM (blur только фона) ===== */
 .scrim{
-  position:fixed; inset:0;
-  background:transparent;
+  position:fixed; inset:0; background:transparent;
   -webkit-backdrop-filter:blur(7px); backdrop-filter:blur(7px);
-  opacity:0; pointer-events:none; transition:opacity .18s ease; z-index:8000; /* ниже хедера */
+  opacity:0; pointer-events:none; transition:opacity .18s ease; z-index:8000;
 }
 body.menu-open .scrim{opacity:1; pointer-events:auto}
-@supports not ((-webkit-backdrop-filter: blur(7px)) or (backdrop-filter: blur(7px))){
-  .scrim{background:rgba(0,0,0,.06);} /* мягкая подложка, если blur недоступен */
-}
 
-/* ================== МОБ. ПАНЕЛЬ ================== */
+/* ===== МОБ.МЕНЮ ===== */
 .mobile-panel{
   position:fixed; top:var(--header-h); left:12px; right:12px;
   max-height:calc(100dvh - var(--header-h) - 16px); overflow:auto;
   background:var(--card); border:1px solid var(--border);
   border-radius:14px; box-shadow:var(--shadow);
-  padding:10px; display:none; flex-direction:column; gap:6px;
-  z-index:8500;  /* над скримом, под хедером */
+  padding:10px; display:none; flex-direction:column; gap:6px; z-index:8500;
 }
-.mobile-panel a{color:var(--text); font-weight:600; padding:12px 14px; border-radius:10px}
-.mobile-panel a:hover{background:var(--btn-bg)}
+.mobile-panel a{color:var(--text); font-weight:600; padding:12px 14px; border-radius:10px; transition:background var(--tr),transform var(--tr)}
+.mobile-panel a:hover{background:var(--btn-bg);transform:translateY(-2px)}
 
-/* ================== КОНТЕНТ ================== */
+/* ===== КОНТЕНТ ===== */
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .6s ease}
 .reveal{transform:none!important;opacity:1!important}
 .section{padding:34px 0}
@@ -113,58 +103,53 @@ body.menu-open .scrim{opacity:1; pointer-events:auto}
 .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:color-mix(in oklab,var(--acc2) 85%, var(--text));background:var(--chip-bg)}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
 
-/* Кнопки (fw=600) */
+/* ===== КНОПКИ: shine+ripple ===== */
 .btn,.sbtn{
+  position:relative; overflow:hidden;
   padding:14px 18px;border-radius:12px;border:none;font-weight:600;cursor:pointer;
   display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#0b1022;
-  transition:transform .15s ease, filter .15s ease; touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+  transition:transform var(--tr), filter var(--tr), box-shadow var(--tr);
+  box-shadow:var(--shadow);
 }
-.btn:hover,.sbtn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn:hover,.sbtn:hover{transform:translateY(-3px);filter:brightness(1.06);box-shadow:var(--shadow-strong)}
+.btn:active,.sbtn:active{transform:translateY(0) scale(.98);filter:brightness(.97)}
+.btn:focus-visible,.sbtn:focus-visible{box-shadow:0 0 0 3px color-mix(in oklab,var(--acc) 55%, transparent);outline:0}
 .sbtn svg{width:20px;height:20px}
-.muted{color:var(--muted)}
+.btn::before,.sbtn::before{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.0) 30%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.0) 70%);
+  transform:translateX(-130%); transition:transform .8s ease;
+}
+.btn:hover::before,.sbtn:hover::before{transform:translateX(130%)}
+.btn .ripple,.sbtn .ripple{
+  position:absolute;border-radius:50%;transform:translate(-50%,-50%);
+  background:rgba(255,255,255,.35);animation:ripple .7s ease-out forwards;pointer-events:none
+}
+@keyframes ripple{from{width:0;height:0;opacity:.6}to{width:380px;height:380px;opacity:0}}
 
-/* Обо мне */
-.about{display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:start}
-.avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)}
+/* ===== БАННЕРЫ/ПРЕВЬЮ ===== */
+.shot a, .logos a, a:has(> img){transition:transform var(--tr), box-shadow var(--tr);will-change:transform}
+.shot a:hover, .logos a:hover, a:has(> img):hover{transform:translateY(-4px) scale(1.02); box-shadow:var(--shadow-strong)}
+.shot a img, .logos a img, a:has(> img) > img{transition:transform .6s ease}
+.shot a:hover img, .logos a:hover img, a:has(> img):hover > img{transform:scale(1.05)}
+.shot a::after, .logos a::after, a:has(> img)::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.18;transition:opacity .25s ease}
+.shot a:hover::after, .logos a:hover::after, a:has(> img):hover::after{opacity:.34}
 
-/* Кейсы */
-details{border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);border-radius:14px;transition:all .25s ease;margin-bottom:12px}
-summary{list-style:none;padding:16px 18px;cursor:pointer;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px}
-summary img{height:26px;border-radius:6px;border:none;background:transparent}
-summary::-webkit-details-marker{display:none}
-details[open]{box-shadow:var(--shadow)}
-.case-body{padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)}
-.shot{margin-top:10px}
-.shot a{display:inline-block;border-radius:12px;overflow:hidden;position:relative}
-.shot img{width:100%;display:block}
-.shot a::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.22;transition:opacity .25s ease}
-.shot a:hover::after{opacity:.35}
-
-/* Галерея */
-.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.logos a{display:block;border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--border)}
-.logos a img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-.logos a::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.22;transition:opacity .25s ease}
-.logos a:hover::after{opacity:.35}
-a:has(> img){position:relative;display:inline-block;border-radius:12px;overflow:hidden}
-a:has(> img)::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.18;transition:opacity .25s ease}
-a:has(> img):hover::after{opacity:.34}
-
-/* Графики */
+/* ===== ГРАФИКИ ===== */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
 .chart svg{overflow:visible}
 .chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
 .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
 
-/* ================== АДАПТИВ ================== */
-@media (max-width:1024px){
-  .wrap{padding:20px}
-  .hero{gap:20px}
-}
-@media (max-width:900px){
-  .logos{grid-template-columns:repeat(3,1fr)}
-}
+/* ===== ГАЛЕРЕЯ ===== */
+.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.logos a{display:block;border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--border)}
+.logos a img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width:1024px){ .wrap{padding:20px} .hero{gap:20px} }
+@media (max-width:900px){ .logos{grid-template-columns:repeat(3,1fr)} }
 @media (max-width:768px){
   :root{--header-h:60px}
   .wrap{padding:18px}
@@ -172,20 +157,12 @@ a:has(> img):hover::after{opacity:.34}
   .about{grid-template-columns:1fr;gap:16px}
   .avatar{width:132px;height:132px}
   .grid-2{grid-template-columns:1fr}
-  .menu{display:inline-flex}
-  nav.primary{display:none} /* десктоп-меню скрываем на телефоне */
+  .menu{display:inline-flex} nav.primary{display:none}
   body.menu-open .mobile-panel{display:flex}
 }
-@media (max-width:640px){
-  .logos{grid-template-columns:repeat(2,1fr)}
-  :root{--tick-size:12px}
-}
-@media (max-width:380px){
-  .logos{grid-template-columns:1fr}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important; transition:none !important}
-}
+@media (max-width:640px){ .logos{grid-template-columns:repeat(2,1fr)} :root{--tick-size:12px} }
+@media (max-width:380px){ .logos{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
 </style>
 </head>
 <body>
@@ -212,10 +189,10 @@ a:has(> img):hover::after{opacity:.34}
   </div>
 </header>
 
-<!-- Скрим (blur фона) -->
+<!-- Scrim -->
 <div id="scrim" class="scrim"></div>
 
-<!-- Мобильная панель меню -->
+<!-- Мобильное меню -->
 <nav class="mobile-panel" id="mobilePanel">
   <a href="#about" onclick="closeMenu()">Обо мне</a>
   <a href="#cases" onclick="closeMenu()">Кейсы</a>
@@ -229,9 +206,9 @@ a:has(> img):hover::after{opacity:.34}
   <section class="hero">
     <div class="card">
       <h1 class="h1">Запускаю рекламу, которая приводит <span style="background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent">целевых клиентов</span></h1>
-      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. США, Канада, MENA, Восточная Европа. Результат: рост лидов, снижение CPL, прибыль по каналам.</p>
+      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. США, Канада, MENA, Восточная Европа.</p>
       <div class="chips">
-        <span class="chip">Google / *Meta / Яндекс</span>
+        <span class="chip">Google / Meta / Яндекс</span>
         <span class="chip">Сквозная аналитика</span>
         <span class="chip">CRM и автоматизация</span>
         <span class="chip">RU / EN / 中文</span>
@@ -255,11 +232,11 @@ a:has(> img):hover::after{opacity:.34}
   <!-- ОБО МНЕ -->
   <section id="about" class="section">
     <h2>Обо мне</h2>
-    <div class="card about">
-      <img class="avatar" src="img/photo.jpg" alt="Шарошкин Александр Сергеевич" />
+    <div class="card about" style="display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:start">
+      <img class="avatar" src="img/photo.jpg" alt="Шарошкин Александр Сергеевич" style="width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)" />
       <div>
-        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Тестирую объявления и страницы, распределяю бюджеты по городам и времени.</p>
-        <p>Собираю данные из рекламы, сайта и CRM в единый отчёт, считаю CPL/CAC/ROI, отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» лидов (формы, автоответы, квалификация), связываю письма/мессенджеры с рекламой, автоматизирую рутину.</p>
+        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы.</p>
+        <p>Собираю данные из рекламы, сайта и CRM в единый отчёт, считаю CPL/CAC/ROI, отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» лидов, связываю письма/мессенджеры с рекламой, автоматизирую рутину.</p>
       </div>
     </div>
   </section>
@@ -269,40 +246,40 @@ a:has(> img):hover::after{opacity:.34}
     <h2>Кейсы (раскрываются по клику)</h2>
 
     <details class="card">
-      <summary><img src="img/richtone-logo.png" alt="RICHTONE"> RICHTONE — международные рынки</summary>
-      <div class="case-body">
+      <summary><img src="img/richtone-logo.png" alt="RICHTONE" style="height:26px;border-radius:6px"> RICHTONE — международные рынки</summary>
+      <div class="case-body" style="padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)">
         <p><strong>Цель:</strong> больше заявок и ниже CPL в США, Канаде, MENA, Восточной Европе.</p>
         <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B-тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, формы, квалификация лидов, UTM/скрипты.</p>
         <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., лид→сделка до 18%, ROMI 300%+.</p>
-        <div class="shot"><a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="Сайт RICHTONE"></a></div>
+        <div class="shot"><a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="Сайт RICHTONE" /></a></div>
       </div>
     </details>
 
     <details class="card">
-      <summary><img src="img/hb-logo.png" alt="Human&Business"> Human&Business — бонусная система</summary>
+      <summary><img src="img/hb-logo.png" alt="Human&Business" style="height:26px;border-radius:6px"> Human&Business — бонусная система</summary>
       <div class="case-body">
         <p><strong>Цель:</strong> рост удержания и повторных покупок.</p>
         <p><strong>Действия:</strong> координация SMM/трейд/дизайна/перфоманса, постановка задач и контроль подрядчиков, медиапланы, креативы, запуск ЛК.</p>
         <p><strong>Результат:</strong> активность +45% за 2 мес., повторы +30%.</p>
-        <div class="shot"><a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a></div>
+        <div class="shot"><a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business" /></a></div>
       </div>
     </details>
 
     <details class="card">
-      <summary><img src="img/btk-logo.png" alt="БТК"> БТК — стратегия и исследования</summary>
+      <summary><img src="img/btk-logo.png" alt="БТК" style="height:26px;border-radius:6px"> БТК — стратегия и исследования</summary>
       <div class="case-body">
         <p><strong>Действия:</strong> конкурентный анализ, фокус-группы, позиционирование, стратегия и медиапланы, PR.</p>
         <p><strong>Итог:</strong> 3 прибыльных направления, рост спроса +22%/кв.</p>
-        <div class="shot"><a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга"></a></div>
+        <div class="shot"><a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга" /></a></div>
       </div>
     </details>
 
     <details class="card">
-      <summary><img src="img/m131-logo.png" alt="М131"> ГК «М131» — розница и спрос</summary>
+      <summary><img src="img/m131-logo.png" alt="М131" style="height:26px;border-radius:6px"> ГК «М131» — розница и спрос</summary>
       <div class="case-body">
         <p><strong>Действия:</strong> отчётность по акциям, анализ эффективности, рекомендации по росту спроса, медиапланы, фокус-группы, мониторинг конкурентов.</p>
         <p><strong>Итог:</strong> устойчивый рост обращений и узнаваемости.</p>
-        <div class="shot"><a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131"></a></div>
+        <div class="shot"><a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131" /></a></div>
       </div>
     </details>
   </section>
@@ -349,7 +326,7 @@ a:has(> img):hover::after{opacity:.34}
   <section id="contacts" class="section">
     <h2>Контакты</h2>
     <div class="card">
-      <p>Почта: <a href="mailto:sharoshkin.akexandr@gmail.com">sharoshkin.akexandr@gmail.com</a></p>
+      <p>Почта: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a></p>
       <div class="btns" style="margin-top:10px">
         <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.6 15.6l-.3 4.3c.4 0 .6-.2.9-.4l2.1-2 4.3 3.1c.8.4 1.4.2 1.6-.7L22.9 4c.3-1-.4-1.5-1.2-1.2L2.2 10.1c-1 .4-1 1 0 1.3l4.4 1.3L18.9 6c.5-.3.9-.1.5.2l-9.8 9.4z"/></svg>
@@ -367,14 +344,12 @@ a:has(> img):hover::after{opacity:.34}
       <div style="margin-top:20px">
         <a class="btn" href="resume.pdf" download>Скачать резюме (PDF)</a>
       </div>
-      >*признана в РФ экстремистской организацией и запрещена</a></p>
     </div>
   </section>
 </main>
 
-<!-- ================== СКРИПТЫ ================== -->
 <script>
-/* ====== тема ====== */
+/* ===== ТЕМА ===== */
 (function(){
   const saved=localStorage.getItem('theme');
   if(saved) document.documentElement.setAttribute('data-theme', saved);
@@ -382,44 +357,37 @@ a:has(> img):hover::after{opacity:.34}
   document.getElementById('iconSun').style.display=isLight?'none':'block';
   document.getElementById('iconMoon').style.display=isLight?'block':'none';
 })();
-
 document.getElementById('themeToggle').addEventListener('click',()=>{
   const root=document.documentElement;
   const next=root.getAttribute('data-theme')==='light'?'dark':'light';
-  root.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+  root.setAttribute('data-theme', next); localStorage.setItem('theme', next);
   document.getElementById('iconSun').style.display=next==='light'?'none':'block';
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
-  renderCharts(); /* перекрасить подписи */
+  renderCharts();
 });
 
-/* ====== меню ====== */
+/* ===== МЕНЮ ===== */
 const menuBtn=document.getElementById('menuToggle');
 const scrim=document.getElementById('scrim');
-function closeMenu(){
-  document.body.classList.remove('menu-open');
-  menuBtn.setAttribute('aria-expanded','false');
-}
-menuBtn.addEventListener('click',()=>{
-  const open=document.body.classList.toggle('menu-open');
-  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
+function closeMenu(){ document.body.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); }
+menuBtn.addEventListener('click',()=>{ const open=document.body.classList.toggle('menu-open'); menuBtn.setAttribute('aria-expanded',open?'true':'false'); });
 scrim.addEventListener('click', closeMenu);
-window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeMenu(); });
 
 /* плавное появление карточек */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ====== графики (vanilla SVG) ====== */
+/* ===== УТИЛИТЫ ДЛЯ SVG ===== */
 const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
 const crisp=y=>Math.round(y)+.5;
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
-function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 52 : 36; } /* больше места слева под подписи */
+function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 52 : 36; }
 
-function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
+/* ОСИ */
+function drawAxes(svg,w,h,p,labels,yMin,yMax,formatY){
   const css=getComputedStyle(document.documentElement);
   const gridColor=css.getPropertyValue('--grid').trim();
   const axisColor=css.getPropertyValue('--axis').trim();
@@ -439,14 +407,15 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   grid.appendChild(svgEl('line',{x1:crisp(p),y1:p,x2:crisp(p),y2:h-p,stroke:axisColor,'stroke-width':1.25}));
   svg.appendChild(grid);
 
-  const step=(w-2*p)/(xLabels.length-1);
-  xLabels.forEach((lab,i)=>{
+  const step=(w-2*p)/(labels.length-1);
+  labels.forEach((lab,i)=>{
     const x=p+i*step, y=h-p+18;
     const t=svgEl('text',{x:x,y:y,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
     t.textContent=lab; svg.appendChild(t);
   });
 }
 
+/* ЛИНИЯ */
 function smoothPath(points){
   let d=`M ${points[0].x} ${points[0].y}`;
   for(let i=1;i<points.length;i++){
@@ -458,6 +427,7 @@ function smoothPath(points){
   return d;
 }
 
+/* ЧАРТЫ */
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
   const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
   svg.innerHTML='';
@@ -500,28 +470,52 @@ function barChart({svgId,data,labels,color,formatY}){
     const bh=(v/yMax)*(h-2*p);
     const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
     svg.appendChild(rect);
-
     const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
     txt.textContent=formatY?formatY(v):fmt(v,0);
     svg.appendChild(txt);
   });
 }
 
-/* ====== ДАННЫЕ ====== */
-const labelsArr = ['Апр','Май','Июн','Июл','Авг','Сен'];
-const leads  = [280, 360, 450, 620, 820, 1100];
-const cpl    = [680, 610, 540, 490, 450, 420];
-const roi    = [0.6, 0.9, 1.1, 1.5, 1.9, 2.2]; /* верные значения */
-const cr     = [8, 10, 12, 14, 16, 18];
+/* ДАННЫЕ */
+const labelsArr=['Апр','Май','Июн','Июл','Авг','Сен'];
+const leads=[280,360,450,620,820,1100];
+const cpl=[680,610,540,490,450,420];
+const roi=[0.6,0.9,1.1,1.5,1.9,2.2];
+const cr=[8,10,12,14,16,18];
 
 function renderCharts(){
-  barChart({svgId:'leadsChart', data:leads, labels:labelsArr, color:'var(--acc)', formatY:v=>fmt(v,0)});
-  lineChart({svgId:'cplChart', data:cpl, labels:labelsArr, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', yMin:0.5, yMax:2.3, formatY:v=>fmt(v,1)+'×'});
-  lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
+  barChart({svgId:'leadsChart',data:leads,labels:labelsArr,color:'var(--acc)',formatY:v=>fmt(v,0)});
+  lineChart({svgId:'cplChart',data:cpl,labels:labelsArr,color:'var(--acc3)',fill:'color-mix(in oklab,var(--acc3) 30%, transparent)',rev:true,formatY:v=>fmt(v,0)+' ₽'});
+  lineChart({svgId:'roiChart',data:roi,labels:labelsArr,color:'var(--acc2)',fill:'color-mix(in oklab,var(--acc2) 30%, transparent)',yMin:0.5,yMax:2.3,formatY:v=>fmt(v,1)+'×'});
+  lineChart({svgId:'crChart',data:cr,labels:labelsArr,color:'var(--acc)',fill:'color-mix(in oklab,var(--acc) 30%, transparent)',yMin:0,yMax:20,formatY:v=>fmt(v,0)+' %'});
 }
 renderCharts();
-window.addEventListener('resize', ()=>renderCharts(), {passive:true});
+window.addEventListener('resize',()=>renderCharts(),{passive:true});
+
+/* RIPPLE ДЛЯ КНОПОК */
+document.querySelectorAll('.btn,.sbtn').forEach(b=>{
+  b.addEventListener('click',(e)=>{
+    const r=b.getBoundingClientRect();
+    const x=e.clientX-r.left, y=e.clientY-r.top;
+    const s=document.createElement('span');
+    s.className='ripple'; s.style.left=x+'px'; s.style.top=y+'px';
+    b.appendChild(s); setTimeout(()=>s.remove(),700);
+  });
+});
+
+/* 3D-TILT для баннеров */
+document.querySelectorAll('.shot a, .logos a, a:has(> img)').forEach(el=>{
+  let raf=null;
+  function reset(){ el.style.transform=''; }
+  el.addEventListener('mousemove',(e)=>{
+    const r=el.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+    const rx=(py-.5)*6, ry=(.5-px)*6;
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{ el.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px) scale(1.02)`; });
+  });
+  el.addEventListener('mouseleave',reset);
+});
 </script>
 </body>
 </html>
