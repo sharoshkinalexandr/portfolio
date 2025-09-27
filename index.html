@@ -10,10 +10,13 @@
   :root{
     --bg:#0f1220; --card:#171a2b; --muted:#9aa3b2; --text:#e8ecf1;
     --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa;
-    /* Сетка бледная, оси контрастнее, подписи = текст (в тёмной теме белые) */
     --grid:rgba(255,255,255,.08); --axis:rgba(255,255,255,.28); --tick:var(--text);
     --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
     --shadow:0 10px 30px rgba(0,0,0,.25);
+    --grad:linear-gradient(90deg,var(--acc2),var(--acc));            /* Градиент для кнопок */
+    --gradOverlay:linear-gradient(180deg,
+                      color-mix(in oklab,var(--acc) 24%, transparent),
+                      color-mix(in oklab,var(--acc2) 24%, transparent)); /* Оверлей на фото */
   }
   [data-theme="light"]{
     --bg:#f7f9fc; --card:#ffffff; --muted:#586174; --text:#0f172a;
@@ -21,6 +24,10 @@
     --grid:rgba(15,23,42,.08); --axis:rgba(15,23,42,.22); --tick:var(--text);
     --btn-bg:#eef2ff; --chip-bg:#e0f2fe; --border:#e5e7eb;
     --shadow:0 8px 24px rgba(15,23,42,.08);
+    --grad:linear-gradient(90deg,var(--acc2),var(--acc));
+    --gradOverlay:linear-gradient(180deg,
+                      color-mix(in oklab,var(--acc) 22%, transparent),
+                      color-mix(in oklab,var(--acc2) 22%, transparent));
   }
 
   *{box-sizing:border-box}
@@ -55,8 +62,14 @@
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
   .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:color-mix(in oklab,var(--acc2) 85%, var(--text));background:var(--chip-bg)}
   .btns{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{padding:12px 16px;border-radius:10px;border:1px solid var(--border);font-weight:700;cursor:pointer;display:inline-block}
-  .btn:hover{transform:translateY(-2px)}
+
+  /* ===== КНОПКИ — ВСЕ КЛИКАБЕЛЬНЫЕ ===== */
+  .btn,.sbtn{padding:12px 16px;border-radius:12px;border:none;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+             background:var(--grad); color:#0b1022; transition:transform .15s ease, filter .15s ease}
+  .btn:hover,.sbtn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .sbtn svg{width:20px;height:20px}
+  .btn.ghost{background:var(--btn-bg);border:1px solid var(--border);color:var(--text)} /* на случай «вторичных» */
+
   .muted{color:var(--muted)}
 
   /* Обо мне */
@@ -71,24 +84,28 @@
   details[open]{box-shadow:var(--shadow)}
   .case-body{padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)}
   .shot{margin-top:10px}
-  .shot img{width:100%;border-radius:12px;border:1px solid var(--border)}
+  .shot a{display:inline-block;border-radius:12px;overflow:hidden;position:relative}
+  .shot img{width:100%;display:block}
+  .shot a::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.22;transition:opacity .25s ease}
+  .shot a:hover::after{opacity:.35}
 
-  /* Галерея сайтов */
+  /* Галерея сайтов — делаем кликабельной и с градиентной заливкой */
   .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-  .logos img{width:100%;height:110px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
+  .logos a{display:block;border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--border)}
+  .logos a img{width:100%;height:110px;object-fit:cover;display:block}
+  .logos a::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.22;transition:opacity .25s ease}
+  .logos a:hover::after{opacity:.35}
+
+  /* Градиент-оверлей для любых ссылок с <img> (универсально) */
+  a:has(> img){position:relative;display:inline-block;border-radius:12px;overflow:hidden}
+  a:has(> img)::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.18;transition:opacity .25s ease}
+  a:has(> img):hover::after{opacity:.34}
 
   /* ===== ГРАФИКИ ===== */
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
   .chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
   .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
-
-  /* ===== Контакты ===== */
-  .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-  .sbtn{display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);color:var(--text);font-weight:700}
-  .sbtn svg{width:20px;height:20px}
-  .sbtn:hover{transform:translateY(-2px)}
-  .btn.resume{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#0b1022;border:none}
 
   @media (max-width:960px){
     .hero{grid-template-columns:1fr}
@@ -169,7 +186,7 @@
         <p><strong>Цель:</strong> больше заявок и ниже CPL в США, Канаде, MENA, Восточной Европе.</p>
         <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B-тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, удобные формы, квалификация лидов, UTM/скрипты.</p>
         <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., лид→сделка до 18%, ROMI 300%+.</p>
-        <div class="shot"><img src="img/richtone.png" alt="Сайт RICHTONE"></div>
+        <div class="shot"><a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="Сайт RICHTONE"></a></div>
       </div>
     </details>
 
@@ -179,7 +196,7 @@
         <p><strong>Цель:</strong> рост удержания и повторных покупок.</p>
         <p><strong>Действия:</strong> координация SMM/трейд/дизайна/перфоманса, постановка задач и контроль подрядчиков, медиапланы, креативы, запуск ЛК для продавцов/покупателей/заводчиков.</p>
         <p><strong>Результат:</strong> активность +45% за 2 мес., повторы +30%.</p>
-        <div class="shot"><img src="img/karmy.png" alt="Karmy — витрина бренда"></div>
+        <div class="shot"><a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a></div>
       </div>
     </details>
 
@@ -187,8 +204,8 @@
       <summary><img src="img/btk-logo.png" alt="БТК"> БТК — стратегия и исследования</summary>
       <div class="case-body">
         <p><strong>Действия:</strong> конкурентный анализ, фокус-группы, позиционирование, стратегия и медиапланы, PR.</p>
-        <p><strong>Итог:</strong> 3 прибыльных направления, рост спроса +22%/квартал.</p>
-        <div class="shot"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга"></div>
+        <p><strong>Итог:</strong> 3 прибыльных направления, рост спроса +22%/кв.</p>
+        <div class="shot"><a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга"></a></div>
       </div>
     </details>
 
@@ -197,7 +214,7 @@
       <div class="case-body">
         <p><strong>Действия:</strong> отчётность по акциям, анализ эффективности, рекомендации по росту спроса, медиапланы, фокус-группы, мониторинг конкурентов.</p>
         <p><strong>Итог:</strong> устойчивый рост обращений и узнаваемости.</p>
-        <div class="shot"><img src="img/stroideya.png" alt="Строительный гипермаркет «Стройидея»"></div>
+        <div class="shot"><a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Строительный гипермаркет «Стройидея»"></a></div>
       </div>
     </details>
   </section>
@@ -233,10 +250,10 @@
   <section id="projects" class="section">
     <h2>Проекты и сайты</h2>
     <div class="logos">
-      <img src="img/richtone.png" alt="RICHTONE сайт">
-      <img src="img/karmy.png" alt="Karmy / Human&Business">
-      <img src="img/mariroberto.png" alt="Mariroberto / БТК">
-      <img src="img/stroideya.png" alt="Стройидея / М131">
+      <a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="RICHTONE сайт"></a>
+      <a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a>
+      <a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto / БТК"></a>
+      <a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131"></a>
     </div>
   </section>
 
@@ -260,13 +277,13 @@
         </a>
       </div>
       <div style="margin-top:20px">
-        <a class="btn resume" href="resume.pdf" download>Скачать резюме (PDF)</a>
+        <a class="btn" href="resume.pdf" download>Скачать резюме (PDF)</a>
       </div>
     </div>
   </section>
 </main>
 
-<!-- ====== СКРИПТЫ ====== -->
+<!-- ====== СКРИПТЫ (графики + тема) ====== -->
 <script>
 /* Тема: тёмная по умолчанию, перерисовка графиков при переключении */
 (function(){
@@ -283,16 +300,16 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
   localStorage.setItem('theme', next);
   document.getElementById('iconSun').style.display=next==='light'?'none':'block';
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
-  renderCharts(true);
+  renderCharts();
 });
 
 /* Плавное появление */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ================= УТИЛИТЫ ДЛЯ ГРАФИКОВ ================= */
+/* ===== ГРАФИКИ ===== */
 const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
-const crisp=y=>Math.round(y)+.5;  // чёткие линии на пикселе
+const crisp=y=>Math.round(y)+.5;
 
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
@@ -325,7 +342,6 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   });
 }
 
-/* Сглаженная линия */
 function smoothPath(points){
   let d=`M ${points[0].x} ${points[0].y}`;
   for(let i=1;i<points.length;i++){
@@ -337,7 +353,6 @@ function smoothPath(points){
   return d;
 }
 
-/* Линия */
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
   svg.innerHTML='';
@@ -358,7 +373,7 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMa
 
   const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
   pts.forEach((pt,i)=>{
-    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'}); // без обводки
+    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'});
     c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):fmt(pt.v)}`;});
     c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
     c.addEventListener('mouseleave',()=>{tt.style.display='none';});
@@ -366,7 +381,6 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMa
   });
 }
 
-/* Столбцы */
 function barChart({svgId,data,labels,color,formatY}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
   svg.innerHTML='';
@@ -379,7 +393,7 @@ function barChart({svgId,data,labels,color,formatY}){
   data.forEach((v,i)=>{
     const x=p+i*((w-2*p)/data.length)+gap/2;
     const bh=(v/yMax)*(h-2*p);
-    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color}); // без тени/обводки
+    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
     svg.appendChild(rect);
 
     const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'13','font-weight':'700','text-anchor':'middle'});
@@ -389,18 +403,17 @@ function barChart({svgId,data,labels,color,formatY}){
 }
 
 /* ДАННЫЕ */
-const labels = ['Апр','Май','Июн','Июл','Авг','Сен'];
+const labelsArr = ['Апр','Май','Июн','Июл','Авг','Сен'];
 const leads  = [280, 360, 450, 620, 820, 1100];
 const cpl    = [680, 610, 540, 490, 450, 420];
 const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];
 const cr     = [8, 10, 12, 14, 16, 18];
 
-/* Рендер всех графиков */
 function renderCharts(){
-  barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=>fmt(v,0)});
-  lineChart({svgId:'cplChart', data:cpl, labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-  lineChart({svgId:'roiChart', data:roi, labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,1)+'×'});
-  lineChart({svgId:'crChart', data:cr, labels, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
+  barChart({svgId:'leadsChart', data:leads, labels:labelsArr, color:'var(--acc)', formatY:v=>fmt(v,0)});
+  lineChart({svgId:'cplChart', data:cpl, labels:labelsArr, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
+  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,1)+'×'});
+  lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
 }
 renderCharts();
 </script>
