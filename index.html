@@ -1,106 +1,100 @@
 <!doctype html>
 <html lang="ru" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <title>Шарошкин Александр Сергеевич — Маркетолог-перформанс</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Шарошкин Александр Сергеевич — перформанс-маркетолог: лидогенерация, сквозная аналитика, CRM, автоматизация. Кейсы RICHTONE, Human&Business, БТК, М131." />
-  <style>
-    :root{
-      /* Тёмная тема (по умолчанию) */
-      --bg:#0f1220; --card:#171a2b; --muted:#9aa3b2; --text:#e8ecf1;
-      --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa;
-      --grid:#232741; --axis:#3a416a; --tick:#dfe7ff;        /* НОВОЕ: высококонтрастные сетка/оси/тики */
-      --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
-      --shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-    [data-theme="light"]{
-      --bg:#f7f9fc; --card:#ffffff; --muted:#586174; --text:#0f172a;
-      --acc:#0ea5e9; --acc2:#6366f1; --acc3:#22c55e;
-      --grid:#e8ecf4; --axis:#cdd6e3; --tick:#334155;        /* НОВОЕ: контраст для светлой темы */
-      --btn-bg:#eef2ff; --chip-bg:#e0f2fe; --border:#e5e7eb;
-      --shadow:0 8px 24px rgba(15,23,42,.08);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(27,30,51,.6) 0%, transparent 60%),
-        var(--bg);
-      line-height:1.6; overflow-x:hidden;
-    }
-    a{color:var(--acc2);text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+<meta charset="utf-8" />
+<title>Шарошкин Александр Сергеевич — Маркетолог-перформанс</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Перформанс-маркетинг, лиды, сквозная аналитика, CRM. Кейсы: RICHTONE, Human&Business, БТК, М131." />
+<style>
+  /* ===== ТЕМЫ ===== */
+  :root{
+    --bg:#0f1220; --card:#171a2b; --muted:#9aa3b2; --text:#e8ecf1;
+    --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa;
+    --grid:#232741; --axis:#3a416a; --tick:var(--text);  /* ВАЖНО: подписи = цвет текста (белые) */
+    --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
+    --shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  [data-theme="light"]{
+    --bg:#f7f9fc; --card:#ffffff; --muted:#586174; --text:#0f172a;
+    --acc:#0ea5e9; --acc2:#6366f1; --acc3:#22c55e;
+    --grid:#e8ecf4; --axis:#cdd6e3; --tick:var(--text);  /* ВАЖНО: подписи тёмные */
+    --btn-bg:#eef2ff; --chip-bg:#e0f2fe; --border:#e5e7eb;
+    --shadow:0 8px 24px rgba(15,23,42,.08);
+  }
 
-    /* Header */
-    header{position:sticky;top:0;z-index:40;background:rgba(15,18,32,.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 180deg,var(--acc),var(--acc2),var(--acc3),var(--acc));box-shadow:0 0 30px rgba(110,231,183,.25);animation:spin 8s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    header nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    header nav a{color:var(--text);font-weight:600;padding:8px 10px;border-radius:8px}
-    header nav a:hover{background:var(--btn-bg)}
-    .toggle{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);display:inline-flex;align-items:center;gap:8px;cursor:pointer}
-    .toggle svg{width:18px;height:18px}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--text);
+       background:radial-gradient(1200px 600px at 80% -10%, rgba(27,30,51,.6) 0%, transparent 60%),var(--bg);
+       line-height:1.6;overflow-x:hidden}
+  a{color:var(--acc2);text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px}
 
-    /* Cards / Reveal */
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .6s ease}
-    .reveal{transform:none!important;opacity:1!important}
+  /* ===== ШАПКА ===== */
+  header{position:sticky;top:0;z-index:40;background:rgba(15,18,32,.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 180deg,var(--acc),var(--acc2),var(--acc3),var(--acc));box-shadow:0 0 30px rgba(110,231,183,.25);animation:spin 8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  header nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  header nav a{color:var(--text);font-weight:600;padding:8px 10px;border-radius:8px}
+  header nav a:hover{background:var(--btn-bg)}
+  .toggle{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+  .toggle svg{width:18px;height:18px}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:48px 0}
-    .h1{font-size:42px;line-height:1.12;margin:0 0 12px;font-weight:800;background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc3));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{color:var(--muted);margin:0 0 18px}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
-    .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:color-mix(in oklab,var(--acc2) 85%, var(--text));background:var(--chip-bg)}
-    .btns{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 16px;border-radius:10px;border:1px solid var(--border);font-weight:700;cursor:pointer;display:inline-block}
-    .btn:hover{transform:translateY(-2px)}
+  /* ===== БАЗОВЫЕ БЛОКИ ===== */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .6s ease}
+  .reveal{transform:none!important;opacity:1!important}
+  .section{padding:34px 0}
+  h2{margin:0 0 16px;font-size:28px}
+  h3{margin:0 0 8px;font-size:18px}
 
-    /* Layout */
-    .section{padding:34px 0}
-    h2{margin:0 0 16px;font-size:28px}
-    h3{margin:0 0 8px;font-size:18px}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .muted{color:var(--muted)}
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:48px 0}
+  .h1{font-size:42px;line-height:1.12;margin:0 0 12px;font-weight:800;background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted);margin:0 0 18px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px}
+  .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:color-mix(in oklab,var(--acc2) 85%, var(--text));background:var(--chip-bg)}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:12px 16px;border-radius:10px;border:1px solid var(--border);font-weight:700;cursor:pointer;display:inline-block}
+  .btn:hover{transform:translateY(-2px)}
+  .muted{color:var(--muted)}
 
-    /* About */
-    .about{display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:start}
-    .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)}
+  /* Обо мне */
+  .about{display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:start}
+  .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)}
 
-    /* Cases (accordion) */
-    details{border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);border-radius:14px;transition:all .25s ease;margin-bottom:12px}
-    summary{list-style:none;padding:16px 18px;cursor:pointer;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px}
-    summary img{height:26px;border-radius:6px;border:none;background:transparent} /* контур убран */
-    summary::-webkit-details-marker{display:none}
-    details[open]{box-shadow:var(--shadow)}
-    .case-body{padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)}
-    .shot{margin-top:10px}
-    .shot img{width:100%;border-radius:12px;border:1px solid var(--border)}
+  /* Кейсы */
+  details{border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);border-radius:14px;transition:all .25s ease;margin-bottom:12px}
+  summary{list-style:none;padding:16px 18px;cursor:pointer;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px}
+  summary img{height:26px;border-radius:6px;border:none;background:transparent} /* без контура */
+  summary::-webkit-details-marker{display:none}
+  details[open]{box-shadow:var(--shadow)}
+  .case-body{padding:0 18px 18px;color:var(--text);border-top:1px dashed var(--border)}
+  .shot{margin-top:10px}
+  .shot img{width:100%;border-radius:12px;border:1px solid var(--border)}
 
-    /* Logos gallery */
-    .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .logos img{width:100%;height:110px;object-fit:cover;border-radius:12px;border:1px solid var(--border);filter:saturate(.95);transition:transform .2s ease,filter .2s ease}
-    .logos img:hover{transform:translateY(-3px) scale(1.01);filter:saturate(1.05)}
+  /* Галерея сайтов */
+  .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .logos img{width:100%;height:110px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
 
-    /* Charts */
-    .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
-    .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
+  /* ===== ГРАФИКИ ===== */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
+  .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
 
-    /* Contacts */
-    .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .sbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);color:var(--text);font-weight:700}
-    .sbtn:hover{transform:translateY(-2px)}
-    .btn.resume{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#0b1022;border:none}
-    @media (max-width:960px){
-      .hero{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-      .about{grid-template-columns:1fr}
-      .logos{grid-template-columns:1fr 1fr}
-    }
-  </style>
+  /* ===== Контакты ===== */
+  .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .sbtn{display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--card) 96%, transparent 4%);color:var(--text);font-weight:700}
+  .sbtn svg{width:20px;height:20px}
+  .sbtn:hover{transform:translateY(-2px)}
+  .btn.resume{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#0b1022;border:none}
+
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr}
+    .grid-2{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr}
+    .logos{grid-template-columns:1fr 1fr}
+  }
+</style>
 </head>
 <body>
 <header>
@@ -151,19 +145,19 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ОБО МНЕ -->
   <section id="about" class="section">
     <h2>Обо мне</h2>
     <div class="card about">
       <img class="avatar" src="img/photo.jpg" alt="Шарошкин Александр Сергеевич" />
       <div>
-        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Регулярно тестирую объявления и страницы, распределяю бюджет по городам и времени.</p>
-        <p>Собираю данные из рекламы, сайта и CRM в один отчёт: считаю CPL, CAC, ROI/ROMI, ежедневно отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» обращений (формы, автоответы, квалификация). Ввожу метки/скрипты, связываю письма и мессенджеры с рекламой. Интегрирую сайт, рекламу и CRM, убираю ручные задачи.</p>
+        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Тестирую объявления и страницы, распределяю бюджеты по городам и времени.</p>
+        <p>Собираю данные из рекламы, сайта и CRM в единый отчёт, считаю CPL/CAC/ROI, отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» лидов (формы, автоответы, квалификация), связываю письма/мессенджеры с рекламой, автоматизирую рутину.</p>
       </div>
     </div>
   </section>
 
-  <!-- CASES -->
+  <!-- КЕЙСЫ -->
   <section id="cases" class="section">
     <h2>Кейсы (раскрываются по клику)</h2>
 
@@ -171,7 +165,7 @@
       <summary><img src="img/richtone-logo.png" alt="RICHTONE"> RICHTONE — международные рынки</summary>
       <div class="case-body">
         <p><strong>Цель:</strong> больше заявок и ниже CPL в США, Канаде, MENA, Восточной Европе.</p>
-        <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, удобные формы, квалификация лидов, UTM/скрипты.</p>
+        <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B-тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, удобные формы, квалификация лидов, UTM/скрипты.</p>
         <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., лид→сделка до 18%, ROMI 300%+.</p>
         <div class="shot"><img src="img/richtone.png" alt="Сайт RICHTONE"></div>
       </div>
@@ -183,7 +177,7 @@
         <p><strong>Цель:</strong> рост удержания и повторных покупок.</p>
         <p><strong>Действия:</strong> координация SMM/трейд/дизайна/перфоманса, постановка задач и контроль подрядчиков, медиапланы, креативы, запуск ЛК для продавцов/покупателей/заводчиков.</p>
         <p><strong>Результат:</strong> активность +45% за 2 мес., повторы +30%.</p>
-        <div class="shot"><img src="img/karmy.png" alt="Karmy — пример витрины Human&Business"></div>
+        <div class="shot"><img src="img/karmy.png" alt="Karmy — витрина бренда"></div>
       </div>
     </details>
 
@@ -206,7 +200,7 @@
     </details>
   </section>
 
-  <!-- CHARTS -->
+  <!-- ГРАФИКИ -->
   <section id="charts" class="section">
     <h2>Графики (реалистичные метрики за 6 месяцев)</h2>
     <div class="grid-2">
@@ -233,7 +227,7 @@
     </div>
   </section>
 
-  <!-- PROJECT LOGOS -->
+  <!-- ПРОЕКТЫ -->
   <section id="projects" class="section">
     <h2>Проекты и сайты</h2>
     <div class="logos">
@@ -244,15 +238,27 @@
     </div>
   </section>
 
-  <!-- CONTACTS -->
+  <!-- КОНТАКТЫ -->
   <section id="contacts" class="section">
     <h2>Контакты</h2>
     <div class="card">
-      <p>Свяжитесь со мной: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a></p>
+      <p>Почта: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a></p>
       <div class="socials">
-        <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">Telegram</a>
-        <a class="sbtn" href="https://wa.me/79003006324" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="sbtn" href="weixin://dl/chat?bombermanmarketolog">WeChat</a>
+        <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">
+          <!-- Telegram icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.6 15.6l-.3 4.3c.4 0 .6-.2.9-.4l2.1-2 4.3 3.1c.8.4 1.4.2 1.6-.7L22.9 4c.3-1-.4-1.5-1.2-1.2L2.2 10.1c-1 .4-1 1 0 1.3l4.4 1.3L18.9 6c.5-.3.9-.1.5.2l-9.8 9.4z"/></svg>
+          Telegram
+        </a>
+        <a class="sbtn" href="https://wa.me/79003006324" target="_blank" rel="noopener">
+          <!-- WhatsApp icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.8A10.2 10.2 0 003.1 18.4L2 22l3.7-1A10.2 10.2 0 1012 1.8zm0 18.7a8.5 8.5 0 01-4.3-1.2l-.3-.2-2.5.6.7-2.4-.2-.3A8.5 8.5 0 1112 20.5zm4.7-6.2c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.2-.8 1-.9 1.1-.1.2-.3.2-.6 0-.3-.2-1.1-.4-2.1-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.3.2-.5 0-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5s1.2 2.9 1.4 3.1c.2.3 2.3 3.5 5.4 4.8.7.3 1.3.5 1.8.7.8.2 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-1 0-1.7-.3-1.9z"/></svg>
+          WhatsApp
+        </a>
+        <a class="sbtn" href="weixin://dl/chat?bombermanmarketolog">
+          <!-- WeChat icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.2 4.3c-3.8 0-6.9 2.5-6.9 5.7 0 1.9 1.1 3.6 2.9 4.6l-.7 2.4 2.5-1.3c.7.2 1.4.3 2.1.3 3.8 0 6.9-2.5 6.9-5.7s-3.1-6-6.8-6zm-2.8 6.1c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7zm3.9 0c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7z"/></svg>
+          WeChat
+        </a>
       </div>
       <div style="margin-top:20px">
         <a class="btn resume" href="resume.pdf" download>Скачать резюме (PDF)</a>
@@ -261,33 +267,32 @@
   </section>
 </main>
 
+<!-- ====== СКРИПТЫ ====== -->
 <script>
-/* ==== Тема: по умолчанию тёмная, переключатель запоминает выбор ==== */
+/* --- Тема: тёмная по умолчанию, переключатель запоминает выбор и перерисовывает графики --- */
 (function(){
   const saved=localStorage.getItem('theme');
-  const root=document.documentElement;
-  if(saved){ root.setAttribute('data-theme', saved); }
-  const isLight=root.getAttribute('data-theme')==='light';
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+  const isLight=document.documentElement.getAttribute('data-theme')==='light';
   document.getElementById('iconSun').style.display=isLight?'none':'block';
   document.getElementById('iconMoon').style.display=isLight?'block':'none';
 })();
 document.getElementById('themeToggle').addEventListener('click',()=>{
   const root=document.documentElement;
-  const cur=root.getAttribute('data-theme');
-  const next=cur==='light'?'dark':'light';
+  const next=root.getAttribute('data-theme')==='light'?'dark':'light';
   root.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
   document.getElementById('iconSun').style.display=next==='light'?'none':'block';
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
+  renderCharts(true); // перерисовать с новыми цветами
 });
 
-/* ==== Появление карточек ==== */
+/* --- Плавное появление карточек --- */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ================= ГРАФИКИ: утилиты и оси ================= */
+/* ================= УТИЛИТЫ ДЛЯ ГРАФИКОВ ================= */
 const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
-
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
@@ -300,7 +305,6 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
 
   const grid=svgEl('g',{stroke:gridColor,'stroke-width':1});
   const ticks=yTicks(yMin,yMax,5);
-
   ticks.forEach(t=>{
     const y=scale(t,yMin,yMax,h-p,p);
     grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
@@ -308,9 +312,8 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
     lbl.textContent=formatY?formatY(t):fmt(t,0);
     grid.appendChild(lbl);
   });
-
-  grid.appendChild(svgEl('line',{x1:p,y1:h-p,x2:w-p,y2:h-p,stroke:axisColor,'stroke-width':1.25}));
-  grid.appendChild(svgEl('line',{x1:p,y1:p,x2:p,y2:h-p,stroke:axisColor,'stroke-width':1.25}));
+  grid.appendChild(svgEl('line',{x1:p,y1:h-p,x2:w-p,y2:h-p,stroke:axisColor,'stroke-width':1.1}));
+  grid.appendChild(svgEl('line',{x1:p,y1:p,x2:p,y2:h-p,stroke:axisColor,'stroke-width':1.1}));
   svg.appendChild(grid);
 
   const step=(w-2*p)/(xLabels.length-1);
@@ -333,9 +336,10 @@ function smoothPath(points){
   return d;
 }
 
-/* Линейный график */
+/* Линия */
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
+  svg.innerHTML=''; // очистка перед перерисовкой
   const min=(yMin==null)? Math.min(...data)*0.95 : yMin;
   const max=(yMax==null)? Math.max(...data)*1.05 : yMax;
 
@@ -349,11 +353,12 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMa
 
   const base=rev?scale(Math.max(...data),Math.max(...data),Math.min(...data),h-p,p):scale(min,min,max,h-p,p);
   const area=svgEl('path',{fill:fill,stroke:'none',d:`${smoothPath(pts)} L ${w-p} ${base} L ${p} ${base} Z`}); svg.appendChild(area);
-  const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3}); path.style.filter='drop-shadow(0 0 6px rgba(0,0,0,.15))'; svg.appendChild(path);
+  const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3}); svg.appendChild(path);
 
   const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
   pts.forEach((pt,i)=>{
-    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.5,fill:'var(--bg)',stroke:color,'stroke-width':2});
+    /* точки без обводки */
+    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'});
     c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):fmt(pt.v)}`;});
     c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
     c.addEventListener('mouseleave',()=>{tt.style.display='none';});
@@ -364,37 +369,40 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMa
 /* Столбцы */
 function barChart({svgId,data,labels,color,formatY}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
+  svg.innerHTML='';
   const yMin=0, yMax=Math.max(...data)*1.1;
   drawAxes(svg,w,h,p,labels,yMin,yMax,formatY);
   const gap=8, cw=(w-2*p)/data.length-gap;
 
+  const tickColor=getComputedStyle(document.documentElement).getPropertyValue('--tick').trim();
+
   data.forEach((v,i)=>{
     const x=p+i*((w-2*p)/data.length)+gap/2;
     const bh=(v/yMax)*(h-2*p);
-    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
-    rect.style.filter='drop-shadow(0 0 6px rgba(0,0,0,.15))';
+    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color}); // без тени/обводки
     svg.appendChild(rect);
 
-    const txt=svgEl('text',{
-      x:x+cw/2,y:h-p-bh-6,
-      fill:getComputedStyle(document.documentElement).getPropertyValue('--text').trim(),
-      'font-size':'12','font-weight':'700','text-anchor':'middle'
-    });
-    txt.textContent=formatY?formatY(v):fmt(v,0); svg.appendChild(txt);
+    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'middle'});
+    txt.textContent=formatY?formatY(v):fmt(v,0);
+    svg.appendChild(txt);
   });
 }
 
-/* ==== Данные (апр–сен 2025) ==== */
+/* ДАННЫЕ */
 const labels = ['Апр','Май','Июн','Июл','Авг','Сен'];
-const leads  = [280, 360, 450, 620, 820, 1100];   // заявки
-const cpl    = [680, 610, 540, 490, 450, 420];    // ₽
-const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];    // x
-const cr     = [8, 10, 12, 14, 16, 18];           // %
+const leads  = [280, 360, 450, 620, 820, 1100];
+const cpl    = [680, 610, 540, 490, 450, 420];
+const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];
+const cr     = [8, 10, 12, 14, 16, 18];
 
-/* ==== Рендер графиков ==== */
-barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=>fmt(v,0)});
-lineChart({svgId:'cplChart',   data:cpl,   labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-lineChart({svgId:'roiChart',   data:roi,   labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)',  formatY:v=>fmt(v,1)+'×'});
-/* ВАЖНО: фиксируем шкалу 0..20% и выводим целые значения — никаких «0000…» */
-lineChart({svgId:'crChart',    data:cr,    labels, color:'var(--acc)',  fill:'color-mix(in oklab,var(--acc) 30%, transparent)',   yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
+/* Рендер всех графиков */
+function renderCharts(force=false){
+  barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=>fmt(v,0)});
+  lineChart({svgId:'cplChart', data:cpl, labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
+  lineChart({svgId:'roiChart', data:roi, labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,1)+'×'});
+  lineChart({svgId:'crChart', data:cr, labels, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
+}
+renderCharts();
 </script>
+</body>
+</html>
