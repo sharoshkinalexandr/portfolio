@@ -10,14 +10,15 @@
   :root{
     --bg:#0f1220; --card:#171a2b; --muted:#9aa3b2; --text:#e8ecf1;
     --acc:#6ee7b7; --acc2:#60a5fa; --acc3:#a78bfa;
-    --grid:#232741; --axis:#3a416a; --tick:var(--text);  /* ВАЖНО: подписи = цвет текста (белые) */
+    /* Сетка бледная, оси контрастнее, подписи = текст (в тёмной теме белые) */
+    --grid:rgba(255,255,255,.08); --axis:rgba(255,255,255,.28); --tick:var(--text);
     --btn-bg:rgba(255,255,255,.06); --chip-bg:rgba(96,165,250,.08); --border:rgba(255,255,255,.06);
     --shadow:0 10px 30px rgba(0,0,0,.25);
   }
   [data-theme="light"]{
     --bg:#f7f9fc; --card:#ffffff; --muted:#586174; --text:#0f172a;
     --acc:#0ea5e9; --acc2:#6366f1; --acc3:#22c55e;
-    --grid:#e8ecf4; --axis:#cdd6e3; --tick:var(--text);  /* ВАЖНО: подписи тёмные */
+    --grid:rgba(15,23,42,.08); --axis:rgba(15,23,42,.22); --tick:var(--text);
     --btn-bg:#eef2ff; --chip-bg:#e0f2fe; --border:#e5e7eb;
     --shadow:0 8px 24px rgba(15,23,42,.08);
   }
@@ -79,6 +80,7 @@
   /* ===== ГРАФИКИ ===== */
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
+  .chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
   .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
 
   /* ===== Контакты ===== */
@@ -245,17 +247,14 @@
       <p>Почта: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a></p>
       <div class="socials">
         <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">
-          <!-- Telegram icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.6 15.6l-.3 4.3c.4 0 .6-.2.9-.4l2.1-2 4.3 3.1c.8.4 1.4.2 1.6-.7L22.9 4c.3-1-.4-1.5-1.2-1.2L2.2 10.1c-1 .4-1 1 0 1.3l4.4 1.3L18.9 6c.5-.3.9-.1.5.2l-9.8 9.4z"/></svg>
           Telegram
         </a>
         <a class="sbtn" href="https://wa.me/79003006324" target="_blank" rel="noopener">
-          <!-- WhatsApp icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.8A10.2 10.2 0 003.1 18.4L2 22l3.7-1A10.2 10.2 0 1012 1.8zm0 18.7a8.5 8.5 0 01-4.3-1.2l-.3-.2-2.5.6.7-2.4-.2-.3A8.5 8.5 0 1112 20.5zm4.7-6.2c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.2-.8 1-.9 1.1-.1.2-.3.2-.6 0-.3-.2-1.1-.4-2.1-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.3.2-.5 0-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5s1.2 2.9 1.4 3.1c.2.3 2.3 3.5 5.4 4.8.7.3 1.3.5 1.8.7.8.2 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-1 0-1.7-.3-1.9z"/></svg>
           WhatsApp
         </a>
         <a class="sbtn" href="weixin://dl/chat?bombermanmarketolog">
-          <!-- WeChat icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.2 4.3c-3.8 0-6.9 2.5-6.9 5.7 0 1.9 1.1 3.6 2.9 4.6l-.7 2.4 2.5-1.3c.7.2 1.4.3 2.1.3 3.8 0 6.9-2.5 6.9-5.7s-3.1-6-6.8-6zm-2.8 6.1c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7zm3.9 0c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7z"/></svg>
           WeChat
         </a>
@@ -269,7 +268,7 @@
 
 <!-- ====== СКРИПТЫ ====== -->
 <script>
-/* --- Тема: тёмная по умолчанию, переключатель запоминает выбор и перерисовывает графики --- */
+/* Тема: тёмная по умолчанию, перерисовка графиков при переключении */
 (function(){
   const saved=localStorage.getItem('theme');
   if(saved) document.documentElement.setAttribute('data-theme', saved);
@@ -284,15 +283,17 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
   localStorage.setItem('theme', next);
   document.getElementById('iconSun').style.display=next==='light'?'none':'block';
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
-  renderCharts(true); // перерисовать с новыми цветами
+  renderCharts(true);
 });
 
-/* --- Плавное появление карточек --- */
+/* Плавное появление */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
 /* ================= УТИЛИТЫ ДЛЯ ГРАФИКОВ ================= */
 const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
+const crisp=y=>Math.round(y)+.5;  // чёткие линии на пикселе
+
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
@@ -303,23 +304,23 @@ function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   const axisColor=css.getPropertyValue('--axis').trim();
   const tickColor=css.getPropertyValue('--tick').trim();
 
-  const grid=svgEl('g',{stroke:gridColor,'stroke-width':1});
+  const grid=svgEl('g',{stroke:gridColor,'stroke-width':1,'shape-rendering':'crispEdges'});
   const ticks=yTicks(yMin,yMax,5);
   ticks.forEach(t=>{
-    const y=scale(t,yMin,yMax,h-p,p);
+    const y=crisp(scale(t,yMin,yMax,h-p,p));
     grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{x:p-8,y:y+4,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'end'});
-    lbl.textContent=formatY?formatY(t):fmt(t,0);
-    grid.appendChild(lbl);
+    const lbl=svgEl('text',{x:p-10,y:y+4,fill:tickColor,'font-size':'14','font-weight':'700','text-anchor':'end'});
+    lbl.textContent=formatY?formatY(Math.round(t)):fmt(t,0);
+    svg.appendChild(lbl);
   });
-  grid.appendChild(svgEl('line',{x1:p,y1:h-p,x2:w-p,y2:h-p,stroke:axisColor,'stroke-width':1.1}));
-  grid.appendChild(svgEl('line',{x1:p,y1:p,x2:p,y2:h-p,stroke:axisColor,'stroke-width':1.1}));
+  grid.appendChild(svgEl('line',{x1:p,y1:crisp(h-p),x2:w-p,y2:crisp(h-p),stroke:axisColor,'stroke-width':1.25}));
+  grid.appendChild(svgEl('line',{x1:crisp(p),y1:p,x2:crisp(p),y2:h-p,stroke:axisColor,'stroke-width':1.25}));
   svg.appendChild(grid);
 
   const step=(w-2*p)/(xLabels.length-1);
   xLabels.forEach((lab,i)=>{
-    const x=p+i*step, y=h-p+16;
-    const t=svgEl('text',{x:x,y:y,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'middle'});
+    const x=p+i*step, y=h-p+18;
+    const t=svgEl('text',{x:x,y:y,fill:tickColor,'font-size':'13','font-weight':'700','text-anchor':'middle'});
     t.textContent=lab; svg.appendChild(t);
   });
 }
@@ -339,7 +340,7 @@ function smoothPath(points){
 /* Линия */
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
-  svg.innerHTML=''; // очистка перед перерисовкой
+  svg.innerHTML='';
   const min=(yMin==null)? Math.min(...data)*0.95 : yMin;
   const max=(yMax==null)? Math.max(...data)*1.05 : yMax;
 
@@ -353,12 +354,11 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMa
 
   const base=rev?scale(Math.max(...data),Math.max(...data),Math.min(...data),h-p,p):scale(min,min,max,h-p,p);
   const area=svgEl('path',{fill:fill,stroke:'none',d:`${smoothPath(pts)} L ${w-p} ${base} L ${p} ${base} Z`}); svg.appendChild(area);
-  const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3}); svg.appendChild(path);
+  const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3,'shape-rendering':'geometricPrecision'}); svg.appendChild(path);
 
   const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
   pts.forEach((pt,i)=>{
-    /* точки без обводки */
-    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'});
+    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'}); // без обводки
     c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):fmt(pt.v)}`;});
     c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
     c.addEventListener('mouseleave',()=>{tt.style.display='none';});
@@ -382,7 +382,7 @@ function barChart({svgId,data,labels,color,formatY}){
     const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color}); // без тени/обводки
     svg.appendChild(rect);
 
-    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'middle'});
+    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'13','font-weight':'700','text-anchor':'middle'});
     txt.textContent=formatY?formatY(v):fmt(v,0);
     svg.appendChild(txt);
   });
@@ -396,7 +396,7 @@ const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];
 const cr     = [8, 10, 12, 14, 16, 18];
 
 /* Рендер всех графиков */
-function renderCharts(force=false){
+function renderCharts(){
   barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=>fmt(v,0)});
   lineChart({svgId:'cplChart', data:cpl, labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
   lineChart({svgId:'roiChart', data:roi, labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', formatY:v=>fmt(v,1)+'×'});
