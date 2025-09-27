@@ -68,9 +68,11 @@
   .toggle svg,.menu svg{width:18px;height:18px}
   .menu{display:none}
 
-  /* Скрим для моб.меню */
-  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);
-         opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:1000}
+  /* Оверлей без blur (не мутнит всё), кликабельно меню поверх */
+  .scrim{
+    position:fixed;inset:0;background:rgba(0,0,0,.35);
+    opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:1000
+  }
   body.menu-open .scrim{opacity:1;pointer-events:auto}
   body.menu-open{overflow:hidden}
 
@@ -85,9 +87,9 @@
   .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:color-mix(in oklab,var(--acc2) 85%, var(--text));background:var(--chip-bg)}
   .btns{display:flex;gap:12px;flex-wrap:wrap}
 
-  /* ===== КНОПКИ ===== */
+  /* ===== КНОПКИ (fw=600) ===== */
   .btn,.sbtn{
-    padding:14px 18px;border-radius:12px;border:none;font-weight:800;cursor:pointer;
+    padding:14px 18px;border-radius:12px;border:none;font-weight:600;cursor:pointer;
     display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#0b1022;
     transition:transform .15s ease, filter .15s ease; touch-action:manipulation; -webkit-tap-highlight-color:transparent;
   }
@@ -125,6 +127,7 @@
   /* ГРАФИКИ */
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
+  .chart svg{overflow:visible} /* важное: подписи за рамками видны */
   .chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
   .tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
 
@@ -143,11 +146,11 @@
     .avatar{width:132px;height:132px}
     .grid-2{grid-template-columns:1fr}
 
-    /* ключевые правки меню */
+    /* меню поверх скрима, кликабельно */
     .menu{display:inline-flex}
     nav.primary{
       position:fixed; top:64px; left:12px; right:12px; bottom:auto;
-      max-height:calc(100dvh - 80px); overflow:auto; z-index:1001;
+      max-height:calc(100dvh - 80px); overflow:auto; z-index:1101;  /* было 1001 */
       background:var(--card); border:1px solid var(--border);
       border-radius:14px; box-shadow:var(--shadow); padding:10px;
       display:none; flex-direction:column; gap:6px;
@@ -191,7 +194,7 @@
     </button>
   </div>
 </header>
-<!-- полупрозрачный фон для моб.меню -->
+<!-- скрим без blur -->
 <div id="scrim" class="scrim"></div>
 
 <main class="wrap">
@@ -384,6 +387,11 @@ function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/20
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
 function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
 
+/* мобильный левый отступ побольше, чтобы подписи по Y не резались */
+function getPadding(){
+  return window.matchMedia('(max-width: 640px)').matches ? 44 : 32;
+}
+
 function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
   const css=getComputedStyle(document.documentElement);
   const gridColor=css.getPropertyValue('--grid').trim();
@@ -424,7 +432,7 @@ function smoothPath(points){
 }
 
 function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
-  const svg=document.getElementById(svgId), w=380,h=240,p=32;
+  const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
   svg.innerHTML='';
   const min=(yMin==null)? Math.min(...data)*0.95 : yMin;
   const max=(yMax==null)? Math.max(...data)*1.05 : yMax;
@@ -452,7 +460,7 @@ function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMa
 }
 
 function barChart({svgId,data,labels,color,formatY}){
-  const svg=document.getElementById(svgId), w=380,h=240,p=32;
+  const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
   svg.innerHTML='';
   const yMin=0, yMax=Math.max(...data)*1.1;
   drawAxes(svg,w,h,p,labels,yMin,yMax,formatY);
@@ -463,7 +471,7 @@ function barChart({svgId,data,labels,color,formatY}){
   data.forEach((v,i)=>{
     const x=p+i*((w-2*p)/data.length)+gap/2;
     const bh=(v/yMax)*(h-2*p);
-    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color}); /* FIX: корректный синтаксис */
+    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
     svg.appendChild(rect);
 
     const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
@@ -486,6 +494,9 @@ function renderCharts(){
   lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
 }
 renderCharts();
+
+/* перерисовать при ресайзе (меняется padding для мобильных) */
+window.addEventListener('resize', ()=>renderCharts(), {passive:true});
 </script>
 </body>
 </html>
