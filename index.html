@@ -2,165 +2,151 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Александр — Маркетолог-перформанс | Лиды, ROI, системная аналитика</title>
+  <title>Шарошкин Александр Сергеевич — Маркетолог-перформанс</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Александр — маркетолог-перформанс. Международные рынки, лидогенерация, сквозная аналитика, CRM, автоматизация. Кейсы: RICHTONE, Human&Business.">
+  <meta name="description" content="Шарошкин Александр Сергеевич — маркетолог-перформанс. Лидогенерация, сквозная аналитика, CRM, международные рынки. Кейсы: RICHTONE, Human&Business, БТК, М131.">
   <style>
-    :root{
-      --bg:#0f1220;--card:#171a2b;--muted:#9aa3b2;--text:#e8ecf1;--acc:#6ee7b7;--acc2:#60a5fa;
+    :root {
+      --bg:#0f1220;
+      --card:#171a2b;
+      --text:#e8ecf1;
+      --accent:#60a5fa;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%,#1b1e33 0%,#0f1220 60%);color:var(--text);line-height:1.6}
-    a{color:var(--acc2);text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:rgba(15,18,32,.6);backdrop-filter:blur(8px);z-index:10;border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;gap:18px;justify-content:space-between}
-    .nav a{font-weight:600;color:#cfe3ff}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:32px;height:32px;border-radius:8px;background:
-      conic-gradient(from 180deg at 50% 50%, #6ee7b7, #60a5fa, #a78bfa, #6ee7b7);
-      box-shadow:0 0 30px rgba(110,231,183,.25)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:64px 0}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .h1{font-size:40px;line-height:1.15;margin:0 0 12px;font-weight:800}
-    .lead{color:var(--muted);margin:0 0 18px}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 24px}
-    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:#dbeafe;background:rgba(96,165,250,.08)}
-    .btns{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.12);font-weight:700;cursor:pointer;display:inline-block}
-    .btn.primary{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0a1020;border:none}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .section{padding:32px 0}
-    h2{margin:0 0 16px;font-size:28px}
-    h3{margin:0 0 8px;font-size:18px}
-    .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .kpi .card{padding:16px;text-align:center}
-    .muted{color:var(--muted)}
-    footer{padding:32px 0;color:#a3acc2}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.kpi{grid-template-columns:1fr 1fr}}
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    header {
+      position:sticky;
+      top:0;
+      background:#171a2b;
+      padding:16px 32px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:10;
+    }
+    header h1 {font-size:18px;color:var(--accent);}
+    nav a {margin-left:16px;color:var(--text);text-decoration:none;}
+    nav a:hover {color:var(--accent);}
+    .section {max-width:1100px;margin:60px auto;padding:0 20px;}
+    h2 {font-size:28px;margin-bottom:20px;color:var(--accent);}
+    .card {
+      background:var(--card);
+      border-radius:12px;
+      padding:24px;
+      margin-bottom:20px;
+      box-shadow:0 2px 8px rgba(0,0,0,.3);
+    }
+    button.toggle {
+      width:100%;
+      text-align:left;
+      background:none;
+      border:none;
+      font-size:18px;
+      font-weight:600;
+      color:var(--accent);
+      cursor:pointer;
+    }
+    .hidden {display:none;}
+    img.logo {height:40px;margin:10px;}
   </style>
 </head>
 <body>
+
 <header>
-  <div class="wrap nav">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <strong>Александр — маркетолог</strong>
-    </div>
-    <nav style="display:flex;gap:14px;flex-wrap:wrap">
-      <a href="#about">Обо мне</a>
-      <a href="#cases">Кейсы</a>
-      <a href="#services">Услуги</a>
-      <a href="#approach">Подход</a>
-      <a href="#kpi">KPI</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-  </div>
+  <h1>Александр — маркетолог</h1>
+  <nav>
+    <a href="#about">Обо мне</a>
+    <a href="#cases">Кейсы</a>
+    <a href="#services">Услуги</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
 </header>
 
-<main class="wrap">
-  <section class="hero">
-    <div class="card">
-      <h1 class="h1">Запускаю рекламу, которая приводит <span style="background:linear-gradient(90deg,#6ee7b7,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent">целевых клиентов</span></h1>
-      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. Международные рынки: США, Канада, MENA, Восточная Европа. Работаю на результат: рост лидов, снижение CPL, повышение ROI.</p>
-      <div class="chips">
-        <span class="chip">Google / Meta / Яндекс</span>
-        <span class="chip">Сквозная аналитика</span>
-        <span class="chip">CRM: Bitrix24</span>
-        <span class="chip">RU / EN / 中文</span>
-      </div>
-      <div class="btns">
-        <a class="btn primary" href="#cases">Смотреть кейсы</a>
-        <a class="btn" href="#services">Что делаю</a>
+<section id="about" class="section">
+  <h2>Обо мне</h2>
+  <div class="card" style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+    <img src="img/alexandr.jpg" alt="Фото Александра" style="width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,.4)">
+    <div>
+      <h3>Шарошкин Александр Сергеевич</h3>
+      <p>Маркетолог-перформанс. Опыт в международных проектах (США, Канада, MENA, Восточная Европа). Настраиваю и веду рекламу в Google и Meta, собираю аналитику из CRM и сайтов, считаю CPL, CPO, ROI. Запускаю кампании, которые приносят заявки и прибыль.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <img src="img/chart1.png" alt="Рост заявок" style="width:200px;border-radius:12px">
+        <img src="img/chart2.png" alt="Снижение CPL" style="width:200px;border-radius:12px">
+        <img src="img/chart3.png" alt="ROI кампаний" style="width:200px;border-radius:12px">
       </div>
     </div>
-    <div class="card">
-      <h3>Коротко обо мне</h3>
-      <p class="muted">Маркетолог с опытом в строительстве, производстве, B2B и премиум-сегментах. Запускаю кампании в поиске и соцсетях, связываю рекламу, сайт и CRM, повышаю долю «деловых» лидов. Делаю тексты на русском, английском и китайском.</p>
-      <ul>
-        <li>Снижение CPL до −35% на международных кампаниях</li>
-        <li>1150+ заявок за 3 месяца (RICHTONE)</li>
-        <li>+45% активности и +30% повторных покупок (Human&Business)</li>
-      </ul>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="cases" class="section">
-    <h2>Кейсы</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>RICHTONE — международные рынки</h3>
-        <p><strong>Цель:</strong> снизить стоимость заявки и увеличить поток «деловых» лидов из США, Канады, стран Персидского залива.</p>
-        <p><strong>Действия:</strong> кампании Google и Meta; связка сайт↔реклама↔CRM; быстрые автоответы; улучшение форм.</p>
-        <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., конверсия в сделку до 18%, ROI 300%+.</p>
-      </div>
-      <div class="card">
-        <h3>Human&Business — программа лояльности</h3>
-        <p><strong>Цель:</strong> повысить удержание и повторные покупки.</p>
-        <p><strong>Действия:</strong> запуск бонусной системы и личных кабинетов; координация SMM/дизайна/интернет-маркетинга; медиапланы и креативы.</p>
-        <p><strong>Результат:</strong> активность +45% за 2 мес., повторные покупки +30%; программа стала ключевым инструментом удержания.</p>
-      </div>
-      <div class="card">
-        <h3>БТК — стратегия и выход на рынки</h3>
-        <p><strong>Цель:</strong> определить прибыльные направления и повысить эффективность продвижения.</p>
-        <p><strong>Действия:</strong> исследования конкурентов, фокус-группы, стратегия позиционирования, медиаплан, PR.</p>
-        <p><strong>Результат:</strong> выделены 3 топ-рынка, спрос +22% за квартал за счёт новых кампаний.</p>
-      </div>
-    </div>
-  </section>
+<section id="cases" class="section">
+  <h2>Кейсы</h2>
 
-  <section id="services" class="section">
-    <h2>Услуги</h2>
-    <div class="grid">
-      <div class="card"><h3>Лидогенерация</h3><p class="muted">Google/Яндекс/Meta/TikTok: от гипотез до масштабирования. Работаю по CPL/CAC.</p></div>
-      <div class="card"><h3>Сквозная аналитика</h3><p class="muted">Связка реклама ↔ сайт ↔ CRM. Вижу источник каждого лида и сделки.</p></div>
-      <div class="card"><h3>Автоматизация</h3><p class="muted">Make/Zapier, автоответы, отчёты, устранение дублей, назначение ответственных.</p></div>
+  <div class="card">
+    <button class="toggle" onclick="toggleCase('richtone')">RICHTONE — международные рынки ▼</button>
+    <div id="richtone" class="hidden">
+      <p><strong>Цель:</strong> увеличить поток заявок, снизить CPL.</p>
+      <p><strong>Действия:</strong> кампании Google и Meta в США, Канаде, MENA и Восточной Европе; интеграция CRM; настройка автоответов; улучшение форм.</p>
+      <p><strong>Результат:</strong> CPL снижена на 35% (с 650 ₽ до 420 ₽), более 1150 заявок за 3 месяца, ROI 300%+.</p>
+      <img src="img/richtone-site.png" alt="Сайт RICHTONE" style="width:100%;border-radius:12px;margin-top:12px">
     </div>
-  </section>
+  </div>
 
-  <section id="approach" class="section">
-    <h2>Подход</h2>
-    <div class="card">
-      <ul>
-        <li><strong>Гипотезы → тесты → масштаб:</strong> быстро проверяю идеи на малом бюджете, масштабирую победителей.</li>
-        <li><strong>Качество лидов:</strong> удобные формы, быстрые ответы, правила квалификации.</li>
-        <li><strong>Прозрачность:</strong> общие дашборды по CPL, CR, CAC, ROI для команды.</li>
-      </ul>
+  <div class="card">
+    <button class="toggle" onclick="toggleCase('hb')">Human&Business — бонусная система ▼</button>
+    <div id="hb" class="hidden">
+      <p><strong>Цель:</strong> повысить удержание и лояльность.</p>
+      <p><strong>Действия:</strong> разработка и продвижение личных кабинетов для продавцов и покупателей, координация SMM, трейд-маркетинга и креативов.</p>
+      <p><strong>Результат:</strong> +45% вовлечённости, +30% повторных покупок, рост базы активных пользователей.</p>
+      <img src="img/hb-site.png" alt="Human&Business проект" style="width:100%;border-radius:12px;margin-top:12px">
     </div>
-  </section>
+  </div>
 
-  <section id="kpi" class="section">
-    <h2>KPI</h2>
-    <div class="kpi">
-      <div class="card"><div style="font-size:28px;font-weight:800">CPL ↓ 20–35%</div><div class="muted">снижение стоимости лида</div></div>
-      <div class="card"><div style="font-size:28px;font-weight:800">Лиды ↑ 25–40%</div><div class="muted">рост количества заявок</div></div>
-      <div class="card"><div style="font-size:28px;font-weight:800">CAC под контролем</div><div class="muted">стоимость клиента в пределах цели</div></div>
-      <div class="card"><div style="font-size:28px;font-weight:800">ROI 200%+</div><div class="muted">окупаемость рекламных затрат</div></div>
+  <div class="card">
+    <button class="toggle" onclick="toggleCase('btk')">БТК — стратегия продвижения ▼</button>
+    <div id="btk" class="hidden">
+      <p><strong>Цель:</strong> разработка маркетинговой стратегии и исследования рынка.</p>
+      <p><strong>Действия:</strong> конкурентный анализ, медиапланы, расчёт бюджетов, фокус-группы, работа со СМИ.</p>
+      <p><strong>Результат:</strong> определены приоритетные рынки, внедрены новые технологии в ритейл, повышение спроса и узнаваемости.</p>
+      <img src="img/btk-site.png" alt="БТК проект" style="width:100%;border-radius:12px;margin-top:12px">
     </div>
-  </section>
+  </div>
 
-  <section id="about" class="section">
-    <h2>Обо мне</h2>
-    <div class="card">
-      <p>Маркетолог-перформанс. Запускаю кампании в поиске и соцсетях для США/Канады/MENA/Восточной Европы. Собираю данные из рекламы, сайта и CRM в один отчёт, считаю стоимость заявки и сделки, окупаемость. Повышаю долю «деловых» обращений через формы и быстрые ответы. Ставлю метки и скрипты, чтобы видеть, откуда пришёл каждый клиент. Соединяю сайт, рекламу и CRM, убираю ручные задачи. Пишу тексты на русском, английском и китайском, поддерживаю точность ассортимента и снизжаю ошибки.</p>
-      <p class="muted">Инструменты: Google/Meta/Яндекс, аналитика сайта и CRM, дашборды, базовые правки кода. Опыт: RICHTONE, Human&Business, БТК, ГК «М131».</p>
+  <div class="card">
+    <button class="toggle" onclick="toggleCase('m131')">ГК «М131» — маркетинг и аналитика ▼</button>
+    <div id="m131" class="hidden">
+      <p><strong>Цель:</strong> увеличить спрос и планировать маркетинг.</p>
+      <p><strong>Действия:</strong> прогнозирование, анализ конкурентов, фокус-группы, позиционирование продукции.</p>
+      <p><strong>Результат:</strong> рост продаж, усиление конкурентных преимуществ, повышение узнаваемости бренда.</p>
+      <img src="img/m131-site.png" alt="М131 проект" style="width:100%;border-radius:12px;margin-top:12px">
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contacts" class="section">
-    <h2>Контакты</h2>
-    <div class="card">
-      <p>Связаться со мной можно в мессенджере, где вы уже общаетесь со мной, или ответом на сообщение. Также доступен онлайн-созвон по договорённости.</p>
-      <div class="btns">
-        <a class="btn primary" href="#cases">Обсудить проект</a>
-        <a class="btn" href="#services">Запросить расчёт</a>
-      </div>
-    </div>
-  </section>
-</main>
+<section id="services" class="section">
+  <h2>Услуги</h2>
+  <div class="card">Лидогенерация, реклама в Google/Meta</div>
+  <div class="card">Сквозная аналитика, дашборды</div>
+  <div class="card">Автоматизация CRM и процессов</div>
+</section>
 
-<footer class="wrap">
-  © Александр, маркетолог-перформанс. Результат важнее гипотез.
-</footer>
+<section id="contacts" class="section">
+  <h2>Контакты</h2>
+  <div class="card">
+    <p>Свяжитесь со мной: <a href="mailto:sharoshkinalexandr@gmail.com">sharoshkinalexandr@gmail.com</a></p>
+  </div>
+</section>
+
+<script>
+function toggleCase(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle("hidden");
+}
+</script>
+
 </body>
 </html>
