@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Александр — Маркетолог-перформанс | Лиды, ROI, системная аналитика</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Александр — маркетолог-перформанс. Международные рынки, лидогенерация, сквозная аналитика, CRM, автоматизация. Кейсы: RICHTONE, Human&Business.">
+  <style>
+    :root{
+      --bg:#0f1220;--card:#171a2b;--muted:#9aa3b2;--text:#e8ecf1;--acc:#6ee7b7;--acc2:#60a5fa;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%,#1b1e33 0%,#0f1220 60%);color:var(--text);line-height:1.6}
+    a{color:var(--acc2);text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(15,18,32,.6);backdrop-filter:blur(8px);z-index:10;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .nav a{font-weight:600;color:#cfe3ff}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:32px;height:32px;border-radius:8px;background:
+      conic-gradient(from 180deg at 50% 50%, #6ee7b7, #60a5fa, #a78bfa, #6ee7b7);
+      box-shadow:0 0 30px rgba(110,231,183,.25)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:64px 0}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .h1{font-size:40px;line-height:1.15;margin:0 0 12px;font-weight:800}
+    .lead{color:var(--muted);margin:0 0 18px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 24px}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:#dbeafe;background:rgba(96,165,250,.08)}
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.12);font-weight:700;cursor:pointer;display:inline-block}
+    .btn.primary{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0a1020;border:none}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .section{padding:32px 0}
+    h2{margin:0 0 16px;font-size:28px}
+    h3{margin:0 0 8px;font-size:18px}
+    .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .kpi .card{padding:16px;text-align:center}
+    .muted{color:var(--muted)}
+    footer{padding:32px 0;color:#a3acc2}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.kpi{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <strong>Александр — маркетолог</strong>
+    </div>
+    <nav style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="#about">Обо мне</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#services">Услуги</a>
+      <a href="#approach">Подход</a>
+      <a href="#kpi">KPI</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="card">
+      <h1 class="h1">Запускаю рекламу, которая приводит <span style="background:linear-gradient(90deg,#6ee7b7,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent">целевых клиентов</span></h1>
+      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. Международные рынки: США, Канада, MENA, Восточная Европа. Работаю на результат: рост лидов, снижение CPL, повышение ROI.</p>
+      <div class="chips">
+        <span class="chip">Google / Meta / Яндекс</span>
+        <span class="chip">Сквозная аналитика</span>
+        <span class="chip">CRM: Bitrix24</span>
+        <span class="chip">RU / EN / 中文</span>
+      </div>
+      <div class="btns">
+        <a class="btn primary" href="#cases">Смотреть кейсы</a>
+        <a class="btn" href="#services">Что делаю</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Коротко обо мне</h3>
+      <p class="muted">Маркетолог с опытом в строительстве, производстве, B2B и премиум-сегментах. Запускаю кампании в поиске и соцсетях, связываю рекламу, сайт и CRM, повышаю долю «деловых» лидов. Делаю тексты на русском, английском и китайском.</p>
+      <ul>
+        <li>Снижение CPL до −35% на международных кампаниях</li>
+        <li>1150+ заявок за 3 месяца (RICHTONE)</li>
+        <li>+45% активности и +30% повторных покупок (Human&Business)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cases" class="section">
+    <h2>Кейсы</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>RICHTONE — международные рынки</h3>
+        <p><strong>Цель:</strong> снизить стоимость заявки и увеличить поток «деловых» лидов из США, Канады, стран Персидского залива.</p>
+        <p><strong>Действия:</strong> кампании Google и Meta; связка сайт↔реклама↔CRM; быстрые автоответы; улучшение форм.</p>
+        <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., конверсия в сделку до 18%, ROI 300%+.</p>
+      </div>
+      <div class="card">
+        <h3>Human&Business — программа лояльности</h3>
+        <p><strong>Цель:</strong> повысить удержание и повторные покупки.</p>
+        <p><strong>Действия:</strong> запуск бонусной системы и личных кабинетов; координация SMM/дизайна/интернет-маркетинга; медиапланы и креативы.</p>
+        <p><strong>Результат:</strong> активность +45% за 2 мес., повторные покупки +30%; программа стала ключевым инструментом удержания.</p>
+      </div>
+      <div class="card">
+        <h3>БТК — стратегия и выход на рынки</h3>
+        <p><strong>Цель:</strong> определить прибыльные направления и повысить эффективность продвижения.</p>
+        <p><strong>Действия:</strong> исследования конкурентов, фокус-группы, стратегия позиционирования, медиаплан, PR.</p>
+        <p><strong>Результат:</strong> выделены 3 топ-рынка, спрос +22% за квартал за счёт новых кампаний.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Услуги</h2>
+    <div class="grid">
+      <div class="card"><h3>Лидогенерация</h3><p class="muted">Google/Яндекс/Meta/TikTok: от гипотез до масштабирования. Работаю по CPL/CAC.</p></div>
+      <div class="card"><h3>Сквозная аналитика</h3><p class="muted">Связка реклама ↔ сайт ↔ CRM. Вижу источник каждого лида и сделки.</p></div>
+      <div class="card"><h3>Автоматизация</h3><p class="muted">Make/Zapier, автоответы, отчёты, устранение дублей, назначение ответственных.</p></div>
+    </div>
+  </section>
+
+  <section id="approach" class="section">
+    <h2>Подход</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Гипотезы → тесты → масштаб:</strong> быстро проверяю идеи на малом бюджете, масштабирую победителей.</li>
+        <li><strong>Качество лидов:</strong> удобные формы, быстрые ответы, правила квалификации.</li>
+        <li><strong>Прозрачность:</strong> общие дашборды по CPL, CR, CAC, ROI для команды.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="kpi" class="section">
+    <h2>KPI</h2>
+    <div class="kpi">
+      <div class="card"><div style="font-size:28px;font-weight:800">CPL ↓ 20–35%</div><div class="muted">снижение стоимости лида</div></div>
+      <div class="card"><div style="font-size:28px;font-weight:800">Лиды ↑ 25–40%</div><div class="muted">рост количества заявок</div></div>
+      <div class="card"><div style="font-size:28px;font-weight:800">CAC под контролем</div><div class="muted">стоимость клиента в пределах цели</div></div>
+      <div class="card"><div style="font-size:28px;font-weight:800">ROI 200%+</div><div class="muted">окупаемость рекламных затрат</div></div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>Обо мне</h2>
+    <div class="card">
+      <p>Маркетолог-перформанс. Запускаю кампании в поиске и соцсетях для США/Канады/MENA/Восточной Европы. Собираю данные из рекламы, сайта и CRM в один отчёт, считаю стоимость заявки и сделки, окупаемость. Повышаю долю «деловых» обращений через формы и быстрые ответы. Ставлю метки и скрипты, чтобы видеть, откуда пришёл каждый клиент. Соединяю сайт, рекламу и CRM, убираю ручные задачи. Пишу тексты на русском, английском и китайском, поддерживаю точность ассортимента и снизжаю ошибки.</p>
+      <p class="muted">Инструменты: Google/Meta/Яндекс, аналитика сайта и CRM, дашборды, базовые правки кода. Опыт: RICHTONE, Human&Business, БТК, ГК «М131».</p>
+    </div>
+  </section>
+
+  <section id="contacts" class="section">
+    <h2>Контакты</h2>
+    <div class="card">
+      <p>Связаться со мной можно в мессенджере, где вы уже общаетесь со мной, или ответом на сообщение. Также доступен онлайн-созвон по договорённости.</p>
+      <div class="btns">
+        <a class="btn primary" href="#cases">Обсудить проект</a>
+        <a class="btn" href="#services">Запросить расчёт</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  © Александр, маркетолог-перформанс. Результат важнее гипотез.
+</footer>
+</body>
+</html>
