@@ -261,9 +261,8 @@
   </section>
 </main>
 
-<!-- SCRIPTS -->
 <script>
-/* ---- Theme: default dark; toggle to light & remember choice ---- */
+/* ==== Тема: по умолчанию тёмная, переключатель запоминает выбор ==== */
 (function(){
   const saved=localStorage.getItem('theme');
   const root=document.documentElement;
@@ -282,30 +281,34 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
 });
 
-/* ---- Reveal on scroll ---- */
+/* ==== Появление карточек ==== */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ---- Charts helpers (улучшенная читаемость тиков) ---- */
+/* ================= ГРАФИКИ: утилиты и оси ================= */
+const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
+
 function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
-function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++){arr.push(min+(max-min)*i/steps);}return arr;}
-function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
-  const styles=getComputedStyle(document.documentElement);
-  const grid=svgEl('g',{stroke:styles.getPropertyValue('--grid').trim(),'stroke-width':1});
-  const axisColor=styles.getPropertyValue('--axis').trim();
-  const tickColor=styles.getPropertyValue('--tick').trim();
+function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
 
+function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
+  const css=getComputedStyle(document.documentElement);
+  const gridColor=css.getPropertyValue('--grid').trim();
+  const axisColor=css.getPropertyValue('--axis').trim();
+  const tickColor=css.getPropertyValue('--tick').trim();
+
+  const grid=svgEl('g',{stroke:gridColor,'stroke-width':1});
   const ticks=yTicks(yMin,yMax,5);
+
   ticks.forEach(t=>{
     const y=scale(t,yMin,yMax,h-p,p);
     grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{
-      x:p-8,y:y+4,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'end'
-    });
-    lbl.textContent=formatY?formatY(t):Math.round(t);
+    const lbl=svgEl('text',{x:p-8,y:y+4,fill:tickColor,'font-size':'12','font-weight':'600','text-anchor':'end'});
+    lbl.textContent=formatY?formatY(t):fmt(t,0);
     grid.appendChild(lbl);
   });
+
   grid.appendChild(svgEl('line',{x1:p,y1:h-p,x2:w-p,y2:h-p,stroke:axisColor,'stroke-width':1.25}));
   grid.appendChild(svgEl('line',{x1:p,y1:p,x2:p,y2:h-p,stroke:axisColor,'stroke-width':1.25}));
   svg.appendChild(grid);
@@ -330,19 +333,28 @@ function smoothPath(points){
   return d;
 }
 
-/* Линия с заливкой и тултипами */
-function lineChart({svgId,data,labels,color,fill,rev=false,formatY}){
+/* Линейный график */
+function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
   const svg=document.getElementById(svgId), w=380,h=240,p=32;
-  const yMin=Math.min(...data)*0.95, yMax=Math.max(...data)*1.05;
-  drawAxes(svg,w,h,p,labels,rev?Math.max(...data):yMin,rev?Math.min(...data):yMax,formatY);
-  const pts=data.map((v,i)=>({x:scale(i,0,data.length-1,p,w-p),y:rev?scale(v,Math.max(...data),Math.min(...data),h-p,p):scale(v,yMin,yMax,h-p,p),v}));
-  const base=rev?scale(Math.max(...data),Math.max(...data),Math.min(...data),h-p,p):scale(yMin,yMin,yMax,h-p,p);
+  const min=(yMin==null)? Math.min(...data)*0.95 : yMin;
+  const max=(yMax==null)? Math.max(...data)*1.05 : yMax;
+
+  drawAxes(svg,w,h,p,labels, rev?Math.max(...data):min, rev?Math.min(...data):max, formatY);
+
+  const pts=data.map((v,i)=>({
+    x:scale(i,0,data.length-1,p,w-p),
+    y:rev?scale(v,Math.max(...data),Math.min(...data),h-p,p):scale(v,min,max,h-p,p),
+    v
+  }));
+
+  const base=rev?scale(Math.max(...data),Math.max(...data),Math.min(...data),h-p,p):scale(min,min,max,h-p,p);
   const area=svgEl('path',{fill:fill,stroke:'none',d:`${smoothPath(pts)} L ${w-p} ${base} L ${p} ${base} Z`}); svg.appendChild(area);
   const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3}); path.style.filter='drop-shadow(0 0 6px rgba(0,0,0,.15))'; svg.appendChild(path);
+
   const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
   pts.forEach((pt,i)=>{
     const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.5,fill:'var(--bg)',stroke:color,'stroke-width':2});
-    c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):pt.v}`;});
+    c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):fmt(pt.v)}`;});
     c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
     c.addEventListener('mouseleave',()=>{tt.style.display='none';});
     svg.appendChild(c);
@@ -355,28 +367,34 @@ function barChart({svgId,data,labels,color,formatY}){
   const yMin=0, yMax=Math.max(...data)*1.1;
   drawAxes(svg,w,h,p,labels,yMin,yMax,formatY);
   const gap=8, cw=(w-2*p)/data.length-gap;
+
   data.forEach((v,i)=>{
     const x=p+i*((w-2*p)/data.length)+gap/2;
     const bh=(v/yMax)*(h-2*p);
     const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
     rect.style.filter='drop-shadow(0 0 6px rgba(0,0,0,.15))';
     svg.appendChild(rect);
-    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:getComputedStyle(document.documentElement).getPropertyValue('--text').trim(),'font-size':'12','font-weight':'700','text-anchor':'middle'}); /* НОВОЕ: контрастное значение */
-    txt.textContent=formatY?formatY(v):v; svg.appendChild(txt);
+
+    const txt=svgEl('text',{
+      x:x+cw/2,y:h-p-bh-6,
+      fill:getComputedStyle(document.documentElement).getPropertyValue('--text').trim(),
+      'font-size':'12','font-weight':'700','text-anchor':'middle'
+    });
+    txt.textContent=formatY?formatY(v):fmt(v,0); svg.appendChild(txt);
   });
 }
 
-/* Данные: последние 6 месяцев (апр–сент 2025) */
+/* ==== Данные (апр–сен 2025) ==== */
 const labels = ['Апр','Май','Июн','Июл','Авг','Сен'];
 const leads  = [280, 360, 450, 620, 820, 1100];   // заявки
 const cpl    = [680, 610, 540, 490, 450, 420];    // ₽
 const roi    = [1.6, 1.9, 2.1, 2.5, 2.9, 3.2];    // x
 const cr     = [8, 10, 12, 14, 16, 18];           // %
 
-barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=>v});
-lineChart({svgId:'cplChart',   data:cpl,   labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>Math.round(v)+' ₽'});
-lineChart({svgId:'roiChart',   data:roi,   labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)',  formatY:v=>v.toFixed(1)+'×'});
-lineChart({svgId:'crChart',    data:cr,    labels, color:'var(--acc)',  fill:'color-mix(in oklab,var(--acc) 30%, transparent)',   formatY:v=>v+' %'});
+/* ==== Рендер графиков ==== */
+barChart({svgId:'leadsChart', data:leads, labels, color:'var(--acc)', formatY:v=>fmt(v,0)});
+lineChart({svgId:'cplChart',   data:cpl,   labels, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
+lineChart({svgId:'roiChart',   data:roi,   labels, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)',  formatY:v=>fmt(v,1)+'×'});
+/* ВАЖНО: фиксируем шкалу 0..20% и выводим целые значения — никаких «0000…» */
+lineChart({svgId:'crChart',    data:cr,    labels, color:'var(--acc)',  fill:'color-mix(in oklab,var(--acc) 30%, transparent)',   yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
 </script>
-</body>
-</html>
