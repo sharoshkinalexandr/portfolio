@@ -321,6 +321,24 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
 @media(max-width:730px){.portfolio-case-layout{grid-template-columns:1fr}.portfolio-case-image{min-height:0;aspect-ratio:16/8}.case-metric{min-width:100px}.impact-item{padding:18px}.portfolio-case-main{padding:20px}}
 @media(max-width:480px){.impact-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.case-metrics{gap:8px}.case-metric strong{font-size:22px}.impact-item strong{font-size:26px}}
 
+
+/* Case-specific visual layouts: real site captures and original process graphics. */
+.portfolio-case-image img{transition:transform .22s ease}
+.portfolio-case-layout.process-image{grid-template-columns:minmax(0,1fr)}
+.portfolio-case-layout.process-image>.portfolio-case-image{
+  width:100%;height:clamp(240px,39vw,460px);min-height:0;aspect-ratio:auto;
+  background:linear-gradient(120deg,#101c32,#142837);cursor:default;
+}
+.portfolio-case-layout.process-image>.portfolio-case-image img{
+  width:100%;height:100%;object-fit:contain;object-position:center;position:relative;
+}
+.portfolio-case-layout.process-image .case-story{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.portfolio-case-layout.process-image .case-story>div{min-width:0}
+@media(max-width:760px){
+ .portfolio-case-layout.process-image .case-story{grid-template-columns:1fr;gap:14px}
+ .portfolio-case-layout.process-image>.portfolio-case-image{height:clamp(220px,53vw,330px)}
+}
+
 </style>
 </head>
 <body>
@@ -479,7 +497,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
  <div class="case-list"><article class="card portfolio-case">
   <div class="portfolio-case-layout has-image">
    <a class="portfolio-case-image" href="https://gzrichtone.com/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
- <img src="img/richtone.png" alt="Иллюстрация проекта: RICHTONE / RAMP Global — привлечение международных B2B-клиентов" data-alt-en="Project image: RICHTONE / RAMP Global — international B2B lead acquisition" loading="lazy" decoding="async" width="1000" height="620">
+ <img src="img/portfolio-case-ramp.webp" onerror="this.onerror=null;this.src='img/richtone.png'" alt="Иллюстрация проекта: RICHTONE / RAMP Global — привлечение международных B2B-клиентов" data-alt-en="Project image: RICHTONE / RAMP Global — international B2B lead acquisition" loading="lazy" decoding="async" width="1000" height="620">
  </a>
    <div class="portfolio-case-main">
     <div class="case-brandline"><img class="case-brand-logo" src="img/richtone-logo.png" alt="RICHTONE / RAMP Global" loading="lazy"><span class="case-kind" data-i18n="project_richtone_category">Performance Marketing / B2B</span></div>
@@ -498,7 +516,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
 <article class="card portfolio-case">
   <div class="portfolio-case-layout has-image">
    <a class="portfolio-case-image" href="https://h-b.group/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
- <img src="img/karmy.png" alt="Иллюстрация проекта: Human&amp;Business — программа лояльности и личные кабинеты" data-alt-en="Project image: Human&amp;Business — loyalty program &amp; customer portals" loading="lazy" decoding="async" width="1000" height="620">
+ <img src="img/portfolio-case-humanbusiness.webp" onerror="this.onerror=null;this.src='img/karmy.png'" alt="Иллюстрация проекта: Human&amp;Business — программа лояльности и личные кабинеты" data-alt-en="Project image: Human&amp;Business — loyalty program &amp; customer portals" loading="lazy" decoding="async" width="1000" height="620">
  </a>
    <div class="portfolio-case-main">
     <div class="case-brandline"><img class="case-brand-logo" src="img/hb-logo.png" alt="Human&amp;Business" loading="lazy"><span class="case-kind" data-i18n="project_hb_category">Программа лояльности / маркетинг</span></div>
@@ -517,7 +535,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
 <article class="card portfolio-case">
   <div class="portfolio-case-layout has-image">
    <a class="portfolio-case-image" href="https://mari-russia.ru/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
- <img src="img/mariroberto.png" alt="Иллюстрация проекта: ООО «БТК» — маркетинговая стратегия для направления MariRoberto" data-alt-en="Project image: BTK — marketing strategy for the MariRoberto furniture project" loading="lazy" decoding="async" width="1000" height="620">
+ <img src="img/portfolio-case-mariroberto.webp" onerror="this.onerror=null;this.src='img/mariroberto.png'" alt="Иллюстрация проекта: ООО «БТК» — маркетинговая стратегия для направления MariRoberto" data-alt-en="Project image: BTK — marketing strategy for the MariRoberto furniture project" loading="lazy" decoding="async" width="1000" height="620">
  </a>
    <div class="portfolio-case-main">
     <div class="case-brandline"><img class="case-brand-logo" src="img/btk-logo.png" alt="ООО «БТК»" loading="lazy"><span class="case-kind" data-i18n="project_btk_category">Исследования рынка / стратегия</span></div>
@@ -536,7 +554,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
 <article class="card portfolio-case">
   <div class="portfolio-case-layout has-image">
    <a class="portfolio-case-image" href="https://shop-idea.ru/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
- <img src="img/stroideya.png" alt="Иллюстрация проекта: ГК «М131» — анализ рынка и спроса в рознице" data-alt-en="Project image: M131 Group — retail market and demand analysis" loading="lazy" decoding="async" width="1000" height="620">
+ <img src="img/portfolio-case-stroyideya.webp" onerror="this.onerror=null;this.src='img/stroideya.png'" alt="Иллюстрация проекта: ГК «М131» — анализ рынка и спроса в рознице" data-alt-en="Project image: M131 Group — retail market and demand analysis" loading="lazy" decoding="async" width="1000" height="620">
  </a>
    <div class="portfolio-case-main">
     <div class="case-brandline"><img class="case-brand-logo" src="img/m131-logo.png" alt="ГК «М131»" loading="lazy"><span class="case-kind" data-i18n="project_m131_category">Ритейл / исследования</span></div>
@@ -553,8 +571,11 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
   </div>
  </article>
 <article class="card portfolio-case">
-  <div class="portfolio-case-layout no-image">
+  <div class="portfolio-case-layout has-image process-image">
    
+   <div class="portfolio-case-image">
+     <img src="img/case-technical-selection.svg" alt="Иллюстрация процесса подбора двигателя: применение, модель, номер детали и проверка поставщика" data-alt-en="Illustration of engine selection, application checks, part number matching and supplier verification" loading="lazy" decoding="async" width="1200" height="750">
+   </div>
    <div class="portfolio-case-main">
     <div class="case-brandline"><span class="case-kind" data-i18n="project_b2b_category">Международные продажи / технические продукты</span></div>
     <h3 data-i18n="project_b2b_title">RAMP Global — квалификация международного технического B2B-запроса</h3>
@@ -570,8 +591,11 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
   </div>
  </article>
 <article class="card portfolio-case">
-  <div class="portfolio-case-layout no-image">
+  <div class="portfolio-case-layout has-image process-image">
    
+   <div class="portfolio-case-image">
+     <img src="img/case-crm-normalization.svg" alt="Иллюстрация работы с CRM-каталогом: устранение дублей, проверка данных и сохранность действующих сделок" data-alt-en="Illustration of CRM catalog normalization, duplicate review and preservation of active deals" loading="lazy" decoding="async" width="1200" height="750">
+   </div>
    <div class="portfolio-case-main">
     <div class="case-brandline"><span class="case-kind" data-i18n="project_crm_category">CRM / коммерческие операции</span></div>
     <h3 data-i18n="project_crm_title">RAMP Global — нормализация каталога и защита действующих сделок</h3>
@@ -587,8 +611,11 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
   </div>
  </article>
 <article class="card portfolio-case">
-  <div class="portfolio-case-layout no-image">
+  <div class="portfolio-case-layout has-image process-image">
    
+   <div class="portfolio-case-image">
+     <img src="img/case-marketplace-quality.svg" alt="Иллюстрация контроля качества карточек товаров на международном маркетплейсе" data-alt-en="Illustration of quality review for international machinery marketplace product listings" loading="lazy" decoding="async" width="1200" height="750">
+   </div>
    <div class="portfolio-case-main">
     <div class="case-brandline"><span class="case-kind" data-i18n="project_marketplace_category">B2B Marketplace / Data Quality</span></div>
     <h3 data-i18n="project_marketplace_title">RAMP Global — подготовка и контроль качества каталога Machineryline</h3>
@@ -611,7 +638,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
     <div class="site-grid">
       <article class="card site-card">
         <a class="site-image" href="https://gzrichtone.com/" target="_blank" rel="noopener" aria-label="Открыть сайт RAMP Global" data-aria-en="Open RAMP Global website">
-          <img src="img/richtone.png" alt="Скриншот сайта, связанного с проектом RAMP Global" data-alt-en="Website screenshot related to RAMP Global" loading="lazy" decoding="async" width="1200" height="750">
+          <img src="img/portfolio-case-ramp.webp" onerror="this.onerror=null;this.src='img/richtone.png'" alt="Скриншот сайта, связанного с проектом RAMP Global" data-alt-en="Website screenshot related to RAMP Global" loading="lazy" decoding="async" width="1200" height="750">
         </a>
         <div class="site-info">
           <div class="site-heading"><h3>RAMP Global</h3><span class="chip">B2B</span></div>
@@ -621,7 +648,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
       </article>
       <article class="card site-card">
         <a class="site-image" href="https://h-b.group/" target="_blank" rel="noopener" aria-label="Открыть сайт Human and Business" data-aria-en="Open Human and Business website">
-          <img src="img/karmy.png" alt="Исторический скриншот проекта из портфеля Human and Business" data-alt-en="Historical screenshot of a project in the Human and Business portfolio" loading="lazy" decoding="async" width="1200" height="750">
+          <img src="img/portfolio-case-humanbusiness.webp" onerror="this.onerror=null;this.src='img/karmy.png'" alt="Исторический скриншот проекта из портфеля Human and Business" data-alt-en="Historical screenshot of a project in the Human and Business portfolio" loading="lazy" decoding="async" width="1200" height="750">
         </a>
         <div class="site-info">
           <div class="site-heading"><h3>Human&amp;Business</h3><img class="site-logo" src="img/hb-logo.png" width="100" height="36" alt="Логотип Human and Business" data-alt-en="Human and Business logo" loading="lazy"></div>
@@ -631,7 +658,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
       </article>
       <article class="card site-card">
         <a class="site-image" href="https://mari-russia.ru/" target="_blank" rel="noopener" aria-label="Открыть сайт MariRoberto" data-aria-en="Open MariRoberto website">
-          <img src="img/mariroberto.png" alt="Иллюстрация маркетингового проекта БТК — Mari Roberto" data-alt-en="BTK marketing project visual — Mari Roberto" loading="lazy" decoding="async" width="1200" height="750">
+          <img src="img/portfolio-case-mariroberto.webp" onerror="this.onerror=null;this.src='img/mariroberto.png'" alt="Иллюстрация маркетингового проекта БТК — Mari Roberto" data-alt-en="BTK marketing project visual — Mari Roberto" loading="lazy" decoding="async" width="1200" height="750">
         </a>
         <div class="site-info">
           <div class="site-heading"><h3>ООО «БТК» · MariRoberto</h3><img class="site-logo" src="img/btk-logo.png" width="100" height="36" alt="Логотип БТК" data-alt-en="BTK logo" loading="lazy"></div>
@@ -642,7 +669,7 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
       </article>
       <article class="card site-card">
         <a class="site-image" href="https://shop-idea.ru/" target="_blank" rel="noopener" aria-label="Открыть сайт Стройидея" data-aria-en="Open Stroyideya website">
-          <img src="img/stroideya.png" alt="Скриншот сайта Стройидея, связанного с проектами М131" data-alt-en="Screenshot of the Stroyideya website related to M131" loading="lazy" decoding="async" width="1200" height="750">
+          <img src="img/portfolio-case-stroyideya.webp" onerror="this.onerror=null;this.src='img/stroideya.png'" alt="Скриншот сайта Стройидея, связанного с проектами М131" data-alt-en="Screenshot of the Stroyideya website related to M131" loading="lazy" decoding="async" width="1200" height="750">
         </a>
         <div class="site-info">
           <div class="site-heading"><h3>Группа компаний «М131»</h3><img class="site-logo" src="img/m131-logo.png" width="100" height="36" alt="Логотип М131" data-alt-en="M131 logo" loading="lazy"></div>
