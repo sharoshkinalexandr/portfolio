@@ -61,3 +61,5 @@ jobs:
           git -c http.extraheader="$HEADER" push origin HEAD:refs/heads/p0-privacy-hotfix-2026-10-23
 
 # P0 screenshot iteration 2: dismiss popups and select Human&Business brand section.
+
+# P0 screenshot iteration 3: company dialog and product-brand crop.
