@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru" data-theme="dark">
 <head>
+<script>document.documentElement.classList.add('i18n-pending');</script>
 <meta charset="utf-8" />
   <link rel="icon" media="(prefers-color-scheme: light)" type="image/svg+xml"
 href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='1' y2='0'%3E%3Cstop stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3C/svg%3E">
@@ -8,22 +9,25 @@ href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 
 href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='1' y2='0'%3E%3Cstop stop-color='%2360a5fa'/%3E%3Cstop offset='1' stop-color='%236ee7b7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3C/svg%3E">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Шарошкин Александр Сергеевич — Маркетолог-перформанс</title>
-<meta name="description" content="Перформанс-маркетинг, лиды, сквозная аналитика, CRM. Кейсы: RICHTONE, Human&Business, БТК, М131." />
+<title>Alexandr Sergeevich Sharoshkin — B2B Sales &amp; Marketing</title>
+<meta name="description" content="International B2B sales, business development, marketing, CRM and commercial project management.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Шарошкин Александр Сергеевич — маркетолог">
-  <meta property="og:description" content="Перформанс-маркетинг, сквозная аналитика, автоматизация. Кейсы и реальные метрики.">
+  <meta property="og:title" content="Alexandr Sergeevich Sharoshkin — B2B Sales &amp; Marketing">
+<meta property="og:image" content="https://sharoshkinalexandr.github.io/portfolio/img/og-alexandr.jpg">
+<meta property="og:image:width" content="445">
+<meta property="og:image:height" content="413">
+  <meta property="og:description" content="International B2B sales, business development, marketing, CRM and commercial project management.">
   <meta property="og:url" content="https://sharoshkinalexandr.github.io/portfolio/">
-  <meta property="og:image" content="https://sharoshkinalexandr.github.io/portfolio/img/og-alexandr.jpg">
-  <meta property="og:image:width" content="445">
-  <meta property="og:image:height" content="413">
+
+
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Шарошкин Александр Сергеевич — маркетолог">
-  <meta name="twitter:description" content="Перформанс-маркетинг, сквозная аналитика, автоматизация. Кейсы и метрики.">
-  <meta name="twitter:image" content="https://sharoshkinalexandr.github.io/portfolio/img/og-alexandr.jpg">
+  <meta name="twitter:title" content="Alexandr Sergeevich Sharoshkin — B2B Sales &amp; Marketing">
+<meta name="twitter:image" content="https://sharoshkinalexandr.github.io/portfolio/img/og-alexandr.jpg">
+  <meta name="twitter:description" content="International B2B sales, business development, marketing, CRM and commercial project management.">
+
 <style>
 /* ================== ТЕМЫ ================== */
 :root{
@@ -140,7 +144,8 @@ body.menu-open .scrim{opacity:1; pointer-events:auto}
 /* ================== КОНТЕНТ ================== */
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .6s ease}
 .reveal{transform:none!important;opacity:1!important}
-.section{padding:34px 0}
+.section{padding:34px 0;scroll-margin-top:var(--header-h)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
 
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:48px 0}
 .lead{color:var(--muted);margin:0 0 18px}
@@ -185,13 +190,6 @@ a:has(> img){position:relative;display:inline-block;border-radius:12px;overflow:
 a:has(> img)::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.18;transition:opacity .25s ease}
 a:has(> img):hover::after{opacity:.34}
 
-/* Графики */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
-.chart svg{overflow:visible}
-.chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
-.tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
-
 /* ================== АДАПТИВ ================== */
 @media (max-width:1024px){
   .wrap{padding:20px}
@@ -221,26 +219,163 @@ a:has(> img):hover::after{opacity:.34}
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important; transition:none !important}
 }
+
+/* P0 design refinement — сохраняем исходную визуальную систему */
+.lang-switch{display:flex;align-items:center;gap:2px;background:var(--btn-bg);padding:3px;border-radius:11px;border:1px solid var(--border);flex-shrink:0}
+.lang-btn{appearance:none;border:0;border-radius:8px;padding:7px 9px;background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:700;line-height:1.2;cursor:pointer}
+.lang-btn.active{background:var(--grad);color:#0b1022}
+.lang-btn:hover:not(.active){color:var(--text);background:var(--chip-bg)}
+.eyebrow{display:inline-block;color:var(--acc);font-size:12px;font-weight:750;letter-spacing:.11em;text-transform:uppercase;margin-bottom:12px}
+.hero .h1{font-size:clamp(30px,5vw,51px);line-height:1.08}
+.hero-role{font-size:clamp(17px,2vw,21px);font-weight:700;margin:4px 0 12px;color:var(--text)}
+.hero-main{display:flex;flex-direction:column;justify-content:center}
+.hero-secondary{display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+.hero-photo{width:100%;height:auto;max-height:270px;object-fit:cover;object-position:center 28%;border-radius:12px}
+.hero-note{border-top:1px solid var(--border);padding-top:14px;color:var(--muted);font-size:14px}
+.section-intro{color:var(--muted);max-width:74ch;margin:-2px 0 22px}
+.about-copy p{margin:0 0 14px}
+.about-copy p:last-child{margin-bottom:0}
+.expertise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.expertise-card h3{margin:0 0 12px;color:var(--text)}
+.expertise-card p{color:var(--muted);margin:0}
+.experience-list{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.role-card{height:100%}
+.role-card h3{font-size:20px;margin:0 0 4px}
+.role-card .role-title{font-weight:700;margin:0 0 4px}
+.role-card .role-period{font-size:13px;color:var(--muted);margin:0 0 16px}
+.role-card ul{padding-left:20px;margin:12px 0 0}
+.role-card li{margin-bottom:8px}
+.case-list{display:grid;grid-template-columns:1fr;gap:16px}
+.case-card h3{margin:0 0 14px}
+.case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.case-item{border-left:2px solid var(--acc2);padding-left:14px}
+.case-item strong{color:var(--text);display:block;margin-bottom:6px}
+.case-item p{color:var(--muted);margin:0}
+.site-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.site-card{padding:0;overflow:hidden}
+.site-image{display:block;position:relative;background:rgba(0,0,0,.15);aspect-ratio:16/10;overflow:hidden}
+.site-image img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .25s ease}
+.site-image:hover img{transform:scale(1.025)}
+.site-info{padding:18px 22px 22px}
+.site-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.site-heading h3{margin:0}
+.site-logo{max-width:110px;width:auto;height:36px;object-fit:contain}
+.site-info p{color:var(--muted);margin:0 0 12px}
+.site-actions{display:flex;gap:14px;flex-wrap:wrap}
+.site-actions a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.site-disclaimer{font-size:13px;color:var(--muted);margin-top:18px}
+.contact-card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.contact-card p{margin:0}
+.site-footer{color:var(--muted);font-size:13px;padding:18px 0 32px;border-top:1px solid var(--border)}
+@media(max-width:1000px){.nav{gap:8px}nav.primary{gap:3px}nav.primary a{padding:7px;font-size:13px}}
+@media(max-width:768px){.expertise-grid,.site-grid,.experience-list{grid-template-columns:1fr}.case-grid{grid-template-columns:1fr}.hero-photo{max-height:320px}.hero{gap:18px}}
+@media(max-width:520px){.brand strong{display:none}.lang-btn{padding:7px 8px}.hero .h1{font-size:clamp(28px,8vw,38px)}.site-info{padding:16px}.card{padding:20px}.site-card{padding:0}}
+
+
+/* Contacts — original social channels restored with clear, accessible links. */
+.contact-intro{color:var(--muted);margin:-4px 0 20px;max-width:72ch}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+a.contact-tile{display:flex;align-items:center;gap:16px;color:var(--text);min-height:106px;text-decoration:none;padding:20px 22px;border:1px solid var(--border)}
+a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:translateY(-2px);color:var(--text)}
+.contact-icon{flex:0 0 auto;width:46px;height:46px;display:grid;place-items:center;border-radius:13px;color:var(--acc2);background:var(--chip-bg)}
+.contact-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.contact-name{font-size:18px;font-weight:750;line-height:1.35}
+.contact-detail{color:var(--muted);font-size:13px;overflow-wrap:anywhere;margin-top:2px}
+.contact-arrow{margin-left:auto;align-self:center;color:var(--acc2);font-size:18px}
+.contact-subnote{font-size:13px;color:var(--muted);margin:16px 0 0}
+@media(max-width:650px){.contact-grid{grid-template-columns:1fr}.contact-tile{min-height:82px}}
+
+.i18n-pending [data-i18n]{visibility:hidden}
+
+/* Validated portfolio achievements — image-led case studies */
+.impact-section{padding:20px 0 32px;scroll-margin-top:var(--header-h)}
+.impact-section h2{margin-bottom:16px}
+.impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.impact-item{padding:22px 18px;display:flex;flex-direction:column;gap:6px}
+.impact-item strong{font-size:clamp(25px,3.3vw,34px);line-height:1.1;letter-spacing:-.03em;color:var(--acc)}
+.impact-item span{font-size:13px;color:var(--muted);line-height:1.5}
+.impact-note{font-size:13px;color:var(--muted);margin:12px 0 0}
+.case-list{display:grid;grid-template-columns:1fr;gap:20px}
+.portfolio-case{padding:0;overflow:hidden;min-width:0}
+.portfolio-case-layout{display:grid;grid-template-columns:minmax(230px,.35fr) minmax(0,.65fr);align-items:stretch}
+.portfolio-case-layout.no-image{grid-template-columns:1fr}
+.portfolio-case-image{position:relative;display:flex;min-height:290px;overflow:hidden;background:var(--btn-bg);color:var(--text)}
+.portfolio-case-image img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .22s ease}
+.portfolio-case-image:hover img{transform:scale(1.03)}
+
+.portfolio-case-main{padding:24px 26px 26px;min-width:0}
+.case-brandline{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.case-brand-logo{height:26px;max-width:112px;width:auto;object-fit:contain;border-radius:4px}
+.case-kind{display:inline-flex;border-radius:999px;padding:4px 10px;background:var(--chip-bg);font-size:12px;color:var(--acc2);font-weight:700}
+.portfolio-case h3{font-size:clamp(19px,2.3vw,23px);line-height:1.3;margin:0 0 10px}
+.case-summary{color:var(--muted);margin:0 0 15px;line-height:1.55}
+.case-metrics{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 18px}
+.case-metric{display:flex;flex-direction:column;gap:3px;padding:10px 13px;border-radius:10px;background:var(--chip-bg);min-width:104px}
+.case-metric strong{color:var(--acc);font-size:24px;line-height:1.1}
+.case-metric span{color:var(--muted);font-size:12px;line-height:1.3}
+.case-story{display:grid;grid-template-columns:1fr;gap:12px;border-top:1px solid var(--border);padding-top:16px}
+.case-story h4{font-size:13px;letter-spacing:.015em;color:var(--text);margin:0 0 3px}
+.case-story p{color:var(--muted);font-size:14px;margin:0;line-height:1.55}
+.case-site-link{display:inline-flex;align-items:center;margin-top:18px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:980px){.portfolio-case-layout{grid-template-columns:38% 62%}.portfolio-case-main{padding:22px}.impact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:730px){.portfolio-case-layout{grid-template-columns:1fr}.portfolio-case-image{min-height:0;aspect-ratio:16/8}.case-metric{min-width:100px}.impact-item{padding:18px}.portfolio-case-main{padding:20px}}
+@media(max-width:480px){.impact-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.case-metrics{gap:8px}.case-metric strong{font-size:22px}.impact-item strong{font-size:26px}}
+
+
+/* Case-specific visual layouts: real site captures and original process graphics. */
+.portfolio-case-image img{transition:transform .22s ease}
+.portfolio-case-layout.process-image{grid-template-columns:minmax(0,1fr)}
+.portfolio-case-layout.process-image>.portfolio-case-image{
+  width:100%;height:clamp(240px,39vw,460px);min-height:0;aspect-ratio:auto;
+  background:linear-gradient(120deg,#101c32,#142837);cursor:default;
+}
+.portfolio-case-layout.process-image>.portfolio-case-image img{
+  width:100%;height:100%;object-fit:contain;object-position:center;position:relative;
+}
+.portfolio-case-layout.process-image .case-story{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.portfolio-case-layout.process-image .case-story>div{min-width:0}
+@media(max-width:760px){
+ .portfolio-case-layout.process-image .case-story{grid-template-columns:1fr;gap:14px}
+ .portfolio-case-layout.process-image>.portfolio-case-image{height:clamp(220px,53vw,330px)}
+}
+
+
+/* Crop the current RAMP homepage capture in the site gallery to focus on
+   the original heavy-equipment hero rather than the geo-selector overlay. */
+.site-image img[src$="portfolio-case-ramp.webp"]{
+  width:148%;
+  max-width:none;
+  object-fit:cover;
+  object-position:left center;
+}
+.portfolio-case-layout:not(.process-image) .portfolio-case-image img[src$="portfolio-case-ramp.webp"]{
+  object-position:43% center;
+}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <button class="menu" id="menuToggle" aria-label="Меню" aria-expanded="false">
+      <button class="menu" id="menuToggle" aria-label="Меню" aria-controls="mobilePanel" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <div class="logo" aria-hidden="true"></div>
-      <strong>Шарошкин Александр Сергеевич — маркетолог</strong>
+      <strong data-i18n="brand">Шарошкин Александр Сергеевич</strong>
     </div>
-    <nav class="primary" id="primaryNav">
-      <a href="#about">Обо мне</a>
-      <a href="#cases">Кейсы</a>
-      <a href="#charts">Графики</a>
-      <a href="#projects">Проекты</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">
+    <nav class="primary" id="primaryNav" aria-label="Основная навигация">
+        <a href="#about" data-i18n="navAbout">Обо мне</a>
+        <a href="#expertise" data-i18n="navExpertise">Экспертиза</a>
+        <a href="#experience" data-i18n="navExperience">Опыт</a>
+        <a href="#cases" data-i18n="navCases">Кейсы</a>
+        <a href="#sites" data-i18n="navSites">Сайты</a>
+        <a href="#contacts" data-i18n="navContact">Контакты</a>
+      </nav>
+    <div class="lang-switch" role="group" aria-label="Язык / Language">
+        <button type="button" class="lang-btn" data-language="ru" aria-pressed="false" aria-label="Русский язык">RU</button>
+        <button type="button" class="lang-btn active" data-language="en" aria-pressed="true" aria-label="English language">EN</button>
+      </div>
+      <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">
       <svg id="iconSun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4 12H2m20 0h-2M5 5 3.6 3.6M20.4 20.4 19 19M19 5l1.4-1.4M3.6 20.4 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       <svg id="iconMoon" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/></svg>
     </button>
@@ -251,161 +386,344 @@ a:has(> img):hover::after{opacity:.34}
 <div id="scrim" class="scrim"></div>
 
 <!-- Мобильная панель меню -->
-<nav class="mobile-panel" id="mobilePanel">
-  <a href="#about" onclick="closeMenu()">Обо мне</a>
-  <a href="#cases" onclick="closeMenu()">Кейсы</a>
-  <a href="#charts" onclick="closeMenu()">Графики</a>
-  <a href="#projects" onclick="closeMenu()">Проекты</a>
-  <a href="#contacts" onclick="closeMenu()">Контакты</a>
+<nav class="mobile-panel" id="mobilePanel" aria-label="Мобильная навигация">
+  <a href="#about" onclick="closeMenu()" data-i18n="navAbout">Обо мне</a>
+  <a href="#expertise" onclick="closeMenu()" data-i18n="navExpertise">Экспертиза</a>
+  <a href="#experience" onclick="closeMenu()" data-i18n="navExperience">Опыт</a>
+  <a href="#cases" onclick="closeMenu()" data-i18n="navCases">Кейсы</a>
+  <a href="#sites" onclick="closeMenu()" data-i18n="navSites">Сайты</a>
+  <a href="#contacts" onclick="closeMenu()" data-i18n="navContact">Контакты</a>
 </nav>
 
 <main class="wrap">
-  <!-- HERO -->
-  <section class="hero">
-    <div class="card">
-      <h1 class="h1">Запускаю рекламу, которая приводит <span style="background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent">целевых клиентов</span></h1>
-      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. США, Канада, MENA, Восточная Европа. Результат: рост лидов, снижение CPL, прибыль по каналам.</p>
-      <div class="chips">
-        <span class="chip">Google / *Meta / Яндекс</span>
-        <span class="chip">Сквозная аналитика</span>
-        <span class="chip">CRM и автоматизация</span>
-        <span class="chip">RU / EN / 中文</span>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="card hero-main">
+      <span class="eyebrow" data-i18n="heroTag">Международные B2B-продажи · Маркетинг · Коммерческие проекты</span>
+      <h1 class="h1" id="hero-title" data-i18n="fullName">Шарошкин Александр Сергеевич</h1>
+      <p class="hero-role" data-i18n="heroRole">B2B Sales &amp; Marketing · Business Development · CRM &amp; Automation</p>
+      <p class="lead" data-i18n="heroLead">Соединяю международные продажи, маркетинг и коммерческие процессы: от первого обращения клиента и подбора технического решения до CRM, координации команд и развития цифровых инструментов.</p>
+      <div class="chips" aria-label="Направления деятельности">
+        <span class="chip">B2B Sales</span>
+        <span class="chip">Business Development</span>
+        <span class="chip">Marketing Operations</span>
+        <span class="chip">CRM &amp; Automation</span>
       </div>
       <div class="btns">
-        <a class="btn" href="#cases">Смотреть кейсы</a>
-        <a class="btn" href="#contacts">Обсудить проект</a>
+        <a class="btn" href="#cases" data-i18n="heroBtnCases">Смотреть кейсы</a>
+        <a class="btn" href="#contacts" data-i18n="heroBtnContact">Связаться</a>
       </div>
     </div>
-    <div class="card">
-      <h3>Коротко</h3>
-      <ul>
-        <li>RICHTONE — CPL ↓ <strong>35%</strong>, <strong>1150+</strong> заявок за 3 мес., ROI 300%+.</li>
-        <li>Human&Business — бонусная система и ЛК: активность +45%, повторы +30%.</li>
-        <li>БТК — стратегия и медиапланы: рост спроса +22% за квартал.</li>
-      </ul>
-      <p class="muted">Связываю рекламу, сайт и CRM, повышаю долю «деловых» лидов и маржу.</p>
-    </div>
-  </section>
-
-  <!-- ОБО МНЕ -->
-  <section id="about" class="section">
-    <h2>Обо мне</h2>
-    <div class="card about">
-      <img class="avatar" src="img/photo.jpg" alt="Шарошкин Александр Сергеевич" />
+    <div class="card hero-secondary">
+      <img class="hero-photo" src="img/photo.jpg" width="760" height="760" alt="Фотография Александра Сергеевича Шарошкина" data-alt-en="Portrait of Alexandr Sergeevich Sharoshkin" decoding="async">
       <div>
-        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Тестирую объявления и страницы, распределяю бюджеты по городам и времени.</p>
-        <p>Собираю данные из рекламы, сайта и CRM в единый отчёт, считаю CPL/CAC/ROI, отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» лидов (формы, автоответы, квалификация), связываю письма/мессенджеры с рекламой, автоматизирую рутину.</p>
+        <span class="eyebrow" data-i18n="heroAsideTag">Профессиональный профиль</span>
+        <h2 data-i18n="heroAsideTitle">От маркетинга к развитию B2B-бизнеса</h2>
+        <p class="lead" data-i18n="heroAsideText">Опыт в международных запросах на промышленное оборудование, работе с поставщиками, управлении маркетинговыми проектами и совершенствовании коммерческих процессов.</p>
       </div>
+      <p class="hero-note" data-i18n="heroRemote">Открыт к полностью удалённой работе: Россия, Беларусь, СНГ и международные компании.</p>
     </div>
   </section>
 
-  <!-- КЕЙСЫ -->
-  <section id="cases" class="section">
-    <h2>Кейсы (раскрываются по клику)</h2>
+  <section class="impact-section" aria-labelledby="impact-title">
+ <h2 id="impact-title" data-i18n="resultsLabel">Результаты проектов</h2>
+ <div class="impact-grid">
+  <div class="card impact-item"><strong>−35%</strong><span data-i18n="result1">Снижение стоимости лида в проекте RICHTONE</span></div>
+  <div class="card impact-item"><strong>1 150+</strong><span data-i18n="result2">Заявок за 3 месяца в RICHTONE</span></div>
+  <div class="card impact-item"><strong>+45%</strong><span data-i18n="result3">Рост активности в Human&amp;Business</span></div>
+  <div class="card impact-item"><strong>+22%</strong><span data-i18n="result4">Рост спроса за квартал в БТК</span></div>
+ </div>
+ <p class="impact-note" data-i18n="resultsCaption">Показатели отражают результаты указанных проектов и относятся к разным периодам.</p>
+</section>
 
-    <details class="card">
-      <summary><img src="img/richtone-logo.png" alt="RICHTONE"> RICHTONE — международные рынки</summary>
-      <div class="case-body">
-        <p><strong>Цель:</strong> больше заявок и ниже CPL в США, Канаде, MENA, Восточной Европе.</p>
-        <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B-тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, формы, квалификация лидов, UTM/скрипты.</p>
-        <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., лид→сделка до 18%, ROMI 300%+.</p>
-        <div class="shot"><a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="Сайт RICHTONE"></a></div>
-      </div>
-    </details>
-
-    <details class="card">
-      <summary><img src="img/hb-logo.png" alt="Human&Business"> Human&Business — бонусная система</summary>
-      <div class="case-body">
-        <p><strong>Цель:</strong> рост удержания и повторных покупок.</p>
-        <p><strong>Действия:</strong> координация SMM/трейд/дизайна/перфоманса, постановка задач и контроль подрядчиков, медиапланы, креативы, запуск ЛК.</p>
-        <p><strong>Результат:</strong> активность +45% за 2 мес., повторы +30%.</p>
-        <div class="shot"><a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a></div>
-      </div>
-    </details>
-
-    <details class="card">
-      <summary><img src="img/btk-logo.png" alt="БТК"> БТК — стратегия и исследования</summary>
-      <div class="case-body">
-        <p><strong>Действия:</strong> конкурентный анализ, фокус-группы, позиционирование, стратегия и медиапланы, PR.</p>
-        <p><strong>Итог:</strong> 3 прибыльных направления, рост спроса +22%/кв.</p>
-        <div class="shot"><a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга"></a></div>
-      </div>
-    </details>
-
-    <details class="card">
-      <summary><img src="img/m131-logo.png" alt="М131"> ГК «М131» — розница и спрос</summary>
-      <div class="case-body">
-        <p><strong>Действия:</strong> отчётность по акциям, анализ эффективности, рекомендации по росту спроса, медиапланы, фокус-группы, мониторинг конкурентов.</p>
-        <p><strong>Итог:</strong> устойчивый рост обращений и узнаваемости.</p>
-        <div class="shot"><a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131"></a></div>
-      </div>
-    </details>
-  </section>
-
-  <!-- ГРАФИКИ -->
-  <section id="charts" class="section">
-    <h2>Графики (реалистичные метрики за 6 месяцев)</h2>
-    <div class="grid-2">
-      <div class="card chart">
-        <h3>Заявки по месяцам</h3>
-        <div class="tooltip" id="tt-leads"></div>
-        <svg id="leadsChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-      <div class="card chart">
-        <h3>CPL по месяцам (руб.)</h3>
-        <div class="tooltip" id="tt-cpl"></div>
-        <svg id="cplChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-      <div class="card chart">
-        <h3>ROI (x)</h3>
-        <div class="tooltip" id="tt-roi"></div>
-        <svg id="roiChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-      <div class="card chart">
-        <h3>Конверсия лид→сделка (%)</h3>
-        <div class="tooltip" id="tt-cr"></div>
-        <svg id="crChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
+<section id="about" class="section" aria-labelledby="about-title">
+    <h2 id="about-title" data-i18n="aboutTitle">Обо мне</h2>
+    <div class="card about-copy">
+      <p data-i18n="aboutP1">Мой профессиональный опыт находится на стыке B2B-продаж, развития бизнеса, маркетинга и управления проектами. Мне интересны сложные продукты и задачи, где необходимо понять потребности клиента, сопоставить технические и коммерческие условия и организовать последовательную работу от запроса до предложения.</p>
+      <p data-i18n="aboutP2">В RAMP Global работаю с международными обращениями по двигателям, гидравлике и комплектующим для промышленной и специальной техники. Уточняю модели, артикулы, серийные данные и комплектацию; взаимодействую с поставщиками и коллегами по вопросам цены, наличия, гарантий и логистики. Веду задачи, связанные с цифровыми каналами привлечения, CRM и качеством товарных данных.</p>
+      <p data-i18n="aboutP3">Ранее руководил проектной группой, координировал маркетинговые подразделения и подрядчиков, участвовал в разработке программы лояльности и пользовательских кабинетов. Также занимался исследованием рынков, анализом конкурентов, медиапланированием и оценкой новых направлений бизнеса. Считаю ценным не просто внедрить инструмент, а сделать коммерческий процесс понятным и управляемым.</p>
     </div>
   </section>
 
-  <!-- ПРОЕКТЫ -->
-  <section id="projects" class="section">
-    <h2>Проекты и сайты</h2>
-    <div class="logos">
-      <a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="RICHTONE сайт"></a>
-      <a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a>
-      <a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto / БТК"></a>
-      <a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131"></a>
+  <section id="expertise" class="section" aria-labelledby="expertise-title">
+    <h2 id="expertise-title" data-i18n="expertiseTitle">Ключевая экспертиза</h2>
+    <p class="section-intro" data-i18n="expertiseIntro">Четыре направления, в которых объединяю коммерческие задачи, аналитику и управление исполнением.</p>
+    <div class="expertise-grid">
+      <article class="card expertise-card"><h3 data-i18n="exp1Title">Международные B2B-продажи</h3><p data-i18n="exp1Text">Квалификация запросов, сопоставление моделей и артикулов, работа с поставщиками, коммерческие предложения, follow-up и международная логистика.</p></article>
+      <article class="card expertise-card"><h3 data-i18n="exp2Title">Маркетинг и развитие бизнеса</h3><p data-i18n="exp2Text">Исследование рынков, конкурентов и клиентских сегментов, Google Ads, входящие лиды, маркетинговые материалы и развитие B2B-каналов.</p></article>
+      <article class="card expertise-card"><h3 data-i18n="exp3Title">CRM и коммерческие операции</h3><p data-i18n="exp3Text">Bitrix24, логика воронки, качество товарных данных, связь маркетинговых источников с продажами, постановка бизнес-требований и приёмка изменений.</p></article>
+      <article class="card expertise-card"><h3 data-i18n="exp4Title">Управление проектами</h3><p data-i18n="exp4Text">Координация специалистов и подрядчиков, задачи и сроки, согласование этапов, бюджетные расчёты, контроль рисков и результатов.</p></article>
     </div>
   </section>
 
-  <!-- КОНТАКТЫ -->
-  <section id="contacts" class="section">
-    <h2>Контакты</h2>
-    <div class="card">
-      <p>Почта: <a href="mailto:sharoshkin.akexandr@gmail.com">sharoshkin.akexandr@gmail.com</a></p>
-      <div class="btns" style="margin-top:10px">
-        <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.6 15.6l-.3 4.3c.4 0 .6-.2.9-.4l2.1-2 4.3 3.1c.8.4 1.4.2 1.6-.7L22.9 4c.3-1-.4-1.5-1.2-1.2L2.2 10.1c-1 .4-1 1 0 1.3l4.4 1.3L18.9 6c.5-.3.9-.1.5.2l-9.8 9.4z"/></svg>
-          Telegram
+  <section id="experience" class="section" aria-labelledby="experience-title">
+    <h2 id="experience-title" data-i18n="experienceTitle">Опыт работы</h2>
+    <p class="section-intro" data-i18n="experienceIntro">Должности сохранены по профессиональной истории; межфункциональные обязанности описаны отдельно от официального названия роли.</p>
+    <div class="experience-list">
+      <article class="card role-card">
+        <h3>RAMP Global</h3>
+        <p class="role-title" data-i18n="job1Role">Руководитель отдела маркетинга и рекламы</p>
+        <p class="role-period" data-i18n="job1Date">Февраль 2025 — настоящее время</p>
+        <ul>
+          <li data-i18n="job1A">Международные B2B-запросы на промышленное оборудование и комплектующие: уточнение применения, технических характеристик и коммерческих ограничений.</li>
+          <li data-i18n="job1B">Коммуникации с клиентами и поставщиками, сопоставление товаров и артикулов, коммерческие предложения и альтернативные варианты.</li>
+          <li data-i18n="job1C">Цифровые каналы привлечения, Google Ads, товарный контент, B2B-маркетплейсы и квалификация обращений.</li>
+          <li data-i18n="job1D">Проекты по улучшению процессов Bitrix24, контролю качества каталога и координации AI-assisted изменений без приписывания себе разработки кода.</li>
+        </ul>
+      </article>
+      <article class="card role-card">
+        <h3>Human&amp;Business</h3>
+        <p class="role-title" data-i18n="job2Role">Руководитель проектной группы</p>
+        <p class="role-period" data-i18n="job2Date">Апрель 2024 — октябрь 2024</p>
+        <ul>
+          <li data-i18n="job2A">Координация трёх параллельных проектов, включая программу лояльности и разработку личных кабинетов покупателей, продавцов и заводчиков.</li>
+          <li data-i18n="job2B">Взаимодействие SMM, трейд-маркетинга, дизайнеров, интернет-маркетинга, бизнес-процессов и внешних исполнителей.</li>
+          <li data-i18n="job2C">Формирование задач, согласование сценариев, контроль этапов разработки и тестирования.</li>
+          <li data-i18n="job2D">Бюджетные расчёты, подготовка маркетинговых материалов, координация рекламных активностей и отчётность руководству.</li>
+        </ul>
+      </article>
+      <article class="card role-card">
+        <h3>ООО «БТК»</h3>
+        <p class="role-title" data-i18n="job3Role">Руководитель отдела маркетинга</p>
+        <p class="role-period" data-i18n="job3Date">Декабрь 2023 — апрель 2024</p>
+        <ul>
+          <li data-i18n="job3A">Исследования рынков, конкурентной среды и предпочтений покупателей; проведение и анализ фокус-групп.</li>
+          <li data-i18n="job3B">Медиапланирование, расчёт рекламных бюджетов, анализ продвижения и взаимодействие с маркетинговыми площадками.</li>
+          <li data-i18n="job3C">Анализ новых товарных и коммерческих направлений, рекомендации по позиционированию и продвижению.</li>
+        </ul>
+      </article>
+      <article class="card role-card">
+        <h3>Группа компаний «М131»</h3>
+        <p class="role-title" data-i18n="job4Role">Маркетолог</p>
+        <p class="role-period" data-i18n="job4Date">Январь 2023 — ноябрь 2023</p>
+        <ul>
+          <li data-i18n="job4A">Изучение внешнего рынка, конкурентов и факторов потребительского спроса в розничном бизнесе.</li>
+          <li data-i18n="job4B">Участие в проектах внедрения новых технологий в ритейле, подготовка аналитических материалов и предложений.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="section" aria-labelledby="cases-title">
+ <h2 id="cases-title" data-i18n="casesTitle">Результаты, кейсы и коммерческие проекты</h2>
+ <p class="section-intro" data-i18n="casesIntro">Четыре проекта с измеримыми результатами и три дополнительных кейса по международным B2B-продажам, CRM и коммерческим операциям.</p>
+ <div class="case-list"><article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image">
+   <a class="portfolio-case-image" href="https://gzrichtone.com/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
+ <img src="img/portfolio-case-ramp.webp" onerror="this.onerror=null;this.src='img/richtone.png'" alt="Иллюстрация проекта: RICHTONE / RAMP Global — привлечение международных B2B-клиентов" data-alt-en="Project image: RICHTONE / RAMP Global — international B2B lead acquisition" loading="lazy" decoding="async" width="1000" height="620">
+ </a>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><img class="case-brand-logo" src="img/richtone-logo.png" alt="RICHTONE / RAMP Global" loading="lazy"><span class="case-kind" data-i18n="project_richtone_category">Performance Marketing / B2B</span></div>
+    <h3 data-i18n="project_richtone_title">RICHTONE / RAMP Global — привлечение международных B2B-клиентов</h3>
+    <p class="case-summary" data-i18n="project_richtone_summary">Рекламные кампании и аналитика для США, Канады, MENA и Восточной Европы.</p>
+    <div class="case-metrics" aria-label="Key project outcomes"><div class="case-metric"><strong>−35%</strong><span data-i18n="metric_richtone_0">CPL / 650 → 420 ₽</span></div><div class="case-metric"><strong>1 150+</strong><span data-i18n="metric_richtone_1">заявок / 3 мес.</span></div><div class="case-metric"><strong>до 18%</strong><span data-i18n="metric_richtone_2">лид → сделка</span></div><div class="case-metric"><strong>300%+</strong><span data-i18n="metric_richtone_3">ROMI</span></div></div>
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_richtone_goal">Увеличить поток целевых обращений, снизить стоимость лида и связать рекламные каналы с коммерческой обработкой заявок.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_richtone_work">Google / Meta Ads, распределение бюджетов, A/B-тесты креативов и посадочных страниц, UTM-разметка, сквозная аналитика сайта и CRM, формы, автоответы и квалификация обращений.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_richtone_results">CPL снизился на 35% — с 650 ₽ до 420 ₽. Получено более 1 150 заявок за 3 месяца; конверсия лид → сделка достигала 18%, ROMI составил более 300%.</p></div>
+    </div>
+    <a class="case-site-link" href="https://gzrichtone.com/" target="_blank" rel="noopener noreferrer" data-i18n="caseOpenSite">Открыть сайт проекта ↗</a>
+   </div>
+  </div>
+ </article>
+<article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image">
+   <a class="portfolio-case-image" href="https://h-b.group/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
+ <img src="img/portfolio-case-humanbusiness.webp" onerror="this.onerror=null;this.src='img/karmy.png'" alt="Иллюстрация проекта: Human&amp;Business — программа лояльности и личные кабинеты" data-alt-en="Project image: Human&amp;Business — loyalty program &amp; customer portals" loading="lazy" decoding="async" width="1000" height="620">
+ </a>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><img class="case-brand-logo" src="img/hb-logo.png" alt="Human&amp;Business" loading="lazy"><span class="case-kind" data-i18n="project_hb_category">Программа лояльности / маркетинг</span></div>
+    <h3 data-i18n="project_hb_title">Human&amp;Business — программа лояльности и личные кабинеты</h3>
+    <p class="case-summary" data-i18n="project_hb_summary">Координация нескольких команд и цифровых инициатив для покупателей, продавцов и заводчиков.</p>
+    <div class="case-metrics" aria-label="Key project outcomes"><div class="case-metric"><strong>+45%</strong><span data-i18n="metric_hb_0">активность / 2 мес.</span></div><div class="case-metric"><strong>+30%</strong><span data-i18n="metric_hb_1">повторные покупки</span></div></div>
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_hb_goal">Развить программу лояльности, клиентские сценарии и повторные покупки в нескольких категориях пользователей.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_hb_work">Координация SMM, трейд-маркетинга, дизайна, digital-маркетинга и подрядчиков; постановка задач, согласование личных кабинетов, бюджетные расчёты, креативы, медиапланы и сопровождение реализации.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_hb_results">Активность пользователей выросла на 45% за 2 месяца, повторные покупки — на 30%.</p></div>
+    </div>
+    <a class="case-site-link" href="https://h-b.group/" target="_blank" rel="noopener noreferrer" data-i18n="caseOpenSite">Открыть сайт проекта ↗</a>
+   </div>
+  </div>
+ </article>
+<article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image">
+   <a class="portfolio-case-image" href="https://mari-russia.ru/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
+ <img src="img/portfolio-case-mariroberto.webp" onerror="this.onerror=null;this.src='img/mariroberto.png'" alt="Иллюстрация проекта: ООО «БТК» — маркетинговая стратегия для направления MariRoberto" data-alt-en="Project image: BTK — marketing strategy for the MariRoberto furniture project" loading="lazy" decoding="async" width="1000" height="620">
+ </a>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><img class="case-brand-logo" src="img/btk-logo.png" alt="ООО «БТК»" loading="lazy"><span class="case-kind" data-i18n="project_btk_category">Исследования рынка / стратегия</span></div>
+    <h3 data-i18n="project_btk_title">ООО «БТК» — маркетинговая стратегия для направления MariRoberto</h3>
+    <p class="case-summary" data-i18n="project_btk_summary">Позиционирование и развитие направлений, включая проект плетёной мебели MariRoberto.</p>
+    <div class="case-metrics" aria-label="Key project outcomes"><div class="case-metric"><strong>3</strong><span data-i18n="metric_btk_0">прибыльных направления</span></div><div class="case-metric"><strong>+22%</strong><span data-i18n="metric_btk_1">спрос / квартал</span></div></div>
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_btk_goal">Исследовать рынок, определить перспективные направления и повысить результативность маркетинговых активностей.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_btk_work">Конкурентный анализ, фокус-группы, изучение спроса, позиционирование, маркетинговая стратегия, медиапланы и PR-активности.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_btk_results">По результатам работы выделены три прибыльных направления, спрос вырос на 22% за квартал.</p></div>
+    </div>
+    <a class="case-site-link" href="https://mari-russia.ru/" target="_blank" rel="noopener noreferrer" data-i18n="caseOpenSite">Открыть сайт проекта ↗</a>
+   </div>
+  </div>
+ </article>
+<article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image">
+   <a class="portfolio-case-image" href="https://shop-idea.ru/" target="_blank" rel="noopener noreferrer" aria-label="Открыть сайт проекта" data-aria-en="Visit project website">
+ <img src="img/portfolio-case-stroyideya.webp" onerror="this.onerror=null;this.src='img/stroideya.png'" alt="Иллюстрация проекта: ГК «М131» — анализ рынка и спроса в рознице" data-alt-en="Project image: M131 Group — retail market and demand analysis" loading="lazy" decoding="async" width="1000" height="620">
+ </a>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><img class="case-brand-logo" src="img/m131-logo.png" alt="ГК «М131»" loading="lazy"><span class="case-kind" data-i18n="project_m131_category">Ритейл / исследования</span></div>
+    <h3 data-i18n="project_m131_title">ГК «М131» — анализ рынка и спроса в рознице</h3>
+    <p class="case-summary" data-i18n="project_m131_summary">Маркетинговая аналитика и участие во внедрении новых технологий для розничного бизнеса.</p>
+    
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_m131_goal">Выявлять изменения спроса, оценивать продвижение и находить возможности развития розничного направления.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_m131_work">Отчётность по акциям, анализ их эффективности, мониторинг конкурентов, рекомендации по росту спроса, медиапланирование и фокус-группы.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_m131_results">Отмечен устойчивый рост обращений и узнаваемости бренда.</p></div>
+    </div>
+    <a class="case-site-link" href="https://shop-idea.ru/" target="_blank" rel="noopener noreferrer" data-i18n="caseOpenSite">Открыть сайт проекта ↗</a>
+   </div>
+  </div>
+ </article>
+<article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image process-image">
+   
+   <div class="portfolio-case-image">
+     <img src="img/case-technical-selection.svg" alt="Иллюстрация процесса подбора двигателя: применение, модель, номер детали и проверка поставщика" data-alt-en="Illustration of engine selection, application checks, part number matching and supplier verification" loading="lazy" decoding="async" width="1200" height="750">
+   </div>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><span class="case-kind" data-i18n="project_b2b_category">Международные продажи / технические продукты</span></div>
+    <h3 data-i18n="project_b2b_title">RAMP Global — квалификация международного технического B2B-запроса</h3>
+    <p class="case-summary" data-i18n="project_b2b_summary">От уточнения применения и номера детали до подготовки коммерческого предложения и логистических вариантов.</p>
+    
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_b2b_goal">Уточнить сложный запрос на двигатель, гидравлический узел или комплектующие до расчёта цены и предложения замены.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_b2b_work">Проверка модели, серийных данных, Part Number и совместимости; запрос документов и условий у поставщиков, сравнение вариантов по цене, сроку, состоянию, гарантии и доставке.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_b2b_results">Подготовлены технически обоснованные коммерческие варианты с учётом совместимости, сроков, гарантий и доставки; следующие шаги по запросам зафиксированы в CRM.</p></div>
+    </div>
+    
+   </div>
+  </div>
+ </article>
+<article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image process-image">
+   
+   <div class="portfolio-case-image">
+     <img src="img/case-crm-normalization.svg" alt="Иллюстрация работы с CRM-каталогом: устранение дублей, проверка данных и сохранность действующих сделок" data-alt-en="Illustration of CRM catalog normalization, duplicate review and preservation of active deals" loading="lazy" decoding="async" width="1200" height="750">
+   </div>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><span class="case-kind" data-i18n="project_crm_category">CRM / коммерческие операции</span></div>
+    <h3 data-i18n="project_crm_title">RAMP Global — нормализация каталога и защита действующих сделок</h3>
+    <p class="case-summary" data-i18n="project_crm_summary">Координация требований к данным и приёмки изменений в Bitrix24 без нарушения коммерческих процессов.</p>
+    
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_crm_goal">Убрать устаревшие позиции и дубли из каталога, сохранив корректность действующих сделок и связанных данных.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_crm_work">Бизнес-требования и критерии приёмки, согласование правил очистки, резервного копирования и проверок, контроль сохранности сделок при выполнении автоматизированных операций.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_crm_results">Выполнен этап нормализации товарного каталога, проведена проверка сохранности действующих сделок.</p></div>
+    </div>
+    
+   </div>
+  </div>
+ </article>
+<article class="card portfolio-case">
+  <div class="portfolio-case-layout has-image process-image">
+   
+   <div class="portfolio-case-image">
+     <img src="img/case-marketplace-quality.svg" alt="Иллюстрация контроля качества карточек товаров на международном маркетплейсе" data-alt-en="Illustration of quality review for international machinery marketplace product listings" loading="lazy" decoding="async" width="1200" height="750">
+   </div>
+   <div class="portfolio-case-main">
+    <div class="case-brandline"><span class="case-kind" data-i18n="project_marketplace_category">B2B Marketplace / Data Quality</span></div>
+    <h3 data-i18n="project_marketplace_title">RAMP Global — подготовка и контроль качества каталога Machineryline</h3>
+    <p class="case-summary" data-i18n="project_marketplace_summary">Подготовка международных карточек товаров, проверка уникальности и разграничение согласованных и активных объявлений.</p>
+    
+    <div class="case-story">
+     <div><h4 data-i18n="caseGoal">Задача</h4><p data-i18n="project_marketplace_goal">Повысить пригодность карточек для международной B2B-площадки без дублей и некорректных заявлений о публикации.</p></div>
+     <div><h4 data-i18n="caseWork">Моя работа</h4><p data-i18n="project_marketplace_work">Координация отбора, описаний и проверки карточек, ручного согласования, контроля уникальности и сверки статусов с данными площадки.</p></div>
+     <div><h4 data-i18n="caseResults">Результат</h4><p data-i18n="project_marketplace_results">Систематизирована подготовка и проверка уникальности карточек. Выстроен процесс согласования и отдельного контроля активности объявлений.</p></div>
+    </div>
+    
+   </div>
+  </div>
+ </article></div>
+</section>
+
+  <section id="sites" class="section" aria-labelledby="sites-title">
+    <h2 id="sites-title" data-i18n="sitesTitle">Проекты и сайты</h2>
+    <p class="section-intro" data-i18n="sitesIntro">Сайты и визуальные материалы компаний, с проектами которых я работал. Мои обязанности и вклад описаны в кейсах и опыте работы.</p>
+    <div class="site-grid">
+      <article class="card site-card">
+        <a class="site-image" href="https://gzrichtone.com/" target="_blank" rel="noopener" aria-label="Открыть сайт RAMP Global" data-aria-en="Open RAMP Global website">
+          <img src="img/portfolio-case-ramp.webp" onerror="this.onerror=null;this.src='img/richtone.png'" alt="Скриншот сайта, связанного с проектом RAMP Global" data-alt-en="Website screenshot related to RAMP Global" loading="lazy" decoding="async" width="1200" height="750">
         </a>
-        <a class="sbtn" href="https://wa.me/79003006324" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.8A10.2 10.2 0 003.1 18.4L2 22l3.7-1A10.2 10.2 0 1012 1.8zm0 18.7a8.5 8.5 0 01-4.3-1.2l-.3-.2-2.5.6.7-2.4-.2-.3A8.5 8.5 0 1112 20.5zm4.7-6.2c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.2-.8 1-.9 1.1-.1.2-.3.2-.6 0-.3-.2-1.1-.4-2.1-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.3.2-.5 0-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5s1.2 2.9 1.4 3.1c.2.3 2.3 3.5 5.4 4.8.7.3 1.3.5 1.8.7.8.2 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-1 0-1.7-.3-1.9z"/></svg>
-          WhatsApp
+        <div class="site-info">
+          <div class="site-heading"><h3>RAMP Global</h3><span class="chip">B2B</span></div>
+          <p data-i18n="site1Text">Промышленное оборудование, двигатели, гидравлика и комплектующие. Международные запросы, коммерческие процессы, CRM и цифровые каналы.</p>
+          <div class="site-actions"><a href="https://gzrichtone.com/" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Открыть сайт ↗</a></div>
+        </div>
+      </article>
+      <article class="card site-card">
+        <a class="site-image" href="https://h-b.group/" target="_blank" rel="noopener" aria-label="Открыть сайт Human and Business" data-aria-en="Open Human and Business website">
+          <img src="img/portfolio-case-humanbusiness.webp" onerror="this.onerror=null;this.src='img/karmy.png'" alt="Исторический скриншот проекта из портфеля Human and Business" data-alt-en="Historical screenshot of a project in the Human and Business portfolio" loading="lazy" decoding="async" width="1200" height="750">
         </a>
-        <a class="sbtn" href="weixin://dl/chat?bombermanmarketolog">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.2 4.3c-3.8 0-6.9 2.5-6.9 5.7 0 1.9 1.1 3.6 2.9 4.6l-.7 2.4 2.5-1.3c.7.2 1.4.3 2.1.3 3.8 0 6.9-2.5 6.9-5.7s-3.1-6-6.8-6zm-2.8 6.1c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7zm3.9 0c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7z"/></svg>
-          WeChat
+        <div class="site-info">
+          <div class="site-heading"><h3>Human&amp;Business</h3><img class="site-logo" src="img/hb-logo.png" width="100" height="36" alt="Логотип Human and Business" data-alt-en="Human and Business logo" loading="lazy"></div>
+          <p data-i18n="site2Text">Клиентские проекты, программа лояльности, кабинеты разных категорий пользователей и координация маркетинговых подразделений.</p>
+          <div class="site-actions"><a href="https://h-b.group/" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Открыть сайт ↗</a></div>
+        </div>
+      </article>
+      <article class="card site-card">
+        <a class="site-image" href="https://mari-russia.ru/" target="_blank" rel="noopener" aria-label="Открыть сайт MariRoberto" data-aria-en="Open MariRoberto website">
+          <img src="img/portfolio-case-mariroberto.webp" onerror="this.onerror=null;this.src='img/mariroberto.png'" alt="Иллюстрация маркетингового проекта БТК — Mari Roberto" data-alt-en="BTK marketing project visual — Mari Roberto" loading="lazy" decoding="async" width="1200" height="750">
         </a>
-      </div>
-      <div style="margin-top:20px">
-        <a class="btn" href="resume.pdf" download>Скачать резюме (PDF)</a>
-      </div>
+        <div class="site-info">
+          <div class="site-heading"><h3>ООО «БТК» · MariRoberto</h3><img class="site-logo" src="img/btk-logo.png" width="100" height="36" alt="Логотип БТК" data-alt-en="BTK logo" loading="lazy"></div>
+          <p data-i18n="site3Text">Исследования рынка и конкурентов, фокус-группы, медиапланирование, развитие коммерческих направлений. Сохранён архивный скриншот проекта.</p>
+          <div class="site-actions"><a href="https://mari-russia.ru/" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Открыть сайт ↗</a></div>
+          <div class="site-actions"></div>
+        </div>
+      </article>
+      <article class="card site-card">
+        <a class="site-image" href="https://shop-idea.ru/" target="_blank" rel="noopener" aria-label="Открыть сайт Стройидея" data-aria-en="Open Stroyideya website">
+          <img src="img/portfolio-case-stroyideya.webp" onerror="this.onerror=null;this.src='img/stroideya.png'" alt="Скриншот сайта Стройидея, связанного с проектами М131" data-alt-en="Screenshot of the Stroyideya website related to M131" loading="lazy" decoding="async" width="1200" height="750">
+        </a>
+        <div class="site-info">
+          <div class="site-heading"><h3>Группа компаний «М131»</h3><img class="site-logo" src="img/m131-logo.png" width="100" height="36" alt="Логотип М131" data-alt-en="M131 logo" loading="lazy"></div>
+          <p data-i18n="site4Text">Исследования рынка в рознице и участие в проектах внедрения новых технологий. Визуальный пример из первоначального портфолио.</p>
+          <div class="site-actions"><a href="https://shop-idea.ru/" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Открыть сайт ↗</a></div>
+        </div>
+      </article>
     </div>
+    <p class="site-disclaimer" data-i18n="sitesNote">Изображения отражают внешний вид сайтов на момент подготовки материалов и могут отличаться от текущих версий.</p>
   </section>
+
+  <section id="contacts" class="section" aria-labelledby="contacts-title">
+  <h2 id="contacts-title" data-i18n="contactTitle">Контакты</h2>
+  <p class="contact-intro" data-i18n="contactIntro">Для профессионального общения можно написать на почту или связаться через удобный мессенджер.</p>
+  <div class="contact-grid">
+    <a class="card contact-tile" href="mailto:sharoshkin.akexandr@gmail.com" aria-label="Написать письмо Александру Шарошкину" data-aria-en="Send an email to Alexandr Sharoshkin">
+      <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg></span>
+      <span><span class="contact-name" data-i18n="contactEmail">Электронная почта</span><span class="contact-detail" style="display:block">sharoshkin.akexandr@gmail.com</span></span>
+      <span class="contact-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="card contact-tile" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener noreferrer" aria-label="Telegram Александра Шарошкина" data-aria-en="Alexandr Sharoshkin on Telegram">
+      <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.4 3.5 2.9 10.8l6.6 2.4 2.5 7.1 9.4-16.8Z"/><path d="m9.5 13.2 11.9-9.7-9.3 12.2"/></svg></span>
+      <span><span class="contact-name">Telegram</span><span class="contact-detail" style="display:block">@Sharoshkin99</span></span>
+      <span class="contact-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="card contact-tile" href="https://wa.me/79003006324" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp" data-aria-en="Message on WhatsApp">
+      <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.2 11.9a8.2 8.2 0 0 1-12 7.3L3.5 20.5l1.4-4.6A8.2 8.2 0 1 1 20.2 11.9Z"/><path d="M9 8.8c.4 2.6 2.1 4.7 5 6 .8.3 1.5.2 2-.2"/></svg></span>
+      <span><span class="contact-name">WhatsApp</span><span class="contact-detail" style="display:block" data-i18n="contactWhatsApp">Написать сообщение</span></span>
+      <span class="contact-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="card contact-tile" href="weixin://dl/chat?bombermanmarketolog" aria-label="Открыть WeChat Александра" data-aria-en="Open Alexandr's WeChat contact">
+      <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.2 14.7c-2.1 2-5.4 2.6-8.2 1.4L2 17l.7-2.9C1.8 12.9 1.4 11.7 1.4 10.4c0-3.9 3.6-7 8.1-7 4 0 7.3 2.4 8 5.6"/><path d="M22.5 15c0 3.1-2.9 5.6-6.5 5.6-1 0-1.9-.2-2.7-.5L10.4 21l.7-2.2c-1.1-1-1.8-2.3-1.8-3.8 0-3.1 2.9-5.6 6.5-5.6s6.7 2.5 6.7 5.6Z"/></svg></span>
+      <span><span class="contact-name">WeChat</span><span class="contact-detail" style="display:block">ID: bombermanmarketolog</span></span>
+      <span class="contact-arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
+  <p class="contact-subnote" data-i18n="contactWeChatNote">WeChat-ссылка открывается на устройствах с установленным приложением. Если она не работает на компьютере, найдите контакт по указанному ID.</p>
+</section>
+
+  <footer class="site-footer" data-i18n="footer">Шарошкин Александр Сергеевич · Профессиональное портфолио · RU / EN</footer>
 </main>
-*Meta признана в РФ экстремистской организацией и запрещена.
+
   
 
 
@@ -427,7 +745,7 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
   localStorage.setItem('theme', next);
   document.getElementById('iconSun').style.display=next==='light'?'none':'block';
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
-  renderCharts(); /* перекрасить подписи */
+  
 });
 
 /* ====== меню ====== */
@@ -448,117 +766,55 @@ window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ====== графики (vanilla SVG) ====== */
-const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
-const crisp=y=>Math.round(y)+.5;
-function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
-function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
-function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
-function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 52 : 36; } /* больше места слева под подписи */
 
-function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
-  const css=getComputedStyle(document.documentElement);
-  const gridColor=css.getPropertyValue('--grid').trim();
-  const axisColor=css.getPropertyValue('--axis').trim();
-  const tickColor=css.getPropertyValue('--tick').trim();
-  const tickSize=getComputedStyle(document.documentElement).getPropertyValue('--tick-size').trim();
-
-  const grid=svgEl('g',{stroke:gridColor,'stroke-width':1,'shape-rendering':'crispEdges'});
-  const ticks=yTicks(yMin,yMax,5);
-  ticks.forEach(t=>{
-    const y=crisp(scale(t,yMin,yMax,h-p,p));
-    grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{x:p-12,y:y+4,fill:tickColor,'font-size':tickSize,'font-weight':'700','text-anchor':'end'});
-    lbl.textContent=formatY?formatY(+t):fmt(+t,0);
-    svg.appendChild(lbl);
-  });
-  grid.appendChild(svgEl('line',{x1:p,y1:crisp(h-p),x2:w-p,y2:crisp(h-p),stroke:axisColor,'stroke-width':1.25}));
-  grid.appendChild(svgEl('line',{x1:crisp(p),y1:p,x2:crisp(p),y2:h-p,stroke:axisColor,'stroke-width':1.25}));
-  svg.appendChild(grid);
-
-  const step=(w-2*p)/(xLabels.length-1);
-  xLabels.forEach((lab,i)=>{
-    const x=p+i*step, y=h-p+18;
-    const t=svgEl('text',{x:x,y:y,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
-    t.textContent=lab; svg.appendChild(t);
-  });
-}
-
-function smoothPath(points){
-  let d=`M ${points[0].x} ${points[0].y}`;
-  for(let i=1;i<points.length;i++){
-    const p=points[i-1], c=points[i];
-    const mx=(p.x+c.x)/2, my=(p.y+c.y)/2;
-    const pmx=i===1?p.x:(points[i-2].x+c.x)/2, pmy=i===1?p.y:(points[i-2].y+c.y)/2;
-    d+=` C ${pmx} ${pmy}, ${mx} ${my}, ${c.x} ${c.y}`;
+/* RU / EN: русская версия доступна без JavaScript, переводы применяются поверх. */
+(function(){
+  const english={"brand":"Alexandr Sergeevich Sharoshkin","navAbout":"About","navExpertise":"Expertise","navExperience":"Experience","navCases":"Case Studies","navSites":"Websites","navContact":"Contact","heroTag":"International B2B Sales · Marketing · Commercial Projects","fullName":"Alexandr Sergeevich Sharoshkin","heroRole":"B2B Sales & Marketing · Business Development · CRM & Automation","heroLead":"I connect international sales, marketing and commercial operations — from a customer's first inquiry and technical product selection to CRM workflows, cross-functional coordination and digital tools.","heroBtnCases":"Explore case studies","heroBtnContact":"Get in touch","heroAsideTag":"Professional profile","heroAsideTitle":"From marketing to B2B business development","heroAsideText":"Experience with international industrial-equipment inquiries, supplier communication, marketing project management and improvement of commercial processes.","heroRemote":"Open to fully remote roles with companies in Russia, Belarus, the CIS and international markets.","aboutTitle":"About me","aboutP1":"My background combines B2B sales, business development, marketing and project management. I enjoy complex products and assignments that require understanding customer needs, comparing technical and commercial options, and organizing a clear process from inquiry to proposal.","aboutP2":"At RAMP Global, I work with international inquiries for engines, hydraulics and components for industrial and heavy equipment. I clarify models, part numbers, serial details and configurations; coordinate with suppliers and colleagues on pricing, availability, warranties and logistics. I also contribute to digital acquisition channels, CRM workflows and product data quality.","aboutP3":"Previously, I led a project group, coordinated marketing functions and contractors, and contributed to the development of a loyalty program and user portals. My experience also includes market research, competitor analysis, media planning and evaluating new business directions. I focus not just on implementing tools, but on making commercial processes understandable and manageable.","expertiseTitle":"Core expertise","expertiseIntro":"Four areas where I combine commercial objectives, analytical thinking and delivery coordination.","exp1Title":"International B2B sales","exp1Text":"Inquiry qualification, model and part-number matching, supplier communication, commercial proposals, follow-ups and international logistics.","exp2Title":"Marketing & business development","exp2Text":"Market, competitor and customer-segment research, Google Ads, inbound leads, marketing materials and B2B channel development.","exp3Title":"CRM & commercial operations","exp3Text":"Bitrix24, sales pipeline logic, product data quality, connecting marketing sources to sales, business requirements and acceptance testing.","exp4Title":"Project management","exp4Text":"Coordinating teams and contractors, task and timeline management, milestone alignment, budget estimates, risk control and delivery quality.","experienceTitle":"Professional experience","experienceIntro":"Official job titles are preserved; cross-functional responsibilities are explained separately.","job1Role":"Head of Marketing and Advertising","job1Date":"February 2025 — Present","job1A":"International B2B inquiries for industrial equipment and parts: clarifying applications, technical requirements and commercial constraints.","job1B":"Customer and supplier communication, product and part-number matching, quotations and suitable alternatives.","job1C":"Digital acquisition channels, Google Ads, product content, B2B marketplaces and lead qualification.","job1D":"Projects involving Bitrix24 process improvement, catalog data quality and AI-assisted change coordination, without claiming personal software development.","job2Role":"Project Team Lead","job2Date":"April 2024 — October 2024","job2A":"Coordinated three parallel projects, including a loyalty program and user portals for buyers, sellers and breeders.","job2B":"Worked across SMM, trade marketing, design, digital marketing, business-process teams and external contractors.","job2C":"Defined tasks, aligned user journeys and reviewed development and testing milestones.","job2D":"Prepared budget estimates and marketing materials, coordinated campaigns and reported project progress to management.","job3Role":"Head of Marketing","job3Date":"December 2023 — April 2024","job3A":"Researched markets, competitors and customer preferences; organized and analyzed focus groups.","job3B":"Prepared media plans and advertising budgets, assessed promotion activities and worked with marketing partners.","job3C":"Analyzed new product and commercial opportunities and prepared positioning and promotion recommendations.","job4Role":"Marketing Specialist","job4Date":"January 2023 — November 2023","job4A":"Researched markets, competitors and drivers of customer demand in retail.","job4B":"Contributed to retail technology initiatives and prepared analyses and business recommendations.","casesTitle":"Results, case studies & commercial projects","casesIntro":"Four projects with measurable outcomes and three additional case studies in international B2B sales, CRM and commercial operations.","caseContext":"Context","caseActions":"My contribution","caseOutcome":"Outcome / status","sitesTitle":"Projects & websites","sitesIntro":"Websites and visuals from companies whose projects I worked on. My responsibilities and contributions are described in the case studies and experience section.","site1Text":"Industrial equipment, engines, hydraulics and components. International inquiries, commercial processes, CRM and digital channels.","site2Text":"Customer-facing projects, loyalty programs, portals for different user groups and coordination across marketing functions.","site3Text":"Market and competitor research, focus groups, media planning and analysis of commercial opportunities. Archival project screenshot retained.","site4Text":"Retail market research and participation in retail technology initiatives. Visual example from the original portfolio.","visitWebsite":"Visit website ↗","viewImage":"View screenshot ↗","sitesNote":"Images show the sites as captured when the portfolio materials were prepared and may differ from their current versions.","contactTitle":"Contact","contactHeading":"Open to professional conversations","contactText":"Fully remote B2B Sales, Business Development, Marketing Operations and Commercial Project Management roles.","contactBtn":"Email me","footer":"Alexandr Sergeevich Sharoshkin · Professional Portfolio · RU / EN","contactIntro":"For professional inquiries, reach me by email or through your preferred messenger.","contactEmail":"Professional email","contactWhatsApp":"Send a message","contactWeChatNote":"The WeChat link opens on devices with WeChat installed. On desktop, search for the contact using the displayed WeChat ID.","caseGoal":"Challenge","caseWork":"My contribution","caseResults":"Results","caseOpenSite":"Visit project website ↗","resultsLabel":"Project highlights","resultsCaption":"Results refer to the projects shown and their respective reporting periods.","result1":"Lower cost per lead in the RICHTONE project","result2":"Inquiries over 3 months at RICHTONE","result3":"Increase in engagement at Human&Business","result4":"Quarterly demand growth at BTK","result5":"Repeat-purchase growth at Human&Business","project_richtone_category":"Performance Marketing / B2B","project_richtone_title":"RICHTONE / RAMP Global — international B2B lead acquisition","project_richtone_summary":"Campaigns and marketing analytics for the US, Canada, MENA and Eastern Europe.","project_richtone_goal":"Increase qualified inquiries, reduce cost per lead and connect advertising channels with commercial lead handling.","project_richtone_work":"Google and Meta Ads, budget allocation, A/B testing of creatives and landing pages, UTM tracking, website-to-CRM analytics, lead forms, automated responses and inquiry qualification.","project_richtone_results":"CPL decreased by 35%, from RUB 650 to RUB 420. The project generated over 1,150 inquiries in 3 months, lead-to-deal conversion reached up to 18%, and ROMI exceeded 300%.","project_hb_category":"Loyalty Program / Marketing","project_hb_title":"Human&Business — loyalty program & customer portals","project_hb_summary":"Cross-functional coordination of digital initiatives for buyers, sellers and breeders.","project_hb_goal":"Improve the loyalty program, customer journeys and repeat purchasing across multiple user groups.","project_hb_work":"Coordinating SMM, trade marketing, design, digital marketing and contractors; requirements and task management, user portal development, budget estimates, creatives, media plans and delivery support.","project_hb_results":"User engagement increased by 45% over 2 months, while repeat purchases grew by 30%.","project_btk_category":"Market Research / Strategy","project_btk_title":"BTK — marketing strategy for the MariRoberto furniture project","project_btk_summary":"Positioning and business development, including the MariRoberto woven-furniture project.","project_btk_goal":"Study the market, identify promising business directions and improve the effectiveness of marketing activities.","project_btk_work":"Competitor analysis, focus groups, demand research, positioning, marketing strategy, media planning and PR activities.","project_btk_results":"The work identified three profitable business directions and delivered 22% quarterly demand growth.","project_m131_category":"Retail / Market Research","project_m131_title":"M131 Group — retail market and demand analysis","project_m131_summary":"Marketing analysis and participation in new technology initiatives for retail.","project_m131_goal":"Identify demand trends, evaluate marketing activities and find opportunities for retail growth.","project_m131_work":"Promotion reporting and performance analysis, competitor monitoring, recommendations for demand growth, media planning and focus groups.","project_m131_results":"The project saw sustained growth in inquiries and brand awareness.","project_b2b_category":"International Sales / Technical Products","project_b2b_title":"RAMP Global — qualification of international technical B2B inquiries","project_b2b_summary":"From confirming equipment applications and part numbers to preparing commercial and logistics options.","project_b2b_goal":"Clarify complex inquiries for engines, hydraulic units or components before quoting or proposing replacements.","project_b2b_work":"Checking models, serial details, part numbers and compatibility; requesting technical and commercial information from suppliers and comparing alternatives by price, lead time, condition, warranty and delivery.","project_b2b_results":"Prepared technically justified commercial options covering compatibility, timelines, warranties and delivery, with next steps documented in CRM.","project_crm_category":"CRM / Commercial Operations","project_crm_title":"RAMP Global — catalog normalization with deal-data protection","project_crm_summary":"Coordinating data requirements and acceptance testing in Bitrix24 without disrupting ongoing commercial processes.","project_crm_goal":"Remove outdated catalog entries and duplicates while preserving active deals and related data integrity.","project_crm_work":"Business requirements and acceptance criteria, alignment of cleanup and backup rules, validation checks, and preservation of deal data during automated operations.","project_crm_results":"Completed a catalog-normalization phase with validation that existing deals remained intact.","project_marketplace_category":"B2B Marketplace / Data Quality","project_marketplace_title":"RAMP Global — Machineryline catalog preparation and quality control","project_marketplace_summary":"International product listing preparation, uniqueness checks and clear distinction between approved and active listings.","project_marketplace_goal":"Improve the quality of product listings for an international B2B marketplace while preventing duplicates and unsupported publication claims.","project_marketplace_work":"Coordinating listing selection, descriptions, validation, human approval, uniqueness checks and status reconciliation with marketplace data.","project_marketplace_results":"Streamlined listing preparation and uniqueness checks, established approval workflows and separate monitoring of active listings.","metric_richtone_0":"CPL / RUB 650 → 420","metric_richtone_1":"inquiries / 3 months","metric_richtone_2":"lead → deal","metric_richtone_3":"ROMI","metric_hb_0":"engagement / 2 months","metric_hb_1":"repeat purchases","metric_btk_0":"profitable business directions","metric_btk_1":"demand / quarter"};
+  const nodes=[...document.querySelectorAll('[data-i18n]')];
+  const russian=new Map(nodes.map(node=>[node,node.textContent]));
+  const altNodes=[...document.querySelectorAll('[data-alt-en]')];
+  const russianAlt=new Map(altNodes.map(node=>[node,node.getAttribute('alt')]));
+  const ariaNodes=[...document.querySelectorAll('[data-aria-en]')];
+  const russianAria=new Map(ariaNodes.map(node=>[node,node.getAttribute('aria-label')]));
+  const languageButtons=[...document.querySelectorAll('[data-language]')];
+  function applyLanguage(code){
+    const lang=code==='en'?'en':'ru';
+    nodes.forEach(node=>{
+      const key=node.dataset.i18n;
+      if(lang==='en' && Object.prototype.hasOwnProperty.call(english,key)){node.textContent=english[key];}
+      else{node.textContent=russian.get(node);}
+    });
+    altNodes.forEach(node=>node.setAttribute('alt',lang==='en'?node.dataset.altEn:russianAlt.get(node)));
+    ariaNodes.forEach(node=>node.setAttribute('aria-label',lang==='en'?node.dataset.ariaEn:russianAria.get(node)));
+    languageButtons.forEach(button=>{
+      const selected=button.dataset.language===lang;
+      button.classList.toggle('active',selected);
+      button.setAttribute('aria-pressed',String(selected));
+    });
+    document.documentElement.lang=lang;
+    document.getElementById('primaryNav').setAttribute('aria-label',lang==='en'?'Primary navigation':'Основная навигация');
+    document.getElementById('mobilePanel').setAttribute('aria-label',lang==='en'?'Mobile navigation':'Мобильная навигация');
+    document.getElementById('menuToggle').setAttribute('aria-label',lang==='en'?'Open menu':'Меню');
+    document.getElementById('themeToggle').setAttribute('title',lang==='en'?'Toggle theme':'Переключить тему');
+    const chips=document.querySelector('.chips[aria-label]');
+    if(chips)chips.setAttribute('aria-label',lang==='en'?'Areas of expertise':'Направления деятельности');
+    document.title=lang==='en'?'Alexandr Sergeevich Sharoshkin — B2B Sales & Marketing':'Шарошкин Александр Сергеевич — B2B Sales & Marketing';
+    const desc=lang==='en'?'International B2B sales, business development, marketing, CRM and commercial project management.':'Международные B2B-продажи, развитие бизнеса, маркетинг, CRM и коммерческие проекты.';
+    for(const selector of ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]']){
+      const node=document.querySelector(selector);if(node)node.setAttribute('content',desc);
+    }
+    for(const selector of ['meta[property="og:title"]','meta[name="twitter:title"]']){
+      const node=document.querySelector(selector);if(node)node.setAttribute('content',document.title);
+    }
+    try{localStorage.setItem('portfolioLanguage',lang)}catch(e){}
   }
-  return d;
-}
+  languageButtons.forEach(button=>button.addEventListener('click',()=>applyLanguage(button.dataset.language)));
+  let savedLanguage='en';
+  try{savedLanguage=localStorage.getItem('portfolioLanguage')||'en'}catch(e){}
+  applyLanguage(savedLanguage);
+  document.documentElement.classList.remove('i18n-pending');
+})();
 
-function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
-  const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
-  svg.innerHTML='';
-  const min=(yMin==null)? Math.min(...data)*0.95 : yMin;
-  const max=(yMax==null)? Math.max(...data)*1.05 : yMax;
-
-  drawAxes(svg,w,h,p,labels, rev?Math.max(...data):min, rev?Math.min(...data):max, formatY);
-
-  const pts=data.map((v,i)=>({
-    x:scale(i,0,data.length-1,p,w-p),
-    y:rev?scale(v,Math.max(...data),Math.min(...data),h-p,p):scale(v,min,max,h-p,p),
-    v
-  }));
-
-  const base=rev?scale(Math.max(...data),Math.max(...data),Math.min(...data),h-p,p):scale(min,min,max,h-p,p);
-  const area=svgEl('path',{fill:fill,stroke:'none',d:`${smoothPath(pts)} L ${w-p} ${base} L ${p} ${base} Z`}); svg.appendChild(area);
-  const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3,'shape-rendering':'geometricPrecision'}); svg.appendChild(path);
-
-  const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
-  pts.forEach((pt,i)=>{
-    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'});
-    c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):fmt(pt.v)}`;});
-    c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
-    c.addEventListener('mouseleave',()=>{tt.style.display='none';});
-    svg.appendChild(c);
-  });
-}
-
-function barChart({svgId,data,labels,color,formatY}){
-  const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
-  svg.innerHTML='';
-  const yMin=0, yMax=Math.max(...data)*1.1;
-  drawAxes(svg,w,h,p,labels,yMin,yMax,formatY);
-  const gap=8, cw=(w-2*p)/data.length-gap;
-
-  const tickColor=getComputedStyle(document.documentElement).getPropertyValue('--tick').trim();
-
-  data.forEach((v,i)=>{
-    const x=p+i*((w-2*p)/data.length)+gap/2;
-    const bh=(v/yMax)*(h-2*p);
-    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
-    svg.appendChild(rect);
-
-    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
-    txt.textContent=formatY?formatY(v):fmt(v,0);
-    svg.appendChild(txt);
-  });
-}
-
-/* ====== ДАННЫЕ ====== */
-const labelsArr = ['Апр','Май','Июн','Июл','Авг','Сен'];
-const leads  = [280, 360, 450, 620, 820, 1100];
-const cpl    = [680, 610, 540, 490, 450, 420];
-const roi    = [0.6, 0.9, 1.1, 1.5, 1.9, 2.2]; /* верные значения */
-const cr     = [8, 10, 12, 14, 16, 18];
-
-function renderCharts(){
-  barChart({svgId:'leadsChart', data:leads, labels:labelsArr, color:'var(--acc)', formatY:v=>fmt(v,0)});
-  lineChart({svgId:'cplChart', data:cpl, labels:labelsArr, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', yMin:0.5, yMax:2.3, formatY:v=>fmt(v,1)+'×'});
-  lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
-}
-renderCharts();
-window.addEventListener('resize', ()=>renderCharts(), {passive:true});
 </script>
 </body>
 </html>
