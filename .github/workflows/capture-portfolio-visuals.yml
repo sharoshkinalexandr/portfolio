@@ -59,3 +59,5 @@ jobs:
           git commit -m "Update case visuals from current company websites"
           HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
           git -c http.extraheader="$HEADER" push origin HEAD:refs/heads/p0-privacy-hotfix-2026-10-23
+
+# P0 screenshot iteration 2: dismiss popups and select Human&Business brand section.
