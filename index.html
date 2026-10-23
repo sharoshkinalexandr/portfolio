@@ -8,22 +8,21 @@ href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 
 href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='1' y2='0'%3E%3Cstop stop-color='%2360a5fa'/%3E%3Cstop offset='1' stop-color='%236ee7b7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3C/svg%3E">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Шарошкин Александр Сергеевич — Маркетолог-перформанс</title>
-<meta name="description" content="Перформанс-маркетинг, лиды, сквозная аналитика, CRM. Кейсы: RICHTONE, Human&Business, БТК, М131." />
+<title>Александр Шарошкин — B2B-продажи, маркетинг и коммерческие проекты</title>
+<meta name="description" content="Александр Шарошкин. Международные B2B-продажи, развитие бизнеса, маркетинг, CRM и коммерческие проекты.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Шарошкин Александр Сергеевич — маркетолог">
-  <meta property="og:description" content="Перформанс-маркетинг, сквозная аналитика, автоматизация. Кейсы и реальные метрики.">
+  <meta property="og:title" content="Александр Шарошкин — B2B Sales &amp; Marketing">
+  <meta property="og:description" content="Международные B2B-продажи, маркетинг, CRM и управление коммерческими проектами.">
   <meta property="og:url" content="https://sharoshkinalexandr.github.io/portfolio/">
-  <meta property="og:image" content="https://sharoshkinalexandr.github.io/portfolio/img/og-alexandr.jpg">
-  <meta property="og:image:width" content="445">
-  <meta property="og:image:height" content="413">
+
+
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Шарошкин Александр Сергеевич — маркетолог">
-  <meta name="twitter:description" content="Перформанс-маркетинг, сквозная аналитика, автоматизация. Кейсы и метрики.">
-  <meta name="twitter:image" content="https://sharoshkinalexandr.github.io/portfolio/img/og-alexandr.jpg">
+  <meta name="twitter:title" content="Александр Шарошкин — B2B Sales &amp; Marketing">
+  <meta name="twitter:description" content="Международные B2B-продажи, CRM и коммерческие проекты.">
+
 <style>
 /* ================== ТЕМЫ ================== */
 :root{
@@ -140,7 +139,8 @@ body.menu-open .scrim{opacity:1; pointer-events:auto}
 /* ================== КОНТЕНТ ================== */
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .6s ease}
 .reveal{transform:none!important;opacity:1!important}
-.section{padding:34px 0}
+.section{padding:34px 0;scroll-margin-top:var(--header-h)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
 
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:48px 0}
 .lead{color:var(--muted);margin:0 0 18px}
@@ -185,13 +185,6 @@ a:has(> img){position:relative;display:inline-block;border-radius:12px;overflow:
 a:has(> img)::after{content:"";position:absolute;inset:0;background:var(--gradOverlay);opacity:.18;transition:opacity .25s ease}
 a:has(> img):hover::after{opacity:.34}
 
-/* Графики */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.chart{background:color-mix(in oklab,var(--card) 98%, transparent 2%);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative}
-.chart svg{overflow:visible}
-.chart text{font-variant-numeric:tabular-nums;letter-spacing:.2px}
-.tooltip{position:absolute;pointer-events:none;background:color-mix(in oklab,var(--bg) 94%, #000 6%);color:var(--text);border:1px solid var(--axis);border-radius:8px;padding:6px 8px;font-size:12px;box-shadow:var(--shadow);display:none}
-
 /* ================== АДАПТИВ ================== */
 @media (max-width:1024px){
   .wrap{padding:20px}
@@ -227,17 +220,16 @@ a:has(> img):hover::after{opacity:.34}
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <button class="menu" id="menuToggle" aria-label="Меню" aria-expanded="false">
+      <button class="menu" id="menuToggle" aria-label="Меню" aria-controls="mobilePanel" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <div class="logo" aria-hidden="true"></div>
-      <strong>Шарошкин Александр Сергеевич — маркетолог</strong>
+      <strong>Александр Шарошкин — B2B Sales &amp; Marketing</strong>
     </div>
-    <nav class="primary" id="primaryNav">
+    <nav class="primary" id="primaryNav" aria-label="Основная навигация">
       <a href="#about">Обо мне</a>
-      <a href="#cases">Кейсы</a>
-      <a href="#charts">Графики</a>
-      <a href="#projects">Проекты</a>
+      <a href="#experience">Опыт</a>
+      <a href="#cases">Проекты</a>
       <a href="#contacts">Контакты</a>
     </nav>
     <button id="themeToggle" class="toggle" aria-pressed="false" title="Переключить тему">
@@ -251,161 +243,117 @@ a:has(> img):hover::after{opacity:.34}
 <div id="scrim" class="scrim"></div>
 
 <!-- Мобильная панель меню -->
-<nav class="mobile-panel" id="mobilePanel">
+<nav class="mobile-panel" id="mobilePanel" aria-label="Мобильная навигация">
   <a href="#about" onclick="closeMenu()">Обо мне</a>
-  <a href="#cases" onclick="closeMenu()">Кейсы</a>
-  <a href="#charts" onclick="closeMenu()">Графики</a>
-  <a href="#projects" onclick="closeMenu()">Проекты</a>
+  <a href="#experience" onclick="closeMenu()">Опыт</a>
+  <a href="#cases" onclick="closeMenu()">Проекты</a>
   <a href="#contacts" onclick="closeMenu()">Контакты</a>
 </nav>
 
 <main class="wrap">
-  <!-- HERO -->
-  <section class="hero">
+  <!-- Промежуточная безопасная редакция: без неподтверждённых KPI и личного телефона. -->
+  <section class="hero" aria-labelledby="hero-title">
     <div class="card">
-      <h1 class="h1">Запускаю рекламу, которая приводит <span style="background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent">целевых клиентов</span></h1>
-      <p class="lead">Перформанс-маркетинг, аналитика и автоматизация. США, Канада, MENA, Восточная Европа. Результат: рост лидов, снижение CPL, прибыль по каналам.</p>
+      <h1 class="h1" id="hero-title">Связываю B2B-продажи, маркетинг и коммерческие процессы</h1>
+      <p class="lead">Международные запросы на технические продукты, развитие каналов продаж, CRM и управление коммерческими проектами.</p>
       <div class="chips">
-        <span class="chip">Google / *Meta / Яндекс</span>
-        <span class="chip">Сквозная аналитика</span>
-        <span class="chip">CRM и автоматизация</span>
-        <span class="chip">RU / EN / 中文</span>
+        <span class="chip">B2B Sales</span>
+        <span class="chip">Business Development</span>
+        <span class="chip">Marketing Operations</span>
+        <span class="chip">CRM &amp; Automation</span>
       </div>
       <div class="btns">
-        <a class="btn" href="#cases">Смотреть кейсы</a>
-        <a class="btn" href="#contacts">Обсудить проект</a>
+        <a class="btn" href="#experience">Опыт работы</a>
+        <a class="btn" href="#contacts">Связаться</a>
       </div>
     </div>
     <div class="card">
-      <h3>Коротко</h3>
+      <h2>Направления работы</h2>
       <ul>
-        <li>RICHTONE — CPL ↓ <strong>35%</strong>, <strong>1150+</strong> заявок за 3 мес., ROI 300%+.</li>
-        <li>Human&Business — бонусная система и ЛК: активность +45%, повторы +30%.</li>
-        <li>БТК — стратегия и медиапланы: рост спроса +22% за квартал.</li>
+        <li>Международные B2B-продажи, квалификация запросов и коммерческие предложения.</li>
+        <li>Маркетинг, привлечение клиентов и анализ качества обращений.</li>
+        <li>Координация цифровых и коммерческих проектов.</li>
+        <li>CRM, качество товарных данных и автоматизация процессов.</li>
       </ul>
-      <p class="muted">Связываю рекламу, сайт и CRM, повышаю долю «деловых» лидов и маржу.</p>
+      <p class="muted">Рассматриваю полностью удалённые роли в продажах, развитии бизнеса, маркетинге и коммерческих проектах.</p>
     </div>
   </section>
 
-  <!-- ОБО МНЕ -->
   <section id="about" class="section">
     <h2>Обо мне</h2>
     <div class="card about">
-      <img class="avatar" src="img/photo.jpg" alt="Шарошкин Александр Сергеевич" />
+      <img class="avatar" src="img/photo.jpg" alt="Портрет Александра Шарошкина" width="160" height="160">
       <div>
-        <p><strong>Шарошкин Александр Сергеевич</strong> — маркетолог, отвечаю за поток заявок и прибыльность рекламы. Запускаю кампании в поиске и соцсетях для США, Канады, стран Персидского залива и Восточной Европы. Тестирую объявления и страницы, распределяю бюджеты по городам и времени.</p>
-        <p>Собираю данные из рекламы, сайта и CRM в единый отчёт, считаю CPL/CAC/ROI, отслеживаю отклонения и быстро исправляю. Повышаю долю «деловых» лидов (формы, автоответы, квалификация), связываю письма/мессенджеры с рекламой, автоматизирую рутину.</p>
+        <p>Работаю на стыке международных B2B-продаж, маркетинга, развития бизнеса и коммерческих операций. Уточняю потребности клиентов, технические характеристики, условия поставщиков, возможные варианты продукции и международной логистики.</p>
+        <p>Координирую цифровые и коммерческие задачи: формулирую бизнес-требования, участвую в контроле качества товарных данных, проверяю изменения в CRM и отслеживаю сохранность действующих процессов.</p>
       </div>
     </div>
   </section>
 
-  <!-- КЕЙСЫ -->
+  <section id="experience" class="section">
+    <h2>Опыт работы</h2>
+    <div class="card">
+      <h3>RAMP Global — руководитель отдела маркетинга и рекламы</h3>
+      <p class="muted">Февраль 2025 — настоящее время</p>
+      <p>Международные B2B-запросы по промышленному оборудованию и комплектующим, взаимодействие с поставщиками, коммерческие предложения, маркетинговые каналы, CRM и товарные данные.</p>
+    </div>
+    <div class="card">
+      <h3>Human&amp;Business — руководитель проектной группы</h3>
+      <p class="muted">Апрель 2024 — октябрь 2024</p>
+      <p>Координация трёх параллельных проектов, включая программу лояльности и разработку личных кабинетов для покупателей, продавцов и заводчиков; взаимодействие подразделений и подрядчиков.</p>
+    </div>
+    <div class="card">
+      <h3>ООО «БТК» — руководитель отдела маркетинга</h3>
+      <p class="muted">Декабрь 2023 — апрель 2024</p>
+      <p>Исследования рынков и конкурентов, анализ потребительских предпочтений, фокус-группы, медиапланирование и оценка коммерческих направлений.</p>
+    </div>
+    <div class="card">
+      <h3>Группа компаний «М131» — маркетолог</h3>
+      <p class="muted">Январь 2023 — ноябрь 2023</p>
+      <p>Исследования внешнего рынка и участие в проектах внедрения новых технологий в розничной торговле.</p>
+    </div>
+  </section>
+
   <section id="cases" class="section">
-    <h2>Кейсы (раскрываются по клику)</h2>
-
+    <h2>Направления проектов</h2>
     <details class="card">
-      <summary><img src="img/richtone-logo.png" alt="RICHTONE"> RICHTONE — международные рынки</summary>
+      <summary>RAMP Global — международные B2B-запросы</summary>
       <div class="case-body">
-        <p><strong>Цель:</strong> больше заявок и ниже CPL в США, Канаде, MENA, Восточной Европе.</p>
-        <p><strong>Действия:</strong> Google/Meta Ads, распределение бюджетов, A/B-тесты креативов/лендингов, сквозная аналитика (сайт+CRM), автоответы, формы, квалификация лидов, UTM/скрипты.</p>
-        <p><strong>Результат:</strong> CPL −35% (с 650 ₽ до 420 ₽), <strong>1150+ заявок</strong> за 3 мес., лид→сделка до 18%, ROMI 300%+.</p>
-        <div class="shot"><a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="Сайт RICHTONE"></a></div>
+        <p><strong>Задачи:</strong> уточнение потребности, проверка применения и комплектации продукции, взаимодействие с поставщиками, подготовка коммерческих вариантов.</p>
+        <p><strong>Рабочий процесс:</strong> запрос клиента, уточнение технических данных, согласование условий поставки, фиксация дальнейших шагов в CRM.</p>
       </div>
     </details>
-
     <details class="card">
-      <summary><img src="img/hb-logo.png" alt="Human&Business"> Human&Business — бонусная система</summary>
+      <summary>RAMP Global — CRM и качество каталога</summary>
       <div class="case-body">
-        <p><strong>Цель:</strong> рост удержания и повторных покупок.</p>
-        <p><strong>Действия:</strong> координация SMM/трейд/дизайна/перфоманса, постановка задач и контроль подрядчиков, медиапланы, креативы, запуск ЛК.</p>
-        <p><strong>Результат:</strong> активность +45% за 2 мес., повторы +30%.</p>
-        <div class="shot"><a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a></div>
+        <p><strong>Задачи:</strong> работа с устаревшими позициями и дублями, контроль качества данных, проверка сохранности действующих сделок.</p>
+        <p><strong>Моя роль:</strong> координация бизнес-требований и участие в приёмке. Техническая реализация выполнялась с помощью автоматизированных инструментов.</p>
       </div>
     </details>
-
     <details class="card">
-      <summary><img src="img/btk-logo.png" alt="БТК"> БТК — стратегия и исследования</summary>
+      <summary>Human&amp;Business — программа лояльности</summary>
       <div class="case-body">
-        <p><strong>Действия:</strong> конкурентный анализ, фокус-группы, позиционирование, стратегия и медиапланы, PR.</p>
-        <p><strong>Итог:</strong> 3 прибыльных направления, рост спроса +22%/кв.</p>
-        <div class="shot"><a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto — мебель из экоротанга"></a></div>
+        <p><strong>Задачи:</strong> координация маркетинговых и цифровых инициатив, согласование пользовательских сценариев личных кабинетов и механик бонусной программы.</p>
+        <p><strong>Моя роль:</strong> взаимодействие подразделений и подрядчиков, контроль задач, согласований и этапов разработки.</p>
       </div>
     </details>
-
     <details class="card">
-      <summary><img src="img/m131-logo.png" alt="М131"> ГК «М131» — розница и спрос</summary>
+      <summary>БТК и М131 — исследования и развитие</summary>
       <div class="case-body">
-        <p><strong>Действия:</strong> отчётность по акциям, анализ эффективности, рекомендации по росту спроса, медиапланы, фокус-группы, мониторинг конкурентов.</p>
-        <p><strong>Итог:</strong> устойчивый рост обращений и узнаваемости.</p>
-        <div class="shot"><a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131"></a></div>
+        <p>Исследования рынков, конкурентной среды и клиентских предпочтений, подготовка рекомендаций по продвижению и участие в проектах развития розничного бизнеса.</p>
       </div>
     </details>
   </section>
 
-  <!-- ГРАФИКИ -->
-  <section id="charts" class="section">
-    <h2>Графики (реалистичные метрики за 6 месяцев)</h2>
-    <div class="grid-2">
-      <div class="card chart">
-        <h3>Заявки по месяцам</h3>
-        <div class="tooltip" id="tt-leads"></div>
-        <svg id="leadsChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-      <div class="card chart">
-        <h3>CPL по месяцам (руб.)</h3>
-        <div class="tooltip" id="tt-cpl"></div>
-        <svg id="cplChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-      <div class="card chart">
-        <h3>ROI (x)</h3>
-        <div class="tooltip" id="tt-roi"></div>
-        <svg id="roiChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-      <div class="card chart">
-        <h3>Конверсия лид→сделка (%)</h3>
-        <div class="tooltip" id="tt-cr"></div>
-        <svg id="crChart" width="100%" height="240" viewBox="0 0 380 240"></svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- ПРОЕКТЫ -->
-  <section id="projects" class="section">
-    <h2>Проекты и сайты</h2>
-    <div class="logos">
-      <a href="https://gzrichtone.com/ru/" target="_blank" rel="noopener"><img src="img/richtone.png" alt="RICHTONE сайт"></a>
-      <a href="https://h-b.group/" target="_blank" rel="noopener"><img src="img/karmy.png" alt="Karmy / Human&Business"></a>
-      <a href="https://mari-roberto.lpmotortest.com/" target="_blank" rel="noopener"><img src="img/mariroberto.png" alt="Mariroberto / БТК"></a>
-      <a href="https://shop-idea.ru/" target="_blank" rel="noopener"><img src="img/stroideya.png" alt="Стройидея / М131"></a>
-    </div>
-  </section>
-
-  <!-- КОНТАКТЫ -->
   <section id="contacts" class="section">
     <h2>Контакты</h2>
     <div class="card">
-      <p>Почта: <a href="mailto:sharoshkin.akexandr@gmail.com">sharoshkin.akexandr@gmail.com</a></p>
-      <div class="btns" style="margin-top:10px">
-        <a class="sbtn" href="https://t.me/Sharoshkin99" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.6 15.6l-.3 4.3c.4 0 .6-.2.9-.4l2.1-2 4.3 3.1c.8.4 1.4.2 1.6-.7L22.9 4c.3-1-.4-1.5-1.2-1.2L2.2 10.1c-1 .4-1 1 0 1.3l4.4 1.3L18.9 6c.5-.3.9-.1.5.2l-9.8 9.4z"/></svg>
-          Telegram
-        </a>
-        <a class="sbtn" href="https://wa.me/79003006324" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.8A10.2 10.2 0 003.1 18.4L2 22l3.7-1A10.2 10.2 0 1012 1.8zm0 18.7a8.5 8.5 0 01-4.3-1.2l-.3-.2-2.5.6.7-2.4-.2-.3A8.5 8.5 0 1112 20.5zm4.7-6.2c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.2-.8 1-.9 1.1-.1.2-.3.2-.6 0-.3-.2-1.1-.4-2.1-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.3.2-.5 0-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.5s1.2 2.9 1.4 3.1c.2.3 2.3 3.5 5.4 4.8.7.3 1.3.5 1.8.7.8.2 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-1 0-1.7-.3-1.9z"/></svg>
-          WhatsApp
-        </a>
-        <a class="sbtn" href="weixin://dl/chat?bombermanmarketolog">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.2 4.3c-3.8 0-6.9 2.5-6.9 5.7 0 1.9 1.1 3.6 2.9 4.6l-.7 2.4 2.5-1.3c.7.2 1.4.3 2.1.3 3.8 0 6.9-2.5 6.9-5.7s-3.1-6-6.8-6zm-2.8 6.1c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7zm3.9 0c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7z"/></svg>
-          WeChat
-        </a>
-      </div>
-      <div style="margin-top:20px">
-        <a class="btn" href="resume.pdf" download>Скачать резюме (PDF)</a>
-      </div>
+      <p>Для связи по профессиональным вопросам: <a href="mailto:sharoshkin.akexandr@gmail.com">sharoshkin.akexandr@gmail.com</a></p>
+      <p class="muted">Актуальные версии резюме предоставлю по запросу.</p>
     </div>
   </section>
 </main>
-*Meta признана в РФ экстремистской организацией и запрещена.
+
   
 
 
@@ -427,7 +375,7 @@ document.getElementById('themeToggle').addEventListener('click',()=>{
   localStorage.setItem('theme', next);
   document.getElementById('iconSun').style.display=next==='light'?'none':'block';
   document.getElementById('iconMoon').style.display=next==='light'?'block':'none';
-  renderCharts(); /* перекрасить подписи */
+  
 });
 
 /* ====== меню ====== */
@@ -448,117 +396,6 @@ window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:.12});
 document.querySelectorAll('.card').forEach(el=>obs.observe(el));
 
-/* ====== графики (vanilla SVG) ====== */
-const fmt=(n,frac=0)=>new Intl.NumberFormat('ru-RU',{minimumFractionDigits:frac,maximumFractionDigits:frac}).format(n);
-const crisp=y=>Math.round(y)+.5;
-function svgEl(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
-function scale(v,a,b,A,B){return A+(v-a)*(B-A)/(b-a);}
-function yTicks(min,max,steps=5){const arr=[];for(let i=0;i<=steps;i++)arr.push(min+(max-min)*i/steps);return arr;}
-function getPadding(){ return window.matchMedia('(max-width: 640px)').matches ? 52 : 36; } /* больше места слева под подписи */
-
-function drawAxes(svg,w,h,p,xLabels,yMin,yMax,formatY){
-  const css=getComputedStyle(document.documentElement);
-  const gridColor=css.getPropertyValue('--grid').trim();
-  const axisColor=css.getPropertyValue('--axis').trim();
-  const tickColor=css.getPropertyValue('--tick').trim();
-  const tickSize=getComputedStyle(document.documentElement).getPropertyValue('--tick-size').trim();
-
-  const grid=svgEl('g',{stroke:gridColor,'stroke-width':1,'shape-rendering':'crispEdges'});
-  const ticks=yTicks(yMin,yMax,5);
-  ticks.forEach(t=>{
-    const y=crisp(scale(t,yMin,yMax,h-p,p));
-    grid.appendChild(svgEl('line',{x1:p,y1:y,x2:w-p,y2:y}));
-    const lbl=svgEl('text',{x:p-12,y:y+4,fill:tickColor,'font-size':tickSize,'font-weight':'700','text-anchor':'end'});
-    lbl.textContent=formatY?formatY(+t):fmt(+t,0);
-    svg.appendChild(lbl);
-  });
-  grid.appendChild(svgEl('line',{x1:p,y1:crisp(h-p),x2:w-p,y2:crisp(h-p),stroke:axisColor,'stroke-width':1.25}));
-  grid.appendChild(svgEl('line',{x1:crisp(p),y1:p,x2:crisp(p),y2:h-p,stroke:axisColor,'stroke-width':1.25}));
-  svg.appendChild(grid);
-
-  const step=(w-2*p)/(xLabels.length-1);
-  xLabels.forEach((lab,i)=>{
-    const x=p+i*step, y=h-p+18;
-    const t=svgEl('text',{x:x,y:y,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
-    t.textContent=lab; svg.appendChild(t);
-  });
-}
-
-function smoothPath(points){
-  let d=`M ${points[0].x} ${points[0].y}`;
-  for(let i=1;i<points.length;i++){
-    const p=points[i-1], c=points[i];
-    const mx=(p.x+c.x)/2, my=(p.y+c.y)/2;
-    const pmx=i===1?p.x:(points[i-2].x+c.x)/2, pmy=i===1?p.y:(points[i-2].y+c.y)/2;
-    d+=` C ${pmx} ${pmy}, ${mx} ${my}, ${c.x} ${c.y}`;
-  }
-  return d;
-}
-
-function lineChart({svgId,data,labels,color,fill,rev=false,formatY,yMin=null,yMax=null}){
-  const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
-  svg.innerHTML='';
-  const min=(yMin==null)? Math.min(...data)*0.95 : yMin;
-  const max=(yMax==null)? Math.max(...data)*1.05 : yMax;
-
-  drawAxes(svg,w,h,p,labels, rev?Math.max(...data):min, rev?Math.min(...data):max, formatY);
-
-  const pts=data.map((v,i)=>({
-    x:scale(i,0,data.length-1,p,w-p),
-    y:rev?scale(v,Math.max(...data),Math.min(...data),h-p,p):scale(v,min,max,h-p,p),
-    v
-  }));
-
-  const base=rev?scale(Math.max(...data),Math.max(...data),Math.min(...data),h-p,p):scale(min,min,max,h-p,p);
-  const area=svgEl('path',{fill:fill,stroke:'none',d:`${smoothPath(pts)} L ${w-p} ${base} L ${p} ${base} Z`}); svg.appendChild(area);
-  const path=svgEl('path',{d:smoothPath(pts),fill:'none',stroke:color,'stroke-width':3,'shape-rendering':'geometricPrecision'}); svg.appendChild(path);
-
-  const tt=document.getElementById('tt-'+svgId.split('Chart')[0]);
-  pts.forEach((pt,i)=>{
-    const c=svgEl('circle',{cx:pt.x,cy:pt.y,r:3.2,fill:color,stroke:'none'});
-    c.addEventListener('mouseenter',()=>{tt.style.display='block';tt.textContent=`${labels[i]} — ${formatY?formatY(pt.v):fmt(pt.v)}`;});
-    c.addEventListener('mousemove',(e)=>{tt.style.left=(e.pageX+12)+'px';tt.style.top=(e.pageY-20)+'px';});
-    c.addEventListener('mouseleave',()=>{tt.style.display='none';});
-    svg.appendChild(c);
-  });
-}
-
-function barChart({svgId,data,labels,color,formatY}){
-  const svg=document.getElementById(svgId), w=380,h=240,p=getPadding();
-  svg.innerHTML='';
-  const yMin=0, yMax=Math.max(...data)*1.1;
-  drawAxes(svg,w,h,p,labels,yMin,yMax,formatY);
-  const gap=8, cw=(w-2*p)/data.length-gap;
-
-  const tickColor=getComputedStyle(document.documentElement).getPropertyValue('--tick').trim();
-
-  data.forEach((v,i)=>{
-    const x=p+i*((w-2*p)/data.length)+gap/2;
-    const bh=(v/yMax)*(h-2*p);
-    const rect=svgEl('rect',{x:x,y:h-p-bh,width:cw,height:bh,rx:6,fill:color});
-    svg.appendChild(rect);
-
-    const txt=svgEl('text',{x:x+cw/2,y:h-p-bh-6,fill:tickColor,'font-size':'calc(var(--tick-size) - 1px)','font-weight':'700','text-anchor':'middle'});
-    txt.textContent=formatY?formatY(v):fmt(v,0);
-    svg.appendChild(txt);
-  });
-}
-
-/* ====== ДАННЫЕ ====== */
-const labelsArr = ['Апр','Май','Июн','Июл','Авг','Сен'];
-const leads  = [280, 360, 450, 620, 820, 1100];
-const cpl    = [680, 610, 540, 490, 450, 420];
-const roi    = [0.6, 0.9, 1.1, 1.5, 1.9, 2.2]; /* верные значения */
-const cr     = [8, 10, 12, 14, 16, 18];
-
-function renderCharts(){
-  barChart({svgId:'leadsChart', data:leads, labels:labelsArr, color:'var(--acc)', formatY:v=>fmt(v,0)});
-  lineChart({svgId:'cplChart', data:cpl, labels:labelsArr, color:'var(--acc3)', fill:'color-mix(in oklab,var(--acc3) 30%, transparent)', rev:true, formatY:v=>fmt(v,0)+' ₽'});
-  lineChart({svgId:'roiChart', data:roi, labels:labelsArr, color:'var(--acc2)', fill:'color-mix(in oklab,var(--acc2) 30%, transparent)', yMin:0.5, yMax:2.3, formatY:v=>fmt(v,1)+'×'});
-  lineChart({svgId:'crChart', data:cr, labels:labelsArr, color:'var(--acc)', fill:'color-mix(in oklab,var(--acc) 30%, transparent)', yMin:0, yMax:20, formatY:v=>fmt(v,0)+' %'});
-}
-renderCharts();
-window.addEventListener('resize', ()=>renderCharts(), {passive:true});
 </script>
 </body>
 </html>
