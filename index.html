@@ -339,6 +339,18 @@ a.contact-tile:hover{border-color:var(--acc2);filter:brightness(1.06);transform:
  .portfolio-case-layout.process-image>.portfolio-case-image{height:clamp(220px,53vw,330px)}
 }
 
+
+/* Crop the current RAMP homepage capture in the site gallery to focus on
+   the original heavy-equipment hero rather than the geo-selector overlay. */
+.site-image img[src$="portfolio-case-ramp.webp"]{
+  width:148%;
+  max-width:none;
+  object-fit:cover;
+  object-position:left center;
+}
+.portfolio-case-layout:not(.process-image) .portfolio-case-image img[src$="portfolio-case-ramp.webp"]{
+  object-position:43% center;
+}
 </style>
 </head>
 <body>
