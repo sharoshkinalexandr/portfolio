@@ -58,6 +58,39 @@ def capture(browser, file_name: str, urls: list[str]) -> dict:
             response = page.goto(url, wait_until="domcontentloaded", timeout=45000)
             status = response.status if response else None
             page.wait_for_timeout(2200)
+            # Dismiss public-site UI overlays before capturing the viewport.
+            if file_name == "portfolio-case-ramp.webp":
+                try:
+                    page.get_by_role("button", name="Yes", exact=True).first.click(timeout=2500)
+                    page.wait_for_timeout(800)
+                except Exception:
+                    pass
+                page.add_style_tag(content="""
+                  iframe,
+                  [class*="chat-widget"], [id*="chat-widget"],
+                  [class*="chatbot"], [id*="chatbot"],
+                  [class*="intercom"], [id*="intercom"],
+                  [class*="tawk"], [id*="tawk"],
+                  [class*="crisp"], [id*="crisp"],
+                  [class*="popup"], [class*="country-modal"],
+                  [class*="country-popup"] {visibility:hidden!important;}
+                """)
+            elif file_name == "portfolio-case-humanbusiness.webp":
+                # The home hero contains a third-party video that fails
+                # security validation in headless environments. Photograph
+                # the visible brands section instead of that error overlay.
+                try:
+                    page.get_by_text("Наши бренды", exact=True).last.scroll_into_view_if_needed(timeout=6000)
+                    page.evaluate("window.scrollBy(0,-100)")
+                except Exception:
+                    page.evaluate("window.scrollTo(0,1150)")
+                page.wait_for_timeout(1100)
+            elif file_name == "portfolio-case-stroyideya.webp":
+                try:
+                    page.get_by_text("Согласен", exact=True).first.click(timeout=2200)
+                    page.wait_for_timeout(450)
+                except Exception:
+                    pass
             title = (page.title() or "").strip()
             body = (page.locator("body").inner_text(timeout=6000) or "")[:3500]
             problem = (
