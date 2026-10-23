@@ -65,6 +65,23 @@ def capture(browser, file_name: str, urls: list[str]) -> dict:
                     page.wait_for_timeout(800)
                 except Exception:
                     pass
+                # Country prompt is a site-specific floating panel, not
+                # always marked as a dialog or modal. Hide only its small
+                # bounding panel; never hide the underlying page content.
+                page.evaluate("""() => {
+                  for (const leaf of document.querySelectorAll('body *')) {
+                    if (leaf.children.length || !/Is your country United States\\?/.test(leaf.textContent || '')) continue;
+                    let node = leaf;
+                    for (let i = 0; i < 6 && node.parentElement; i++) {
+                      const parent = node.parentElement, r = parent.getBoundingClientRect();
+                      if (r.width > 280 && r.width < 480 && r.height > 90 && r.height < 260) {
+                        parent.style.display = 'none';
+                        break;
+                      }
+                      node = parent;
+                    }
+                  }
+                }""")
                 page.add_style_tag(content="""
                   iframe,
                   [class*="chat-widget"], [id*="chat-widget"],
@@ -81,7 +98,7 @@ def capture(browser, file_name: str, urls: list[str]) -> dict:
                 # the visible brands section instead of that error overlay.
                 try:
                     page.get_by_text("Наши бренды", exact=True).last.scroll_into_view_if_needed(timeout=6000)
-                    page.evaluate("window.scrollBy(0,-100)")
+                    page.evaluate("window.scrollBy(0,380)")
                 except Exception:
                     page.evaluate("window.scrollTo(0,1150)")
                 page.wait_for_timeout(1100)
